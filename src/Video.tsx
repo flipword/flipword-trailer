@@ -1,7 +1,6 @@
 import {Composition} from 'remotion';
-import phone from './assets/phone.mp4';
-import tablet from './assets/tablet.mp4';
 import {Scene} from './Scene';
+import "./style.css";
 
 // Welcome to the Remotion Three Starter Kit!
 // Two compositions have been created, showing how to use
@@ -33,10 +32,6 @@ export const RemotionVideo: React.FC = () => {
 				fps={30}
 				width={1280}
 				height={720}
-				defaultProps={{
-					videoSrc: deviceType === 'phone' ? phone : tablet,
-					baseScale: deviceType === 'phone' ? 1 : 1.8,
-				}}
 			/>
 		</>
 	);

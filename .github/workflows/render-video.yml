@@ -14,5 +14,5 @@ jobs:
       - run: npm run build
       - uses: actions/upload-artifact@v2
         with:
-          name: out.mp4
-          path: out.mp4
+          name: flipword-trailer.mp4
+          path: flipword-trailer.mp4
