@@ -6,8 +6,8 @@ jobs:
     name: Render video
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
-      - uses: actions/setup-node@main
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
       - run: sudo apt update
       - run: sudo apt install ffmpeg
       - run: npm i
