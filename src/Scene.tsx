@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {AbsoluteFill, Sequence, useVideoConfig} from 'remotion';
 
 import {FirstTextScene} from './scenes/FirstTextScene';
+import {UnkownWordScene} from "./scenes/UnkownWordScene";
 import {Transition} from './Transition';
 
 export const Scene: React.FC = () => {
@@ -26,7 +27,7 @@ export const Scene: React.FC = () => {
 				name="FirstScene"
 			>
 				<Transition type="in">
-					<AbsoluteFill className="bg-darkGrey" />
+					<UnkownWordScene />
 				</Transition>
 			</Sequence>
 		</>
