@@ -5,16 +5,18 @@ import {
 	useVideoConfig,
 	Img,
 	staticFile,
+	useCurrentFrame,
 } from 'remotion';
 import {WebsiteHeader} from '../components/WebsiteHeader';
 import {WebsiteContent} from '../components/WebsiteContent';
 
 export const UnkownWordScene: React.FC = () => {
 	const {fps} = useVideoConfig();
+	const currentFrame = useCurrentFrame();
 
 	return (
 		<WebsiteHeader>
-			<WebsiteContent />
+			<WebsiteContent scrollY={currentFrame} />
 		</WebsiteHeader>
 	);
 };
