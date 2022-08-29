@@ -61,7 +61,7 @@ export const WebsiteHeader: React.FC<{children: React.ReactNode}> = (props) => {
 					</div>
 				</div>
 				{/* Content */}
-				<div className="w-full flex-1">{props.children}</div>
+				<div className="w-full flex-1 overflow-auto">{props.children}</div>
 			</div>
 		</AbsoluteFill>
 	);

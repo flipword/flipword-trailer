@@ -7,13 +7,14 @@ import {
 	staticFile,
 } from 'remotion';
 import {WebsiteHeader} from '../components/WebsiteHeader';
+import {WebsiteContent} from '../components/WebsiteContent';
 
 export const UnkownWordScene: React.FC = () => {
 	const {fps} = useVideoConfig();
 
 	return (
 		<WebsiteHeader>
-			<span>TEST</span>
+			<WebsiteContent />
 		</WebsiteHeader>
 	);
 };
