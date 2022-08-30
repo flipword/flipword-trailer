@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Img, staticFile} from 'remotion';
 
-export const WebsiteContent: React.FC<{scrollY: number}> = (props) => {
+export const WebsiteContent: React.FC = () => {
 	const title = 'How to help our brain learn new languages ?';
 	const titlePart1 = 'Temporal and frontal lobe';
 	const textPart1 =
@@ -15,10 +15,6 @@ export const WebsiteContent: React.FC<{scrollY: number}> = (props) => {
 	const textPart3 =
 		'Once written, the brain is now able to visualize the word which will now be associated with the meaning of the word. "It has been found that meaning is first attached to the visual form followed by sound in second language written word learning".';
 	const imgPart3 = staticFile('img/eyes.png');
-
-	useEffect(() => {
-		console.log('scroll to: ', props.scrollY);
-	}, [props.scrollY]);
 
 	return (
 		<div className="bg-darkGrey flex flex-row justify-center">

@@ -7,7 +7,7 @@ import {
 	staticFile,
 	useCurrentFrame,
 } from 'remotion';
-import {WebsiteHeader} from '../components/WebsiteHeader';
+import {WebsiteContainer} from '../components/WebsiteContainer';
 import {WebsiteContent} from '../components/WebsiteContent';
 
 export const UnkownWordScene: React.FC = () => {
@@ -15,8 +15,8 @@ export const UnkownWordScene: React.FC = () => {
 	const currentFrame = useCurrentFrame();
 
 	return (
-		<WebsiteHeader>
-			<WebsiteContent scrollY={currentFrame} />
-		</WebsiteHeader>
+		<WebsiteContainer scrollY={currentFrame}>
+			<WebsiteContent />
+		</WebsiteContainer>
 	);
 };
