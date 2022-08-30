@@ -21,7 +21,7 @@ export const WebsiteContent: React.FC = () => {
 			<div className="w-3/5 bg-white py-6 px-12">
 				<h1 className="text-3xl">{title}</h1>
 				{/* Part 1 */}
-				<div className="mt-6 flex flex-row justify-start">
+				<div className="px-5 mt-10 flex flex-row justify-start">
 					<h2 className="text-xl">{titlePart2}</h2>
 				</div>
 				<div className="mt-6 w-full flex flex-row">
@@ -33,7 +33,7 @@ export const WebsiteContent: React.FC = () => {
 					</div>
 				</div>
 				{/* Part 2 */}
-				<div className="mt-6 flex flex-row justify-end">
+				<div className="px-5 mt-6 flex flex-row justify-end">
 					<h2 className="text-xl">{titlePart1}</h2>
 				</div>
 				<div className="mt-6 w-full flex flex-row">
@@ -45,7 +45,7 @@ export const WebsiteContent: React.FC = () => {
 					</div>
 				</div>
 				{/* Part 3 */}
-				<div className="mt-6 flex flex-row justify-end">
+				<div className="px-5 mt-6 flex flex-row justify-end">
 					<h2 className="text-xl">{titlePart3}</h2>
 				</div>
 				<div className="mt-6 w-full flex flex-row">

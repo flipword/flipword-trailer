@@ -1,26 +1,19 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {
-	AbsoluteFill,
-	Sequence,
-	useVideoConfig,
-	Img,
-	staticFile,
-	useCurrentFrame,
-} from 'remotion';
+import React, {useEffect, useState} from 'react';
+import {useVideoConfig, useCurrentFrame} from 'remotion';
 import {WebsiteContainer} from '../components/WebsiteContainer';
 import {WebsiteContent} from '../components/WebsiteContent';
 
 export const UnkownWordScene: React.FC = () => {
+	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
-	const startScrollingFrame = 60;
+	const startScrolling = 2 * fps;
+	const intervalBetweenScroll = fps;
 	const [scrollPosition, setScrollPosition] = useState(0);
+
 	useEffect(() => {
-		if (
-			currentFrame > startScrollingFrame &&
-			currentFrame < startScrollingFrame + 30
-		) {
+		if (currentFrame === startScrolling) {
 			setScrollPosition(60);
-		} else if (currentFrame > startScrollingFrame) {
+		} else if (currentFrame === startScrolling + intervalBetweenScroll) {
 			setScrollPosition(140);
 		}
 	}, [currentFrame]);
