@@ -11,11 +11,22 @@ import {WebsiteContainer} from '../components/WebsiteContainer';
 import {WebsiteContent} from '../components/WebsiteContent';
 
 export const UnkownWordScene: React.FC = () => {
-	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
+	const startScrollingFrame = 60;
+	const [scrollPosition, setScrollPosition] = useState(0);
+	useEffect(() => {
+		if (
+			currentFrame > startScrollingFrame &&
+			currentFrame < startScrollingFrame + 30
+		) {
+			setScrollPosition(60);
+		} else if (currentFrame > startScrollingFrame) {
+			setScrollPosition(140);
+		}
+	}, [currentFrame]);
 
 	return (
-		<WebsiteContainer scrollY={currentFrame}>
+		<WebsiteContainer scrollY={scrollPosition}>
 			<WebsiteContent />
 		</WebsiteContainer>
 	);

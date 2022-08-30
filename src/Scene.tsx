@@ -2,14 +2,14 @@ import React, {useEffect, useRef, useState} from 'react';
 import {AbsoluteFill, Sequence, useVideoConfig} from 'remotion';
 
 import {TextScene} from './scenes/TextScene';
-import {UnkownWordScene} from "./scenes/UnkownWordScene";
+import {UnkownWordScene} from './scenes/UnkownWordScene';
 import {Transition} from './Transition';
 
 export const Scene: React.FC = () => {
 	const {fps} = useVideoConfig();
 	const transitionTime = 15;
 	const textSceneDuration = 2 * fps;
-	const unknownWordSceneDuration = 3 * fps;
+	const unknownWordSceneDuration = 5 * fps;
 	return (
 		<>
 			<Sequence
@@ -18,7 +18,7 @@ export const Scene: React.FC = () => {
 				name="FirstScene"
 			>
 				<Transition type="out">
-					<TextScene message="Avez vous régulièrement besoin de traduire des mots lors de votre navigation ?"/>
+					<TextScene message="Avez vous régulièrement besoin de traduire des mots lors de votre navigation ?" />
 				</Transition>
 			</Sequence>
 			<Sequence
@@ -36,7 +36,7 @@ export const Scene: React.FC = () => {
 				name="FirstScene"
 			>
 				<Transition type="in">
-					<TextScene message="Avez vous régulièrement besoin de traduire des mots lors de votre navigation ?"/>
+					<TextScene message="Avez vous régulièrement besoin de traduire des mots lors de votre navigation ?" />
 				</Transition>
 			</Sequence>
 		</>

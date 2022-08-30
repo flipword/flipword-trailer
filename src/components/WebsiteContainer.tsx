@@ -8,7 +8,7 @@ export const WebsiteContainer: React.FC<{
 	const scrollDivRef = createRef<HTMLDivElement>();
 
 	useEffect(() => {
-		scrollDivRef.current?.scrollTo(0, props.scrollY);
+		scrollDivRef.current?.scrollTo({top: props.scrollY, behavior: 'smooth'});
 	}, [props.scrollY]);
 
 	return (
