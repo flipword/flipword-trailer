@@ -9,7 +9,7 @@ export const Scene: React.FC = () => {
 	const {fps} = useVideoConfig();
 	const transitionTime = 15;
 	const textSceneDuration = 2 * fps;
-	const unknownWordSceneDuration = 5 * fps;
+	const unknownWordSceneDuration = 15 * fps;
 	return (
 		<>
 			<Sequence

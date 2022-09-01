@@ -1,7 +1,12 @@
 import React, {createRef, useEffect, useRef} from 'react';
-import {Img, staticFile} from 'remotion';
+import {Img, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 
-export const WebsiteContent: React.FC<{scrollY: number}> = (props) => {
+export const WebsiteContent: React.FC<{
+	scrollY: number;
+	readingStartFrame: number;
+}> = (props) => {
+	const {fps} = useVideoConfig();
+	const currentFrame = useCurrentFrame();
 	const title = 'How to help our brain learn new languages ?';
 	const titlePart1 = 'Temporal and frontal lobe';
 	const textPart1 =
@@ -20,19 +25,35 @@ export const WebsiteContent: React.FC<{scrollY: number}> = (props) => {
 
 	const cursorIcon = staticFile('icons/cursor.svg');
 	const cursorRef = useRef<HTMLImageElement>(null);
-	if (cursorRef.current) {
-		cursorRef.current.style.top = '50px';
-		cursorRef.current.style.left = '350px';
-	}
+	const initialCursorPosition = {top: 60, left: 350};
 
 	useEffect(() => {
 		scrollDivRef.current?.scrollTo({top: props.scrollY, behavior: 'smooth'});
 		if (cursorRef.current) {
 			cursorRef.current.style.top = `${
-				cursorRef.current.style.top + props.scrollY
+				initialCursorPosition.top + props.scrollY
 			}px`;
+			cursorRef.current.style.left = `${initialCursorPosition.left}px`;
 		}
 	}, [props.scrollY]);
+
+	useEffect(() => {
+		if (cursorRef.current) {
+			if (currentFrame === props.readingStartFrame) {
+				cursorRef.current.style.transition = 'left 2s, top 2s';
+				cursorRef.current.style.left = `${initialCursorPosition.left + 200}px`;
+			} else if (currentFrame === props.readingStartFrame + 1.5 * fps) {
+				cursorRef.current.style.transition = 'left 1s, top 1s';
+				cursorRef.current.style.left = `${initialCursorPosition.left}px`;
+				cursorRef.current.style.top = `${
+					initialCursorPosition.top + props.scrollY + 23
+				}px`;
+			} else if (currentFrame === props.readingStartFrame + 2.5 * fps) {
+				cursorRef.current.style.transition = 'left 2s, top 2s';
+				cursorRef.current.style.left = `${initialCursorPosition.left + 100}px`;
+			}
+		}
+	}, [currentFrame]);
 
 	return (
 		<div ref={scrollDivRef} className="w-full flex-1 overflow-auto">

@@ -1,6 +1,6 @@
 import {Composition} from 'remotion';
 import {Scene} from './Scene';
-import "./style.css";
+import './style.css';
 
 // Welcome to the Remotion Three Starter Kit!
 // Two compositions have been created, showing how to use
@@ -28,7 +28,7 @@ export const RemotionVideo: React.FC = () => {
 			<Composition
 				id="Scene"
 				component={Scene}
-				durationInFrames={300}
+				durationInFrames={1000}
 				fps={30}
 				width={1280}
 				height={720}
