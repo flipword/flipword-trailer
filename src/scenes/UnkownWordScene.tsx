@@ -19,8 +19,8 @@ export const UnkownWordScene: React.FC = () => {
 	}, [currentFrame]);
 
 	return (
-		<WebsiteContainer scrollY={scrollPosition}>
-			<WebsiteContent />
+		<WebsiteContainer>
+			<WebsiteContent scrollY={scrollPosition} />
 		</WebsiteContainer>
 	);
 };

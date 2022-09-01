@@ -3,14 +3,7 @@ import {AbsoluteFill, Img, staticFile} from 'remotion';
 
 export const WebsiteContainer: React.FC<{
 	children: React.ReactNode;
-	scrollY: number;
 }> = (props) => {
-	const scrollDivRef = createRef<HTMLDivElement>();
-
-	useEffect(() => {
-		scrollDivRef.current?.scrollTo({top: props.scrollY, behavior: 'smooth'});
-	}, [props.scrollY]);
-
 	return (
 		<AbsoluteFill className="bg-darkGrey">
 			<div className="w-full h-full flex flex-col">
@@ -70,9 +63,7 @@ export const WebsiteContainer: React.FC<{
 					</div>
 				</div>
 				{/* Content */}
-				<div ref={scrollDivRef} className="w-full flex-1 overflow-auto">
-					{props.children}
-				</div>
+				{props.children}
 			</div>
 		</AbsoluteFill>
 	);
