@@ -1,4 +1,4 @@
-import React, {createRef, useEffect, useRef} from 'react';
+import React, {createRef, useEffect, useRef, useState} from 'react';
 import {Img, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 
 export const WebsiteContent: React.FC<{
@@ -13,8 +13,7 @@ export const WebsiteContent: React.FC<{
 		'According to a study done in 2017, it was shown that the temporal lobe and parts of the frontal lobe are activated when we are learning a new language.';
 	const imgPart1 = staticFile('img/brain.png');
 	const titlePart2 = 'Spell it out';
-	const textPart2 =
-		'Taking a pen to paper is a bit outdated, however it has wonderful affects on learning new languages. It helps with "written word learning, by connecting orthography [spelling] and phonology at the whole word level".';
+	const textPart2 = `Taking a pen to paper is a bit outdated, however it has <abbr>wonderful</abbr> affects on learning new languages. It helps with "written word learning, by connecting orthography [spelling] and phonology at the whole word level".`;
 	const imgPart2 = staticFile('img/spell.png');
 	const titlePart3 = 'Visualize';
 	const textPart3 =
@@ -27,6 +26,21 @@ export const WebsiteContent: React.FC<{
 	const cursorRef = useRef<HTMLImageElement>(null);
 	const initialCursorPosition = {top: 60, left: 350};
 
+	const unknownDivRef = useRef<HTMLDivElement>(null);
+
+	const abbrNodeContainer = useRef<HTMLDivElement>(null);
+	const [abbrNode, setAbbrNode] = useState<HTMLElement | null>(null);
+
+	/* On mounted action */
+	useEffect(() => {
+		abbrNodeContainer.current?.childNodes.forEach((x) => {
+			if (x.nodeName === 'ABBR') {
+				setAbbrNode(x as HTMLElement);
+			}
+		});
+	}, []);
+
+	/* If scroll change we move the cursor */
 	useEffect(() => {
 		scrollDivRef.current?.scrollTo({top: props.scrollY, behavior: 'smooth'});
 		if (cursorRef.current) {
@@ -37,6 +51,7 @@ export const WebsiteContent: React.FC<{
 		}
 	}, [props.scrollY]);
 
+	/* Scenario depend on frame */
 	useEffect(() => {
 		if (cursorRef.current) {
 			if (currentFrame === props.readingStartFrame) {
@@ -51,6 +66,16 @@ export const WebsiteContent: React.FC<{
 			} else if (currentFrame === props.readingStartFrame + 2.5 * fps) {
 				cursorRef.current.style.transition = 'left 2s, top 2s';
 				cursorRef.current.style.left = `${initialCursorPosition.left + 100}px`;
+			} else if (currentFrame > props.readingStartFrame + 2.5 * fps) {
+				if (unknownDivRef.current && abbrNode) {
+					unknownDivRef.current.style.left = `${
+						Number(abbrNode.offsetLeft) - 6
+					}px`;
+					unknownDivRef.current.style.top = `${
+						Number(abbrNode.offsetTop) - 3
+					}px`;
+					unknownDivRef.current.style.display = 'block';
+				}
 			}
 		}
 	}, [currentFrame]);
@@ -66,7 +91,10 @@ export const WebsiteContent: React.FC<{
 					</div>
 					<div className="mt-6 w-full flex flex-row">
 						<div className="flex flex-col flex-1 px-5 justify-center">
-							<span>{textPart2}</span>
+							<div
+								ref={abbrNodeContainer}
+								dangerouslySetInnerHTML={{__html: textPart2}}
+							/>
 						</div>
 						<div className="flex flex-row flex-1 justify-center">
 							<Img className="w-8/12 h-auto" src={imgPart2} />
@@ -101,6 +129,10 @@ export const WebsiteContent: React.FC<{
 					ref={cursorRef}
 					className="cursor-transition w-5 h-auto absolute"
 					src={cursorIcon}
+				/>
+				<div
+					ref={unknownDivRef}
+					className="w-20 h-6 bg-transparent border-2 border-red absolute rounded-full hidden"
 				/>
 			</div>
 		</div>

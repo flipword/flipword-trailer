@@ -11,6 +11,7 @@ module.exports = {
 			black: '#000000',
 			darkGrey: '#DCDCDC',
 			lightGrey: '#F4F4F4',
+			red: '#FF0000',
 		}),
 		borderColor: (theme) => ({
 			...theme('colors'),
@@ -21,6 +22,7 @@ module.exports = {
 			whiteShadow: '#C1C1C1',
 			darkGrey: '#DCDCDC',
 			lightGrey: '#F4F4F4',
+			red: '#FF0000',
 		}),
 		fontFamily: {
 			sans: ['Roboto', 'sans-serif'],
