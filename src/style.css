@@ -5,3 +5,12 @@
 .cursor-transition {
     transition: left 1s, top 1s;
 }
+
+.unknown-div-transition {
+    transition: opacity 1s;
+}
+
+.text-stroke-effect {
+    -webkit-text-stroke: 1px white;
+    font-weight: 1000;
+}

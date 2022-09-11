@@ -34,6 +34,7 @@ module.exports = {
 		textColor: {
 			black: '#1E1E1E',
 			white: '#FFFFFF',
+			red: '#FF0000',
 		},
 		extend: {
 			borderRadius: {
@@ -56,6 +57,10 @@ module.exports = {
 			padding: {
 				'1/12': '8.33%',
 			},
+		},
+		rotate: {
+			25: '25deg',
+			'-25': '-25deg',
 		},
 	},
 	variants: {

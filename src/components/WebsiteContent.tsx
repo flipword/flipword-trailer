@@ -66,15 +66,15 @@ export const WebsiteContent: React.FC<{
 			} else if (currentFrame === props.readingStartFrame + 2.5 * fps) {
 				cursorRef.current.style.transition = 'left 2s, top 2s';
 				cursorRef.current.style.left = `${initialCursorPosition.left + 100}px`;
-			} else if (currentFrame > props.readingStartFrame + 2.5 * fps) {
+			} else if (currentFrame > props.readingStartFrame + 3 * fps) {
 				if (unknownDivRef.current && abbrNode) {
 					unknownDivRef.current.style.left = `${
 						Number(abbrNode.offsetLeft) - 6
 					}px`;
 					unknownDivRef.current.style.top = `${
-						Number(abbrNode.offsetTop) - 3
+						Number(abbrNode.offsetTop) - 30
 					}px`;
-					unknownDivRef.current.style.display = 'block';
+					unknownDivRef.current.style.opacity = '1';
 				}
 			}
 		}
@@ -127,13 +127,20 @@ export const WebsiteContent: React.FC<{
 				</div>
 				<Img
 					ref={cursorRef}
-					className="cursor-transition w-5 h-auto absolute"
+					className="cursor-transition w-5 h-auto absolute z-50"
 					src={cursorIcon}
 				/>
 				<div
 					ref={unknownDivRef}
-					className="w-20 h-6 bg-transparent border-2 border-red absolute rounded-full hidden"
-				/>
+					className="flex flex-col w-20 absolute opacity-0 unknown-div-transition"
+				>
+					<div className="flex flex-row flex-auto w-full justify-center text-red text-stroke-effect text-2xl -mb-1.5 gap-3">
+						<span className="transform -rotate-25">?</span>
+						<span>?</span>
+						<span className="transform rotate-25">?</span>
+					</div>
+					<div className="w-full h-6 bg-transparent border-2 border-red rounded-full" />
+				</div>
 			</div>
 		</div>
 	);
