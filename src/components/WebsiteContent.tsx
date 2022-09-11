@@ -4,9 +4,9 @@ import {Img, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 export const WebsiteContent: React.FC<{
 	scrollY: number;
 	readingStartFrame: number;
+	currentFrame: number;
 }> = (props) => {
 	const {fps} = useVideoConfig();
-	const currentFrame = useCurrentFrame();
 	const title = 'How to help our brain learn new languages ?';
 	const titlePart1 = 'Temporal and frontal lobe';
 	const textPart1 =
@@ -54,19 +54,19 @@ export const WebsiteContent: React.FC<{
 	/* Scenario depend on frame */
 	useEffect(() => {
 		if (cursorRef.current) {
-			if (currentFrame === props.readingStartFrame) {
+			if (props.currentFrame === props.readingStartFrame) {
 				cursorRef.current.style.transition = 'left 2s, top 2s';
 				cursorRef.current.style.left = `${initialCursorPosition.left + 200}px`;
-			} else if (currentFrame === props.readingStartFrame + 1.5 * fps) {
+			} else if (props.currentFrame === props.readingStartFrame + 1.5 * fps) {
 				cursorRef.current.style.transition = 'left 1s, top 1s';
 				cursorRef.current.style.left = `${initialCursorPosition.left}px`;
 				cursorRef.current.style.top = `${
 					initialCursorPosition.top + props.scrollY + 23
 				}px`;
-			} else if (currentFrame === props.readingStartFrame + 2.5 * fps) {
+			} else if (props.currentFrame === props.readingStartFrame + 2.5 * fps) {
 				cursorRef.current.style.transition = 'left 2s, top 2s';
 				cursorRef.current.style.left = `${initialCursorPosition.left + 100}px`;
-			} else if (currentFrame > props.readingStartFrame + 3 * fps) {
+			} else if (props.currentFrame > props.readingStartFrame + 3 * fps) {
 				if (unknownDivRef.current && abbrNode) {
 					unknownDivRef.current.style.left = `${
 						Number(abbrNode.offsetLeft) - 6
@@ -78,7 +78,7 @@ export const WebsiteContent: React.FC<{
 				}
 			}
 		}
-	}, [currentFrame]);
+	}, [props.currentFrame]);
 
 	return (
 		<div ref={scrollDivRef} className="w-full flex-1 overflow-auto">

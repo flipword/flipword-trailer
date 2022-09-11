@@ -1,5 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {AbsoluteFill, Sequence, useVideoConfig} from 'remotion';
+import {
+	AbsoluteFill,
+	Sequence,
+	useCurrentFrame,
+	useVideoConfig,
+} from 'remotion';
 
 import {TextScene} from './scenes/TextScene';
 import {UnkownWordScene} from './scenes/UnkownWordScene';
@@ -7,6 +12,7 @@ import {Transition} from './Transition';
 
 export const Scene: React.FC = () => {
 	const {fps} = useVideoConfig();
+	const currentFrame = useCurrentFrame();
 	const transitionTime = 15;
 	const firstTextSceneDuration = 2 * fps;
 	const textSceneDuration = 3 * fps;
@@ -28,7 +34,7 @@ export const Scene: React.FC = () => {
 				name="FirstScene"
 			>
 				<Transition type="in">
-					<UnkownWordScene />
+					<UnkownWordScene currentFrame={currentFrame} />
 				</Transition>
 			</Sequence>
 			<Sequence
@@ -53,7 +59,7 @@ export const Scene: React.FC = () => {
 				name="FirstScene"
 			>
 				<Transition type="in">
-					<UnkownWordScene />
+					<UnkownWordScene currentFrame={currentFrame} />
 				</Transition>
 			</Sequence>
 		</>
