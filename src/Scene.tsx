@@ -7,7 +7,7 @@ import {
 } from 'remotion';
 
 import {TextScene} from './scenes/TextScene';
-import {UnkownWordScene} from './scenes/UnkownWordScene';
+import {UnknownWordScene} from './scenes/UnknownWordScene';
 import {Transition} from './Transition';
 
 export const Scene: React.FC = () => {
@@ -34,7 +34,7 @@ export const Scene: React.FC = () => {
 				name="FirstScene"
 			>
 				<Transition type="in">
-					<UnkownWordScene currentFrame={currentFrame} />
+					<UnknownWordScene currentFrame={currentFrame} usageIndex={1} />
 				</Transition>
 			</Sequence>
 			<Sequence
@@ -59,7 +59,7 @@ export const Scene: React.FC = () => {
 				name="FirstScene"
 			>
 				<Transition type="in">
-					<UnkownWordScene currentFrame={currentFrame} />
+					<UnknownWordScene currentFrame={currentFrame} usageIndex={2} />
 				</Transition>
 			</Sequence>
 		</>
