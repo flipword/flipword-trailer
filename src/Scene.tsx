@@ -25,7 +25,7 @@ export const Scene: React.FC = () => {
 				name="FirstScene"
 			>
 				<Transition type="out">
-					<TextScene message="Avez vous régulièrement besoin de traduire des mots lors de votre navigation ?" />
+					<TextScene message="Avez vous régulièrement besoin de <strong>traduire</strong> des mots lors de votre navigation ?" />
 				</Transition>
 			</Sequence>
 			<Sequence
@@ -45,7 +45,7 @@ export const Scene: React.FC = () => {
 				name="FirstScene"
 			>
 				<Transition type="in">
-					<TextScene message="Flipword peut vous permettre de créer facilement une liste de vocabulaire personnalisé" />
+					<TextScene message="<strong>Flipword</strong> peut vous permettre de créer facilement une liste de vocabulaire personnalisé" />
 				</Transition>
 			</Sequence>
 			<Sequence

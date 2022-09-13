@@ -14,3 +14,12 @@
     -webkit-text-stroke: 1px white;
     font-weight: 1000;
 }
+
+.bottom-text-radius {
+    border-top-left-radius: 15rem;
+    border-top-right-radius: 15rem;
+}
+
+.selected-div-transition {
+    transition: width 2s;
+}

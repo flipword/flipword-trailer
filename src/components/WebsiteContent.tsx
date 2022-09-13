@@ -29,6 +29,7 @@ export const WebsiteContent: React.FC<{
 	const initialCursorPosition = {top: 60, left: 350};
 
 	const unknownDivRef = useRef<HTMLDivElement>(null);
+	const selectedDivRef = useRef<HTMLDivElement>(null);
 
 	const abbrNodeContainer = useRef<HTMLDivElement>(null);
 	const [abbrNode, setAbbrNode] = useState<HTMLElement | null>(null);
@@ -55,7 +56,7 @@ export const WebsiteContent: React.FC<{
 
 	/* Scenario depend on frame */
 	useEffect(() => {
-		if (cursorRef.current && unknownDivRef.current && abbrNode) {
+		if (cursorRef.current && unknownDivRef.current && selectedDivRef.current && abbrNode) {
 			if (props.usageIndex === 1) {
 				if (currentFrame === props.readingStartFrame) {
 					cursorRef.current.style.transition = 'left 2s, top 2s';
@@ -87,11 +88,18 @@ export const WebsiteContent: React.FC<{
 					unknownDivRef.current.style.opacity = '0';
 					cursorRef.current.style.left = `${Number(abbrNode.offsetLeft) - 6}px`;
 					cursorRef.current.style.top = `${Number(abbrNode.offsetTop) + 10}px`;
+					selectedDivRef.current.style.left = `${
+						Number(abbrNode.offsetLeft) - 6
+					}px`;
+					selectedDivRef.current.style.top = `${
+						Number(abbrNode.offsetTop) - 30
+					}px`;
 				}
 				if (currentFrame === 1.5 * fps) {
 					cursorRef.current.style.left = `${
 						Number(abbrNode.offsetLeft) + 60
 					}px`;
+					selectedDivRef.current.style.width = "100px"
 				}
 			}
 		}
@@ -157,6 +165,11 @@ export const WebsiteContent: React.FC<{
 						<span className="transform rotate-25">?</span>
 					</div>
 					<div className="w-full h-6 bg-transparent border-2 border-red rounded-full" />
+				</div>
+				<div
+					ref={selectedDivRef}
+					className="bg-blue h-5 absolute selected-div-transition"
+				>
 				</div>
 			</div>
 		</div>
