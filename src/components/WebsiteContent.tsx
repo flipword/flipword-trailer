@@ -5,7 +5,6 @@ import {ExtensionAddingPopup} from './ExtensionAddingPopup';
 export const WebsiteContent: React.FC<{
 	scrollY: number;
 	readingStartFrame: number;
-	currentFrame: number;
 	usageIndex: number;
 }> = (props) => {
 	const {fps} = useVideoConfig();
@@ -134,6 +133,7 @@ export const WebsiteContent: React.FC<{
 				}
 				if (currentFrame === 3.6 * fps) {
 					extensionAddingPopupRef.current.style.opacity = '1';
+					logoExtensionRef.current.style.opacity = '0';
 				}
 				if (currentFrame === 4 * fps) {
 					cursorRef.current.style.left = `${

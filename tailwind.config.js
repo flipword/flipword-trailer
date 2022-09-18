@@ -12,7 +12,7 @@ module.exports = {
 			darkGrey: '#DCDCDC',
 			lightGrey: '#F4F4F4',
 			red: '#FF0000',
-			blue: '#7f70d0'
+			blue: '#7f70d0',
 		}),
 		borderColor: (theme) => ({
 			...theme('colors'),
@@ -62,6 +62,8 @@ module.exports = {
 		rotate: {
 			25: '25deg',
 			'-25': '-25deg',
+			45: '45deg',
+			'-45': '-45deg',
 		},
 	},
 	variants: {

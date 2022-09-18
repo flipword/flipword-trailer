@@ -30,7 +30,6 @@ export const UnknownWordScene: React.FC<{
 		<WebsiteContainer>
 			<WebsiteContent
 				scrollY={scrollPosition}
-				currentFrame={props.currentFrame}
 				readingStartFrame={readingStartFrame}
 				usageIndex={props.usageIndex}
 			/>
