@@ -23,3 +23,7 @@
 .selected-div-transition {
     transition: width 1s;
 }
+
+.word-card-transition {
+    transition: opacity 1s;
+}
