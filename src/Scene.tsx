@@ -16,7 +16,8 @@ export const Scene: React.FC = () => {
 	const transitionTime = 15;
 	const firstTextSceneDuration = 2 * fps;
 	const textSceneDuration = 3 * fps;
-	const unknownWordSceneDuration = 10 * fps;
+	const firstUnknownWordSceneDuration = 10 * fps;
+	const secondUnknownWordSceneDuration = 6 * fps;
 	return (
 		<>
 			<Sequence
@@ -30,7 +31,7 @@ export const Scene: React.FC = () => {
 			</Sequence>
 			<Sequence
 				from={firstTextSceneDuration}
-				durationInFrames={unknownWordSceneDuration}
+				durationInFrames={firstUnknownWordSceneDuration}
 				name="FirstScene"
 			>
 				<Transition type="in">
@@ -39,7 +40,9 @@ export const Scene: React.FC = () => {
 			</Sequence>
 			<Sequence
 				from={
-					firstTextSceneDuration + unknownWordSceneDuration - transitionTime
+					firstTextSceneDuration +
+					firstUnknownWordSceneDuration -
+					transitionTime
 				}
 				durationInFrames={textSceneDuration + transitionTime}
 				name="FirstScene"
@@ -51,11 +54,11 @@ export const Scene: React.FC = () => {
 			<Sequence
 				from={
 					firstTextSceneDuration +
-					unknownWordSceneDuration +
+					firstUnknownWordSceneDuration +
 					textSceneDuration -
 					transitionTime
 				}
-				durationInFrames={unknownWordSceneDuration}
+				durationInFrames={secondUnknownWordSceneDuration}
 				name="FirstScene"
 			>
 				<Transition type="in">

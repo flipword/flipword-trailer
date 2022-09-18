@@ -1,5 +1,6 @@
 import React, {createRef, useEffect, useRef, useState} from 'react';
 import {Img, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {ExtensionAddingPopup} from './ExtensionAddingPopup';
 
 export const WebsiteContent: React.FC<{
 	scrollY: number;
@@ -30,6 +31,8 @@ export const WebsiteContent: React.FC<{
 
 	const unknownDivRef = useRef<HTMLDivElement>(null);
 	const selectedDivRef = useRef<HTMLDivElement>(null);
+	const logoExtensionRef = useRef<HTMLImageElement>(null);
+	const extensionAddingPopupRef = useRef<HTMLDivElement>(null);
 
 	const abbrNodeContainer = useRef<HTMLDivElement>(null);
 	const [abbrNode, setAbbrNode] = useState<HTMLElement | null>(null);
@@ -56,7 +59,14 @@ export const WebsiteContent: React.FC<{
 
 	/* Scenario depend on frame */
 	useEffect(() => {
-		if (cursorRef.current && unknownDivRef.current && selectedDivRef.current && abbrNode) {
+		if (
+			cursorRef.current &&
+			unknownDivRef.current &&
+			selectedDivRef.current &&
+			logoExtensionRef.current &&
+			extensionAddingPopupRef.current &&
+			abbrNode
+		) {
 			if (props.usageIndex === 1) {
 				if (currentFrame === props.readingStartFrame) {
 					cursorRef.current.style.transition = 'left 2s, top 2s';
@@ -87,19 +97,49 @@ export const WebsiteContent: React.FC<{
 				if (currentFrame === 1) {
 					unknownDivRef.current.style.opacity = '0';
 					cursorRef.current.style.left = `${Number(abbrNode.offsetLeft) - 6}px`;
-					cursorRef.current.style.top = `${Number(abbrNode.offsetTop) + 10}px`;
+					cursorRef.current.style.top = `${Number(abbrNode.offsetTop) + 12}px`;
 					selectedDivRef.current.style.left = `${
-						Number(abbrNode.offsetLeft) - 6
+						Number(abbrNode.offsetLeft) - 2
 					}px`;
 					selectedDivRef.current.style.top = `${
-						Number(abbrNode.offsetTop) - 30
+						Number(abbrNode.offsetTop) - 2
+					}px`;
+					logoExtensionRef.current.style.left = `${
+						Number(abbrNode.offsetLeft) + 68
+					}px`;
+					logoExtensionRef.current.style.top = `${
+						Number(abbrNode.offsetTop) + 15
+					}px`;
+					extensionAddingPopupRef.current.style.left = `${
+						Number(abbrNode.offsetLeft) + 68
+					}px`;
+					extensionAddingPopupRef.current.style.top = `${
+						Number(abbrNode.offsetTop) + 15
 					}px`;
 				}
 				if (currentFrame === 1.5 * fps) {
 					cursorRef.current.style.left = `${
 						Number(abbrNode.offsetLeft) + 60
 					}px`;
-					selectedDivRef.current.style.width = "100px"
+					selectedDivRef.current.style.width = '74px';
+				}
+				if (currentFrame === 2.5 * fps) {
+					logoExtensionRef.current.style.opacity = '1';
+				}
+				if (currentFrame === 2.8 * fps) {
+					cursorRef.current.style.left = `${
+						Number(abbrNode.offsetLeft) + 70
+					}px`;
+					cursorRef.current.style.top = `${Number(abbrNode.offsetTop) + 20}px`;
+				}
+				if (currentFrame === 3.6 * fps) {
+					extensionAddingPopupRef.current.style.opacity = '1';
+				}
+				if (currentFrame === 4 * fps) {
+					cursorRef.current.style.left = `${
+						Number(abbrNode.offsetLeft) + 160
+					}px`;
+					cursorRef.current.style.top = `${Number(abbrNode.offsetTop) + 155}px`;
 				}
 			}
 		}
@@ -115,7 +155,7 @@ export const WebsiteContent: React.FC<{
 						<h2 className="text-xl">{titlePart2}</h2>
 					</div>
 					<div className="mt-6 w-full flex flex-row">
-						<div className="flex flex-col flex-1 px-5 justify-center">
+						<div className="z-30 flex flex-col flex-1 px-5 justify-center">
 							<div
 								ref={abbrNodeContainer}
 								dangerouslySetInnerHTML={{__html: textPart2}}
@@ -168,8 +208,18 @@ export const WebsiteContent: React.FC<{
 				</div>
 				<div
 					ref={selectedDivRef}
-					className="bg-blue h-5 absolute selected-div-transition"
+					className="bg-blue h-5 w-0 absolute selected-div-transition"
+				/>
+				<Img
+					ref={logoExtensionRef}
+					className="z-40 absolute w-6 h-auto opacity-0"
+					src={staticFile('icons/logo.svg')}
+				/>
+				<div
+					ref={extensionAddingPopupRef}
+					className="z-40 absolute w-52 h-40 opacity-0"
 				>
+					<ExtensionAddingPopup />
 				</div>
 			</div>
 		</div>
