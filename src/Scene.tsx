@@ -19,12 +19,14 @@ export const Scene: React.FC = () => {
 	const textSceneDuration = 3 * fps;
 	const firstUnknownWordSceneDuration = 10 * fps;
 	const secondUnknownWordSceneDuration = 5 * fps;
+	const applicationListDuration = 2 * fps;
+	const thirdUnknownWordSceneDuration = 4 * fps;
 	return (
 		<>
 			<Sequence
 				from={0}
 				durationInFrames={firstTextSceneDuration + transitionTime}
-				name="FirstScene"
+				name="FirstTextSceneDuration"
 			>
 				<Transition type="out">
 					<TextScene message="Avez vous régulièrement besoin de <strong>traduire</strong> des mots lors de votre navigation ?" />
@@ -33,10 +35,10 @@ export const Scene: React.FC = () => {
 			<Sequence
 				from={firstTextSceneDuration}
 				durationInFrames={firstUnknownWordSceneDuration}
-				name="FirstScene"
+				name="firstUnknownWordSceneDuration"
 			>
 				<Transition type="in">
-					<UnknownWordScene currentFrame={currentFrame} usageIndex={1} />
+					<UnknownWordScene usageIndex={1} />
 				</Transition>
 			</Sequence>
 			<Sequence
@@ -63,7 +65,7 @@ export const Scene: React.FC = () => {
 				name="FirstScene"
 			>
 				<Transition type="in">
-					<UnknownWordScene currentFrame={currentFrame} usageIndex={2} />
+					<UnknownWordScene usageIndex={2} />
 				</Transition>
 			</Sequence>
 			<Sequence
@@ -74,11 +76,44 @@ export const Scene: React.FC = () => {
 					secondUnknownWordSceneDuration -
 					transitionTime
 				}
-				durationInFrames={secondUnknownWordSceneDuration}
+				durationInFrames={applicationListDuration + transitionTime}
 				name="FirstScene"
 			>
 				<Transition type="in">
 					<ApplicationScene usageIndex={1} />
+				</Transition>
+			</Sequence>
+			<Sequence
+				from={
+					firstTextSceneDuration +
+					firstUnknownWordSceneDuration +
+					textSceneDuration +
+					secondUnknownWordSceneDuration +
+					applicationListDuration -
+					transitionTime
+				}
+				durationInFrames={textSceneDuration + transitionTime}
+				name="FirstScene"
+			>
+				<Transition type="in">
+					<TextScene message="Grace à l’extension navigateur ajouter des mots à votre liste. <strong>Révisez</strong> les ensuite au sein de l’application" />
+				</Transition>
+			</Sequence>
+			<Sequence
+				from={
+					firstTextSceneDuration +
+					firstUnknownWordSceneDuration +
+					textSceneDuration +
+					secondUnknownWordSceneDuration +
+					applicationListDuration +
+					textSceneDuration -
+					transitionTime
+				}
+				durationInFrames={thirdUnknownWordSceneDuration + transitionTime}
+				name="FirstScene"
+			>
+				<Transition type="in">
+					<UnknownWordScene usageIndex={3} />
 				</Transition>
 			</Sequence>
 		</>

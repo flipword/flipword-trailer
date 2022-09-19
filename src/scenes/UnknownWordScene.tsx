@@ -4,7 +4,6 @@ import {WebsiteContainer} from '../components/WebsiteContainer';
 import {WebsiteContent} from '../components/WebsiteContent';
 
 export const UnknownWordScene: React.FC<{
-	currentFrame: number;
 	usageIndex: number;
 }> = (props) => {
 	const {fps} = useVideoConfig();
@@ -27,7 +26,7 @@ export const UnknownWordScene: React.FC<{
 	}, [currentFrame]);
 
 	return (
-		<WebsiteContainer>
+		<WebsiteContainer url="https://flipword.io">
 			<WebsiteContent
 				scrollY={scrollPosition}
 				readingStartFrame={readingStartFrame}

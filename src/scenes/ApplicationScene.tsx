@@ -10,7 +10,7 @@ export const ApplicationScene: React.FC<{usageIndex: number}> = (props) => {
 	const currentFrame = useCurrentFrame();
 
 	return (
-		<WebsiteContainer>
+		<WebsiteContainer url="https://app.flipword.io">
 			<ApplicationLayout>
 				<ApplicationListContent />
 			</ApplicationLayout>

@@ -2,6 +2,7 @@ import React, {createRef, useEffect} from 'react';
 import {AbsoluteFill, Img, staticFile} from 'remotion';
 
 export const WebsiteContainer: React.FC<{
+	url: string;
 	children: React.ReactNode;
 }> = (props) => {
 	return (
@@ -51,7 +52,7 @@ export const WebsiteContainer: React.FC<{
 									className="w-3 h-auto mr-1"
 									src={staticFile('icons/lock.svg')}
 								/>
-								<span className="text-xs">https://flipword.io</span>
+								<span className="text-xs">{props.url}</span>
 							</div>
 							<div className="w-1/12 flex fle-row justify-end">
 								<Img
