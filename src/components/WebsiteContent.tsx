@@ -1,6 +1,7 @@
 import React, {createRef, useEffect, useRef, useState} from 'react';
 import {Img, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {ExtensionAddingPopup} from './ExtensionAddingPopup';
+import {ExtensionPopup} from './ExtensionPopup';
 
 export const WebsiteContent: React.FC<{
 	scrollY: number;
@@ -32,6 +33,7 @@ export const WebsiteContent: React.FC<{
 	const selectedDivRef = useRef<HTMLDivElement>(null);
 	const logoExtensionRef = useRef<HTMLImageElement>(null);
 	const extensionAddingPopupRef = useRef<HTMLDivElement>(null);
+	const extensionPopupRef = useRef<HTMLDivElement>(null);
 
 	const abbrNodeContainer = useRef<HTMLDivElement>(null);
 	const [abbrNode, setAbbrNode] = useState<HTMLElement | null>(null);
@@ -58,6 +60,7 @@ export const WebsiteContent: React.FC<{
 			selectedDivRef.current &&
 			logoExtensionRef.current &&
 			extensionAddingPopupRef.current &&
+			extensionPopupRef.current &&
 			abbrNode
 		) {
 			if (props.usageIndex === 1) {
@@ -213,7 +216,7 @@ export const WebsiteContent: React.FC<{
 					/>
 					<div
 						ref={extensionAddingPopupRef}
-						className="z-40 absolute w-52 h-40 opacity-0"
+						className="z-40 absolute w-52 h-40 filter drop-shadow-md opacity-0"
 					>
 						<ExtensionAddingPopup />
 					</div>
@@ -224,6 +227,12 @@ export const WebsiteContent: React.FC<{
 				className="cursor-transition w-5 h-auto absolute z-50"
 				src={cursorIcon}
 			/>
+			<div
+				ref={extensionPopupRef}
+				className="z-40 absolute w-52 opacity-1 filter drop-shadow-md extension-popup-position"
+			>
+				<ExtensionPopup />
+			</div>
 		</>
 	);
 };

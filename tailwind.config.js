@@ -29,13 +29,11 @@ module.exports = {
 			sans: ['Roboto', 'sans-serif'],
 			serif: ['Merriweather', 'serif'],
 		},
-		dropShadow: {
-			top: '0 -4px 3px rgba(0, 0, 0, 0.05)',
-		},
 		textColor: {
 			black: '#1E1E1E',
 			white: '#FFFFFF',
 			red: '#FF0000',
+			blue: '#7f70d0',
 		},
 		extend: {
 			borderRadius: {

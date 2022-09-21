@@ -27,3 +27,8 @@
 .word-card-transition {
     transition: opacity 1s;
 }
+
+.extension-popup-position {
+    top: 73px;
+    left: 1060px;
+}
