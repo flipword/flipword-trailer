@@ -26,7 +26,7 @@ export const WebsiteContent: React.FC<{
 
 	const cursorIcon = staticFile('icons/cursor.svg');
 	const cursorRef = useRef<HTMLImageElement>(null);
-	const initialCursorPosition = {top: 60, left: 350};
+	const initialCursorPosition = {top: 140, left: 350};
 
 	const unknownDivRef = useRef<HTMLDivElement>(null);
 	const selectedDivRef = useRef<HTMLDivElement>(null);
@@ -48,12 +48,6 @@ export const WebsiteContent: React.FC<{
 	/* If scroll change we move the cursor */
 	useEffect(() => {
 		scrollDivRef.current?.scrollTo({top: props.scrollY, behavior: 'smooth'});
-		if (cursorRef.current) {
-			cursorRef.current.style.top = `${
-				initialCursorPosition.top + props.scrollY
-			}px`;
-			cursorRef.current.style.left = `${initialCursorPosition.left}px`;
-		}
 	}, [props.scrollY]);
 
 	/* Scenario depend on frame */
@@ -67,7 +61,10 @@ export const WebsiteContent: React.FC<{
 			abbrNode
 		) {
 			if (props.usageIndex === 1) {
-				if (currentFrame === props.readingStartFrame) {
+				if (currentFrame === 1) {
+					cursorRef.current.style.left = `${initialCursorPosition.left}px`;
+					cursorRef.current.style.top = `${initialCursorPosition.top}px`;
+				} else if (currentFrame === props.readingStartFrame) {
 					cursorRef.current.style.transition = 'left 2s, top 2s';
 					cursorRef.current.style.left = `${
 						initialCursorPosition.left + 200
@@ -75,9 +72,7 @@ export const WebsiteContent: React.FC<{
 				} else if (currentFrame === props.readingStartFrame + 1.5 * fps) {
 					cursorRef.current.style.transition = 'left 1s, top 1s';
 					cursorRef.current.style.left = `${initialCursorPosition.left}px`;
-					cursorRef.current.style.top = `${
-						initialCursorPosition.top + props.scrollY + 23
-					}px`;
+					cursorRef.current.style.top = `${initialCursorPosition.top + 23}px`;
 				} else if (currentFrame === props.readingStartFrame + 2.5 * fps) {
 					cursorRef.current.style.transition = 'left 2s, top 2s';
 					cursorRef.current.style.left = `${
@@ -95,8 +90,8 @@ export const WebsiteContent: React.FC<{
 			} else if (props.usageIndex === 2) {
 				if (currentFrame === 1) {
 					unknownDivRef.current.style.opacity = '0';
-					cursorRef.current.style.left = `${Number(abbrNode.offsetLeft) - 6}px`;
-					cursorRef.current.style.top = `${Number(abbrNode.offsetTop) + 12}px`;
+					cursorRef.current.style.left = '423px';
+					cursorRef.current.style.top = '164px';
 					selectedDivRef.current.style.left = `${
 						Number(abbrNode.offsetLeft) - 2
 					}px`;
@@ -126,102 +121,109 @@ export const WebsiteContent: React.FC<{
 					logoExtensionRef.current.style.opacity = '1';
 				}
 				if (currentFrame === 2.8 * fps) {
-					cursorRef.current.style.left = `${
-						Number(abbrNode.offsetLeft) + 70
-					}px`;
-					cursorRef.current.style.top = `${Number(abbrNode.offsetTop) + 20}px`;
+					cursorRef.current.style.left = '500px';
+					cursorRef.current.style.top = '177px';
 				}
 				if (currentFrame === 3.6 * fps) {
 					extensionAddingPopupRef.current.style.opacity = '1';
 					logoExtensionRef.current.style.opacity = '0';
 				}
 				if (currentFrame === 4 * fps) {
-					cursorRef.current.style.left = `${
-						Number(abbrNode.offsetLeft) + 160
-					}px`;
-					cursorRef.current.style.top = `${Number(abbrNode.offsetTop) + 155}px`;
+					cursorRef.current.style.left = '585px';
+					cursorRef.current.style.top = '300px';
+				}
+			} else if (props.usageIndex === 3) {
+				if (currentFrame === 1) {
+					cursorRef.current.style.left = `${initialCursorPosition.left}px`;
+					cursorRef.current.style.top = `${initialCursorPosition.top}px`;
+				} else if (currentFrame === 30) {
+					cursorRef.current.style.transition = 'left 2s, top 2s';
+					cursorRef.current.style.left = '1250px';
+					cursorRef.current.style.top = '50px';
 				}
 			}
 		}
 	}, [currentFrame]);
 
 	return (
-		<div ref={scrollDivRef} className="w-full flex-1 overflow-auto">
-			<div className="bg-darkGrey flex flex-row justify-center relative">
-				<div className="w-3/5 bg-white py-6 px-12">
-					<h1 className="text-3xl">{title}</h1>
-					{/* Part 1 */}
-					<div className="px-5 mt-10 flex flex-row justify-start">
-						<h2 className="text-xl">{titlePart2}</h2>
-					</div>
-					<div className="mt-6 w-full flex flex-row">
-						<div className="z-30 flex flex-col flex-1 px-5 justify-center">
-							<div
-								ref={abbrNodeContainer}
-								dangerouslySetInnerHTML={{__html: textPart2}}
-							/>
+		<>
+			<div ref={scrollDivRef} className="w-full flex-1 overflow-auto">
+				<div className="bg-darkGrey flex flex-row justify-center relative">
+					<div className="w-3/5 bg-white py-6 px-12">
+						<h1 className="text-3xl">{title}</h1>
+						{/* Part 1 */}
+						<div className="px-5 mt-10 flex flex-row justify-start">
+							<h2 className="text-xl">{titlePart2}</h2>
 						</div>
-						<div className="flex flex-row flex-1 justify-center">
-							<Img className="w-8/12 h-auto" src={imgPart2} />
+						<div className="mt-6 w-full flex flex-row">
+							<div className="z-30 flex flex-col flex-1 px-5 justify-center">
+								<div
+									ref={abbrNodeContainer}
+									dangerouslySetInnerHTML={{__html: textPart2}}
+								/>
+							</div>
+							<div className="flex flex-row flex-1 justify-center">
+								<Img className="w-8/12 h-auto" src={imgPart2} />
+							</div>
+						</div>
+						{/* Part 2 */}
+						<div className="px-5 mt-6 flex flex-row justify-end">
+							<h2 className="text-xl">{titlePart1}</h2>
+						</div>
+						<div className="mt-6 w-full flex flex-row">
+							<div className="flex-1">
+								<Img className="w-11/12 h-auto" src={imgPart1} />
+							</div>
+							<div className="flex flex-col flex-1 px-5 justify-center">
+								<span>{textPart1}</span>
+							</div>
+						</div>
+						{/* Part 3 */}
+						<div className="px-5 mt-6 flex flex-row justify-end">
+							<h2 className="text-xl">{titlePart3}</h2>
+						</div>
+						<div className="mt-6 w-full flex flex-row">
+							<div className="flex flex-col flex-1 px-5 justify-center">
+								<span>{textPart3}</span>
+							</div>
+							<div className="flex-1">
+								<Img className="w-11/12 h-auto" src={imgPart3} />
+							</div>
 						</div>
 					</div>
-					{/* Part 2 */}
-					<div className="px-5 mt-6 flex flex-row justify-end">
-						<h2 className="text-xl">{titlePart1}</h2>
-					</div>
-					<div className="mt-6 w-full flex flex-row">
-						<div className="flex-1">
-							<Img className="w-11/12 h-auto" src={imgPart1} />
+					<div
+						ref={selectedDivRef}
+						className="bg-blue h-5 w-0 absolute selected-div-transition"
+					/>
+					<div
+						ref={unknownDivRef}
+						className="flex flex-col w-20 absolute opacity-0 unknown-div-transition"
+					>
+						<div className="flex flex-row flex-auto w-full justify-center text-red text-stroke-effect text-2xl -mb-1.5 gap-3">
+							<span className="transform -rotate-25">?</span>
+							<span>?</span>
+							<span className="transform rotate-25">?</span>
 						</div>
-						<div className="flex flex-col flex-1 px-5 justify-center">
-							<span>{textPart1}</span>
-						</div>
+						<div className="w-full h-6 bg-transparent border-2 border-red rounded-full" />
 					</div>
-					{/* Part 3 */}
-					<div className="px-5 mt-6 flex flex-row justify-end">
-						<h2 className="text-xl">{titlePart3}</h2>
+					<Img
+						ref={logoExtensionRef}
+						className="z-40 absolute w-6 h-auto opacity-0"
+						src={staticFile('icons/logo.svg')}
+					/>
+					<div
+						ref={extensionAddingPopupRef}
+						className="z-40 absolute w-52 h-40 opacity-0"
+					>
+						<ExtensionAddingPopup />
 					</div>
-					<div className="mt-6 w-full flex flex-row">
-						<div className="flex flex-col flex-1 px-5 justify-center">
-							<span>{textPart3}</span>
-						</div>
-						<div className="flex-1">
-							<Img className="w-11/12 h-auto" src={imgPart3} />
-						</div>
-					</div>
-				</div>
-				<Img
-					ref={cursorRef}
-					className="cursor-transition w-5 h-auto absolute z-50"
-					src={cursorIcon}
-				/>
-				<div
-					ref={unknownDivRef}
-					className="flex flex-col w-20 absolute opacity-0 unknown-div-transition"
-				>
-					<div className="flex flex-row flex-auto w-full justify-center text-red text-stroke-effect text-2xl -mb-1.5 gap-3">
-						<span className="transform -rotate-25">?</span>
-						<span>?</span>
-						<span className="transform rotate-25">?</span>
-					</div>
-					<div className="w-full h-6 bg-transparent border-2 border-red rounded-full" />
-				</div>
-				<div
-					ref={selectedDivRef}
-					className="bg-blue h-5 w-0 absolute selected-div-transition"
-				/>
-				<Img
-					ref={logoExtensionRef}
-					className="z-40 absolute w-6 h-auto opacity-0"
-					src={staticFile('icons/logo.svg')}
-				/>
-				<div
-					ref={extensionAddingPopupRef}
-					className="z-40 absolute w-52 h-40 opacity-0"
-				>
-					<ExtensionAddingPopup />
 				</div>
 			</div>
-		</div>
+			<Img
+				ref={cursorRef}
+				className="cursor-transition w-5 h-auto absolute z-50"
+				src={cursorIcon}
+			/>
+		</>
 	);
 };

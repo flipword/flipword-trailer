@@ -7,7 +7,7 @@ export const WebsiteContainer: React.FC<{
 }> = (props) => {
 	return (
 		<AbsoluteFill className="bg-darkGrey">
-			<div className="w-full h-full flex flex-col">
+			<div className="w-full h-full flex flex-col relative">
 				{/* Header */}
 				<div className="w-full h-20 flex flex-col drop-shadow-md">
 					<div className="w-full flex flex-1 flex-row">
