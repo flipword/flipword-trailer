@@ -229,7 +229,7 @@ export const WebsiteContent: React.FC<{
 			/>
 			<div
 				ref={extensionPopupRef}
-				className="z-40 absolute w-52 opacity-1 filter drop-shadow-md extension-popup-position"
+				className="z-40 absolute w-60 opacity-1 filter drop-shadow-md extension-popup-position"
 			>
 				<ExtensionPopup />
 			</div>

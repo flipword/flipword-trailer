@@ -15,7 +15,49 @@ export const ExtensionPopup: React.FC = () => {
 				</div>
 			</div>
 			<div className="w-full h-px bg-darkGrey" />
-			<div className="flex flex-row w-full h-20" />
+			<div className="flex flex-row w-full h-full">
+				<div className="flex flex-col flex-auto py-2 px-4 items-center gap-2">
+					<div className="flex flex-col w-full">
+						<div className="self-start bg-white px-1 pb-1 ml-2 -mb-1 rounded-sm font-bold text-xs">
+							French:
+						</div>
+						<div className="bg-white h-7 w-full rounded-sm" />
+					</div>
+					<button
+						type="button"
+						className="flex flex-row items-center gap-1 p-1 bg-primary rounded-sm font-bold text-sm"
+					>
+						<Img
+							className="w-4 h-auto"
+							src={staticFile('icons/translate.svg')}
+						/>
+						Translate
+					</button>
+					<div className="flex flex-col w-full">
+						<div className="self-start bg-white px-1 pb-1 ml-2 -mb-1 rounded-sm font-bold text-xs z-10">
+							English:
+						</div>
+						<div className="bg-white h-7 w-full rounded-sm" />
+					</div>
+					<button
+						type="button"
+						className="flex flex-row items-center gap-1 p-1 bg-primary rounded-sm font-bold text-sm"
+					>
+						<Img className="w-4 h-auto" src={staticFile('icons/save.svg')} />
+						Save
+					</button>
+				</div>
+				<div className="flex flex-col gap-2 justify-center self-auto pr-1 pb-4">
+					<Img className="w-4 h-auto" src={staticFile('icons/arrow-top.svg')} />
+					<button type="button" className="bg-primary p-2 rounded-sm">
+						<Img className="w-4 h-auto" src={staticFile('icons/swap.svg')} />
+					</button>
+					<Img
+						className="w-4 h-auto"
+						src={staticFile('icons/arrow-bottom.svg')}
+					/>
+				</div>
+			</div>
 			<div className="w-full h-px bg-darkGrey" />
 			<div className="flex flex-row justify-center gap-1 w-full text-xs ">
 				<span>Flipword -</span>
