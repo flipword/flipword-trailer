@@ -139,10 +139,16 @@ export const WebsiteContent: React.FC<{
 				if (currentFrame === 1) {
 					cursorRef.current.style.left = `${initialCursorPosition.left}px`;
 					cursorRef.current.style.top = `${initialCursorPosition.top}px`;
-				} else if (currentFrame === 30) {
+				} else if (currentFrame === fps) {
 					cursorRef.current.style.transition = 'left 2s, top 2s';
 					cursorRef.current.style.left = '1250px';
 					cursorRef.current.style.top = '50px';
+				} else if (currentFrame === 3 * fps) {
+					extensionPopupRef.current.style.opacity = '1';
+				} else if (currentFrame === 3 * fps + 10) {
+					cursorRef.current.style.transition = 'left 1s, top 1s';
+					cursorRef.current.style.left = '1215px';
+					cursorRef.current.style.top = '80px';
 				}
 			}
 		}
@@ -229,7 +235,7 @@ export const WebsiteContent: React.FC<{
 			/>
 			<div
 				ref={extensionPopupRef}
-				className="z-40 absolute w-60 opacity-1 filter drop-shadow-md extension-popup-position"
+				className="z-40 absolute w-60 opacity-0 filter drop-shadow-md extension-popup-position"
 			>
 				<ExtensionPopup />
 			</div>

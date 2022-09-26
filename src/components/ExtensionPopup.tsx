@@ -1,5 +1,5 @@
-import React, {createRef, useEffect} from 'react';
-import {AbsoluteFill, Img, staticFile} from 'remotion';
+import React from 'react';
+import {Img, staticFile} from 'remotion';
 
 export const ExtensionPopup: React.FC = () => {
 	return (
@@ -9,7 +9,7 @@ export const ExtensionPopup: React.FC = () => {
 					<Img className="w-6 h-auto" src={staticFile('icons/logo.svg')} />
 					<h1 className="font-bold">FlipWord</h1>
 				</div>
-				<div className="flex flex-row gap-1 rounded-sm bg-primary text-sm font-bold px-1 py-1">
+				<div className="flex flex-row gap-1 rounded-sm bg-primary text-sm font-bold px-1 py-1 filter drop-shadow-md">
 					<span>Train</span>
 					<Img className="w-4 h-auto" src={staticFile('icons/train.svg')} />
 				</div>
@@ -25,7 +25,7 @@ export const ExtensionPopup: React.FC = () => {
 					</div>
 					<button
 						type="button"
-						className="flex flex-row items-center gap-1 p-1 bg-primary rounded-sm font-bold text-sm"
+						className="flex flex-row items-center gap-1 p-1 bg-primary rounded-sm font-bold text-sm filter drop-shadow-md"
 					>
 						<Img
 							className="w-4 h-auto"
@@ -41,7 +41,7 @@ export const ExtensionPopup: React.FC = () => {
 					</div>
 					<button
 						type="button"
-						className="flex flex-row items-center gap-1 p-1 bg-primary rounded-sm font-bold text-sm"
+						className="flex flex-row items-center gap-1 p-1 bg-primary rounded-sm font-bold text-sm filter drop-shadow-md"
 					>
 						<Img className="w-4 h-auto" src={staticFile('icons/save.svg')} />
 						Save
@@ -49,7 +49,10 @@ export const ExtensionPopup: React.FC = () => {
 				</div>
 				<div className="flex flex-col gap-2 justify-center self-auto pr-1 pb-4">
 					<Img className="w-4 h-auto" src={staticFile('icons/arrow-top.svg')} />
-					<button type="button" className="bg-primary p-2 rounded-sm">
+					<button
+						type="button"
+						className="bg-primary p-2 rounded-sm filter drop-shadow-md"
+					>
 						<Img className="w-4 h-auto" src={staticFile('icons/swap.svg')} />
 					</button>
 					<Img
