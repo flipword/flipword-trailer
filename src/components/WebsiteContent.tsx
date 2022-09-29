@@ -2,11 +2,12 @@ import React, {createRef, useEffect, useRef, useState} from 'react';
 import {Img, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {ExtensionAddingPopup} from './ExtensionAddingPopup';
 import {ExtensionPopup} from './ExtensionPopup';
+import {WebsiteSceneEnum} from '../helpers/WebsiteSceneEnum';
 
 export const WebsiteContent: React.FC<{
 	scrollY: number;
 	readingStartFrame: number;
-	usageIndex: number;
+	websiteScene: number;
 }> = (props) => {
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
@@ -63,7 +64,7 @@ export const WebsiteContent: React.FC<{
 			extensionPopupRef.current &&
 			abbrNode
 		) {
-			if (props.usageIndex === 1) {
+			if (props.websiteScene === WebsiteSceneEnum.ArticleReading) {
 				if (currentFrame === 1) {
 					cursorRef.current.style.left = `${initialCursorPosition.left}px`;
 					cursorRef.current.style.top = `${initialCursorPosition.top}px`;
@@ -90,7 +91,7 @@ export const WebsiteContent: React.FC<{
 					}px`;
 					unknownDivRef.current.style.opacity = '1';
 				}
-			} else if (props.usageIndex === 2) {
+			} else if (props.websiteScene === WebsiteSceneEnum.WordHighlight) {
 				if (currentFrame === 1) {
 					unknownDivRef.current.style.opacity = '0';
 					cursorRef.current.style.left = '423px';
@@ -135,7 +136,7 @@ export const WebsiteContent: React.FC<{
 					cursorRef.current.style.left = '585px';
 					cursorRef.current.style.top = '300px';
 				}
-			} else if (props.usageIndex === 3) {
+			} else if (props.websiteScene === WebsiteSceneEnum.ExtensionClick) {
 				if (currentFrame === 1) {
 					cursorRef.current.style.left = `${initialCursorPosition.left}px`;
 					cursorRef.current.style.top = `${initialCursorPosition.top}px`;

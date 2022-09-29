@@ -3,31 +3,50 @@ import {AbsoluteFill, Img, staticFile} from 'remotion';
 
 export const WebsiteContainer: React.FC<{
 	url: string;
+	multiTab: boolean;
 	children: React.ReactNode;
 }> = (props) => {
+	const tab1 = props.multiTab ? (
+		<div className="rounded-tr-xl w-72">
+			<div className="w-full h-full flex flex-row py-1.5 px-2 justify-between items-center gap-5">
+				<div className="flex flex-row items-center gap-2">
+					<Img className="w-6 h-auto" src={staticFile('icons/logo.svg')} />
+					<span className="text-xs">Flipword - Vocabulary learning tool</span>
+				</div>
+			</div>
+		</div>
+	) : (
+		<div className="bg-lightGrey rounded-tr-xl w-72">
+			<div className="w-full h-full flex flex-row py-1.5 px-2 justify-between items-center gap-5">
+				<div className="flex flex-row items-center gap-2">
+					<Img className="w-6 h-auto" src={staticFile('icons/logo.svg')} />
+					<span className="text-xs">Flipword - Vocabulary learning tool</span>
+				</div>
+				<Img className="w-3 h-auto" src={staticFile('icons/clear.svg')} />
+			</div>
+		</div>
+	);
+	const tab2 = props.multiTab ? (
+		<div className="bg-lightGrey rounded-t-xl w-72">
+			<div className="w-full h-full flex flex-row py-1.5 px-2 justify-between items-center gap-5">
+				<div className="flex flex-row items-center gap-2">
+					<Img className="w-6 h-auto" src={staticFile('icons/logo.svg')} />
+					<span className="text-xs">Flipword</span>
+				</div>
+				<Img className="w-3 h-auto" src={staticFile('icons/clear.svg')} />
+			</div>
+		</div>
+	) : (
+		<></>
+	);
 	return (
 		<AbsoluteFill className="bg-darkGrey">
 			<div className="w-full h-full flex flex-col relative">
 				{/* Header */}
 				<div className="w-full h-20 flex flex-col drop-shadow-md">
 					<div className="w-full flex flex-1 flex-row">
-						<div className="bg-lightGrey rounded-tr-xl">
-							<div className="w-full h-full flex flex-row py-1.5 px-2 justify-between items-center gap-5">
-								<div className="flex flex-row items-center gap-2">
-									<Img
-										className="w-6 h-auto"
-										src={staticFile('icons/logo.svg')}
-									/>
-									<span className="text-xs">
-										Flipword - Vocabulary learning tool
-									</span>
-								</div>
-								<Img
-									className="w-3 h-auto"
-									src={staticFile('icons/clear.svg')}
-								/>
-							</div>
-						</div>
+						{tab1}
+						{tab2}
 						<div className="flex-auto" />
 					</div>
 					<div className="w-full flex-1 bg-lightGrey -mt-0.5">

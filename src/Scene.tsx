@@ -2,19 +2,19 @@ import React from 'react';
 import {Sequence, useVideoConfig} from 'remotion';
 
 import {TextScene} from './scenes/TextScene';
-import {UnknownWordScene} from './scenes/UnknownWordScene';
-import {ApplicationScene} from './scenes/ApplicationScene';
+import {WebsiteScene} from './scenes/WebsiteScene';
 import {Transition} from './Transition';
+import {WebsiteSceneEnum} from './helpers/WebsiteSceneEnum';
 
 export const Scene: React.FC = () => {
 	const {fps} = useVideoConfig();
 	const transitionTime = 15;
 	const firstTextSceneDuration = 2 * fps;
 	const textSceneDuration = 3 * fps;
-	const firstUnknownWordSceneDuration = 10 * fps;
-	const secondUnknownWordSceneDuration = 5 * fps;
+	const firstWebsiteSceneDuration = 10 * fps;
+	const secondWebsiteSceneDuration = 5 * fps;
 	const applicationListDuration = 2 * fps;
-	const thirdUnknownWordSceneDuration = 5 * fps;
+	const thirdWebsiteSceneDuration = 5 * fps;
 	return (
 		<>
 			<Sequence
@@ -28,18 +28,16 @@ export const Scene: React.FC = () => {
 			</Sequence>
 			<Sequence
 				from={firstTextSceneDuration}
-				durationInFrames={firstUnknownWordSceneDuration}
-				name="firstUnknownWordSceneDuration"
+				durationInFrames={firstWebsiteSceneDuration}
+				name="firstWebsiteSceneDuration"
 			>
 				<Transition type="in">
-					<UnknownWordScene usageIndex={1} />
+					<WebsiteScene websiteScene={WebsiteSceneEnum.ArticleReading} />
 				</Transition>
 			</Sequence>
 			<Sequence
 				from={
-					firstTextSceneDuration +
-					firstUnknownWordSceneDuration -
-					transitionTime
+					firstTextSceneDuration + firstWebsiteSceneDuration - transitionTime
 				}
 				durationInFrames={textSceneDuration + transitionTime}
 				name="FirstScene"
@@ -51,38 +49,38 @@ export const Scene: React.FC = () => {
 			<Sequence
 				from={
 					firstTextSceneDuration +
-					firstUnknownWordSceneDuration +
+					firstWebsiteSceneDuration +
 					textSceneDuration -
 					transitionTime
 				}
-				durationInFrames={secondUnknownWordSceneDuration + transitionTime}
+				durationInFrames={secondWebsiteSceneDuration + transitionTime}
 				name="FirstScene"
 			>
 				<Transition type="in">
-					<UnknownWordScene usageIndex={2} />
+					<WebsiteScene websiteScene={WebsiteSceneEnum.WordHighlight} />
 				</Transition>
 			</Sequence>
 			<Sequence
 				from={
 					firstTextSceneDuration +
-					firstUnknownWordSceneDuration +
+					firstWebsiteSceneDuration +
 					textSceneDuration +
-					secondUnknownWordSceneDuration -
+					secondWebsiteSceneDuration -
 					transitionTime
 				}
 				durationInFrames={applicationListDuration + transitionTime}
 				name="FirstScene"
 			>
 				<Transition type="in">
-					<ApplicationScene usageIndex={1} />
+					<WebsiteScene websiteScene={WebsiteSceneEnum.ApplicationWordList} />
 				</Transition>
 			</Sequence>
 			<Sequence
 				from={
 					firstTextSceneDuration +
-					firstUnknownWordSceneDuration +
+					firstWebsiteSceneDuration +
 					textSceneDuration +
-					secondUnknownWordSceneDuration +
+					secondWebsiteSceneDuration +
 					applicationListDuration -
 					transitionTime
 				}
@@ -96,19 +94,34 @@ export const Scene: React.FC = () => {
 			<Sequence
 				from={
 					firstTextSceneDuration +
-					firstUnknownWordSceneDuration +
+					firstWebsiteSceneDuration +
 					textSceneDuration +
-					secondUnknownWordSceneDuration +
+					secondWebsiteSceneDuration +
 					applicationListDuration +
 					textSceneDuration -
 					transitionTime
 				}
-				durationInFrames={thirdUnknownWordSceneDuration + transitionTime}
+				durationInFrames={thirdWebsiteSceneDuration + transitionTime}
 				name="FirstScene"
 			>
 				<Transition type="in">
-					<UnknownWordScene usageIndex={3} />
+					<WebsiteScene websiteScene={WebsiteSceneEnum.ExtensionClick} />
 				</Transition>
+			</Sequence>
+			<Sequence
+				from={
+					firstTextSceneDuration +
+					firstWebsiteSceneDuration +
+					textSceneDuration +
+					secondWebsiteSceneDuration +
+					applicationListDuration +
+					textSceneDuration +
+					thirdWebsiteSceneDuration
+				}
+				durationInFrames={thirdWebsiteSceneDuration + transitionTime}
+				name="FirstScene"
+			>
+				<WebsiteScene websiteScene={WebsiteSceneEnum.ApplicationLearning} />
 			</Sequence>
 		</>
 	);
