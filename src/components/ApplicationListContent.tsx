@@ -1,12 +1,8 @@
-import React, {createRef, useEffect, useRef, useState} from 'react';
-import {Img, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
-import {ExtensionAddingPopup} from './ExtensionAddingPopup';
+import React, {useEffect, useRef, useState} from 'react';
+import {useCurrentFrame, useVideoConfig} from 'remotion';
 import {WordCard} from './WordCard';
+import {Word} from '../helpers/Word';
 
-interface Word {
-	nativeWord: string;
-	foreignWord: string;
-}
 export const ApplicationListContent: React.FC = () => {
 	const wordList: Word[] = [
 		{

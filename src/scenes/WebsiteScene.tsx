@@ -5,6 +5,7 @@ import {WebsiteContent} from '../components/WebsiteContent';
 import {ApplicationListContent} from '../components/ApplicationListContent';
 import {ApplicationLayout} from '../components/ApplicationLayout';
 import {WebsiteSceneEnum} from '../helpers/WebsiteSceneEnum';
+import {ApplicationLearningContent} from '../components/ApplicationLearningContent';
 
 export const WebsiteScene: React.FC<{
 	websiteScene: WebsiteSceneEnum;
@@ -51,7 +52,7 @@ export const WebsiteScene: React.FC<{
 				{props.websiteScene === WebsiteSceneEnum.ApplicationWordList ? (
 					<ApplicationListContent />
 				) : (
-					<></>
+					<ApplicationLearningContent />
 				)}
 			</ApplicationLayout>
 		) : (
