@@ -209,12 +209,12 @@ export const WebsiteContent: React.FC<{
 						ref={unknownDivRef}
 						className="flex flex-col w-20 absolute opacity-0 unknown-div-transition"
 					>
-						<div className="flex flex-row flex-auto w-full justify-center text-red text-stroke-effect text-2xl -mb-1.5 gap-3">
+						<div className="flex flex-row flex-auto w-full justify-center text-negative text-stroke-effect text-2xl -mb-1.5 gap-3">
 							<span className="transform -rotate-25">?</span>
 							<span>?</span>
 							<span className="transform rotate-25">?</span>
 						</div>
-						<div className="w-full h-6 bg-transparent border-2 border-red rounded-full" />
+						<div className="w-full h-6 bg-transparent border-2 border-negative rounded-full" />
 					</div>
 					<Img
 						ref={logoExtensionRef}
