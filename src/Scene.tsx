@@ -15,6 +15,7 @@ export const Scene: React.FC = () => {
 	const secondWebsiteSceneDuration = 5 * fps;
 	const applicationListDuration = 2 * fps;
 	const thirdWebsiteSceneDuration = 5 * fps;
+	const fourthWebsiteSceneDuration = 3.5 * fps;
 	return (
 		<>
 			<Sequence
@@ -118,10 +119,28 @@ export const Scene: React.FC = () => {
 					textSceneDuration +
 					thirdWebsiteSceneDuration
 				}
-				durationInFrames={thirdWebsiteSceneDuration + transitionTime}
+				durationInFrames={fourthWebsiteSceneDuration + transitionTime}
 				name="FirstScene"
 			>
 				<WebsiteScene websiteScene={WebsiteSceneEnum.ApplicationLearning} />
+			</Sequence>
+			<Sequence
+				from={
+					firstTextSceneDuration +
+					firstWebsiteSceneDuration +
+					textSceneDuration +
+					secondWebsiteSceneDuration +
+					applicationListDuration +
+					textSceneDuration +
+					thirdWebsiteSceneDuration +
+					fourthWebsiteSceneDuration
+				}
+				durationInFrames={textSceneDuration + transitionTime}
+				name="FirstScene"
+			>
+				<Transition type="in">
+					<TextScene message="Vous pouvez également ajouter des mots directement depuis <strong>l’application</strong>" />
+				</Transition>
 			</Sequence>
 		</>
 	);
