@@ -68,3 +68,8 @@
     background-color: #ffffff;
     transform: rotateY(180deg);
 }
+
+.adding-popup {
+    top: -200px;
+    transition: 0.4s ease-in-out top;
+}

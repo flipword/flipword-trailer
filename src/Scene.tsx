@@ -142,6 +142,23 @@ export const Scene: React.FC = () => {
 					<TextScene message="Vous pouvez également ajouter des mots directement depuis <strong>l’application</strong>" />
 				</Transition>
 			</Sequence>
+			<Sequence
+				from={
+					firstTextSceneDuration +
+					firstWebsiteSceneDuration +
+					textSceneDuration +
+					secondWebsiteSceneDuration +
+					applicationListDuration +
+					textSceneDuration +
+					thirdWebsiteSceneDuration +
+					fourthWebsiteSceneDuration +
+					textSceneDuration
+				}
+				durationInFrames={fourthWebsiteSceneDuration + transitionTime}
+				name="FirstScene"
+			>
+				<WebsiteScene websiteScene={WebsiteSceneEnum.ApplicationAdding} />
+			</Sequence>
 		</>
 	);
 };

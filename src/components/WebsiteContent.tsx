@@ -146,10 +146,11 @@ export const WebsiteContent: React.FC<{
 					cursorRef.current.style.top = '50px';
 				} else if (currentFrame === 3 * fps) {
 					extensionPopupRef.current.style.opacity = '1';
+					extensionPopupRef.current.style.top = '81px';
 				} else if (currentFrame === 3 * fps + 10) {
 					cursorRef.current.style.transition = 'left 1s, top 1s';
 					cursorRef.current.style.left = '1215px';
-					cursorRef.current.style.top = '80px';
+					cursorRef.current.style.top = '90px';
 				}
 			}
 		}

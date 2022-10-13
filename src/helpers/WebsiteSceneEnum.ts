@@ -4,4 +4,5 @@ export enum WebsiteSceneEnum {
 	ApplicationWordList,
 	ExtensionClick,
 	ApplicationLearning,
+	ApplicationAdding,
 }

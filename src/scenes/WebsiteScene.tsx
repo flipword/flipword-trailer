@@ -47,12 +47,17 @@ export const WebsiteScene: React.FC<{
 
 	const websiteContent =
 		props.websiteScene === WebsiteSceneEnum.ApplicationWordList ||
-		props.websiteScene === WebsiteSceneEnum.ApplicationLearning ? (
+		props.websiteScene === WebsiteSceneEnum.ApplicationLearning ||
+		props.websiteScene === WebsiteSceneEnum.ApplicationAdding ? (
 			<ApplicationLayout>
 				{props.websiteScene === WebsiteSceneEnum.ApplicationWordList ? (
 					<ApplicationListContent />
 				) : (
-					<ApplicationLearningContent />
+					<ApplicationLearningContent
+						displayAddingPopup={
+							props.websiteScene === WebsiteSceneEnum.ApplicationAdding
+						}
+					/>
 				)}
 			</ApplicationLayout>
 		) : (

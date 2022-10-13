@@ -43,11 +43,11 @@ export const WebsiteContainer: React.FC<{
 		<AbsoluteFill className="bg-darkGrey">
 			<div className="w-full h-full flex flex-col relative">
 				{/* Header */}
-				<div className="w-full h-20 flex flex-col drop-shadow-md">
+				<div className="w-full h-20 flex flex-col drop-shadow-md z-50">
 					<div className="w-full flex flex-1 flex-row">
 						{tab1}
 						{tab2}
-						<div className="flex-auto" />
+						<div className="flex-auto bg-base" />
 					</div>
 					<div className="w-full flex-1 bg-lightGrey -mt-0.5">
 						<div className="w-full h-full flex flex-row py-1.5 px-2">

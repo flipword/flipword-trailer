@@ -9,7 +9,7 @@ export const ExtensionPopup: React.FC = () => {
 					<Img className="w-6 h-auto" src={staticFile('icons/logo.svg')} />
 					<h1 className="font-bold">FlipWord</h1>
 				</div>
-				<div className="flex flex-row gap-1 rounded-sm bg-primary text-sm font-bold px-1 py-1 filter drop-shadow-md">
+				<div className="flex flex-row gap-1 rounded-md bg-primary text-sm font-bold py-1 px-2 filter drop-shadow-md">
 					<span>Train</span>
 					<Img className="w-4 h-auto" src={staticFile('icons/train.svg')} />
 				</div>
@@ -25,7 +25,7 @@ export const ExtensionPopup: React.FC = () => {
 					</div>
 					<button
 						type="button"
-						className="flex flex-row items-center gap-1 p-1 bg-primary rounded-sm font-bold text-sm filter drop-shadow-md"
+						className="flex flex-row items-center gap-1 py-1 px-3 bg-primary rounded-md font-bold text-sm filter drop-shadow-md"
 					>
 						<Img
 							className="w-4 h-auto"
@@ -41,7 +41,7 @@ export const ExtensionPopup: React.FC = () => {
 					</div>
 					<button
 						type="button"
-						className="flex flex-row items-center gap-1 p-1 bg-primary rounded-sm font-bold text-sm filter drop-shadow-md"
+						className="flex flex-row items-center gap-1 py-1 px-3 bg-primary rounded-md font-bold text-sm filter drop-shadow-md"
 					>
 						<Img className="w-4 h-auto" src={staticFile('icons/save.svg')} />
 						Save
