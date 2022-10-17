@@ -48,6 +48,7 @@ export const WebsiteContent: React.FC<{
 	const [startAnimFrame, setStartAnimFrame] = useState(0);
 	const [startAnimCursorPosition, setStartAnimCursorPosition] =
 		useState<Coordinate>({top: 0, left: 0});
+	const [cursorTransitionTime, setCursorTransitionTime] = useState(0)
 
 	const unknownDivRef = useRef<HTMLDivElement>(null);
 	const selectedDivRef = useRef<HTMLDivElement>(null);
@@ -59,6 +60,11 @@ export const WebsiteContent: React.FC<{
 	const [keyWorkAbbrNode, setKeyWorkAbbrNode] = useState<HTMLElement | null>(
 		null
 	);
+
+	const moveCursorTo = (position: Coordinate, time = 1) => {
+		setTargetCursorPosition(position)
+		setCursorTransitionTime(time)
+	}
 
 	/* On mounted action */
 	useEffect(() => {
@@ -86,9 +92,10 @@ export const WebsiteContent: React.FC<{
 			let newPositionTop = 0;
 			let newPositionLeft = 0;
 			if (targetCursorPosition) {
+				console.log("time: ", startAnimFrame, startAnimFrame + cursorTransitionTime * fps)
 				newPositionTop = interpolate(
 					currentFrame,
-					[startAnimFrame, startAnimFrame + 2 * fps],
+					[startAnimFrame, startAnimFrame + cursorTransitionTime * fps],
 					[startAnimCursorPosition.top, targetCursorPosition.top],
 					{
 						extrapolateRight: 'clamp',
@@ -96,7 +103,7 @@ export const WebsiteContent: React.FC<{
 				);
 				newPositionLeft = interpolate(
 					currentFrame,
-					[startAnimFrame, startAnimFrame + 2 * fps],
+					[startAnimFrame, startAnimFrame + cursorTransitionTime * fps],
 					[startAnimCursorPosition.left, targetCursorPosition.left],
 					{
 						extrapolateRight: 'clamp',
@@ -119,19 +126,14 @@ export const WebsiteContent: React.FC<{
 		) {
 			if (props.websiteScene === WebsiteSceneEnum.ArticleReading) {
 				if (currentFrame === fps) {
-					setTargetCursorPosition({top: 300, left: 500});
-					// CursorRef.current.style.transition = 'left 2s, top 2s';
-					// cursorRef.current.style.left = `${
-					// 	initialCursorPosition.left + 200
-					// }px`;
+					moveCursorTo({top: 240, left: 470}, 0.7);
 				} else if (currentFrame === 3 * fps) {
-					setTargetCursorPosition({top: 600, left: 500});
-				} else if (currentFrame === props.readingStartFrame + 2.5 * fps) {
-					// CursorRef.current.style.transition = 'left 2s, top 2s';
-					// cursorRef.current.style.left = `${
-					// 	initialCursorPosition.left + 100
-					// }px`;
-				} else if (currentFrame === props.readingStartFrame + 3 * fps) {
+					moveCursorTo({top: 348, left: 500}, 0.5);
+				} else if (currentFrame === 3.5 * fps) {
+					moveCursorTo({top: 348, left: 900}, 1);
+				} else if(currentFrame === 4.5 * fps) {
+					moveCursorTo({top: 373, left: 500}, 0.5)
+				} else if (currentFrame === 6 * fps) {
 					unknownDivRef.current.style.left = `${
 						Number(keyWorkAbbrNode.offsetLeft) - 6
 					}px`;
@@ -143,8 +145,7 @@ export const WebsiteContent: React.FC<{
 			} else if (props.websiteScene === WebsiteSceneEnum.WordHighlight) {
 				if (currentFrame === 1) {
 					unknownDivRef.current.style.opacity = '0';
-					// CursorRef.current.style.left = '423px';
-					// cursorRef.current.style.top = '164px';
+					moveCursorTo({top: 373, left: 465}, 0.1)
 					selectedDivRef.current.style.left = `${
 						Number(keyWorkAbbrNode.offsetLeft) - 2
 					}px`;
@@ -152,10 +153,10 @@ export const WebsiteContent: React.FC<{
 						Number(keyWorkAbbrNode.offsetTop) - 2
 					}px`;
 					logoExtensionRef.current.style.left = `${
-						Number(keyWorkAbbrNode.offsetLeft) + 68
+						Number(keyWorkAbbrNode.offsetLeft) + 85
 					}px`;
 					logoExtensionRef.current.style.top = `${
-						Number(keyWorkAbbrNode.offsetTop) + 15
+						Number(keyWorkAbbrNode.offsetTop) + 17
 					}px`;
 					extensionAddingPopupRef.current.style.left = `${
 						Number(keyWorkAbbrNode.offsetLeft) + 68
@@ -168,22 +169,21 @@ export const WebsiteContent: React.FC<{
 					// CursorRef.current.style.left = `${
 					// 	Number(keyWorkAbbrNode.offsetLeft) + 60
 					// }px`;
-					selectedDivRef.current.style.width = '74px';
+					moveCursorTo({top: 373, left: 540}, 1)
+					selectedDivRef.current.style.width = '88px';
 				}
 				if (currentFrame === 2.5 * fps) {
 					logoExtensionRef.current.style.opacity = '1';
 				}
 				if (currentFrame === 2.8 * fps) {
-					// CursorRef.current.style.left = '500px';
-					// cursorRef.current.style.top = '177px';
+					moveCursorTo({top: 380, left: 550}, 0.5)
 				}
 				if (currentFrame === 3.6 * fps) {
 					extensionAddingPopupRef.current.style.opacity = '1';
 					logoExtensionRef.current.style.opacity = '0';
 				}
 				if (currentFrame === 4 * fps) {
-					// CursorRef.current.style.left = '585px';
-					// cursorRef.current.style.top = '300px';
+					moveCursorTo({top: 510, left: 620}, 0.5)
 				}
 			} else if (props.websiteScene === WebsiteSceneEnum.ExtensionClick) {
 				if (currentFrame === 1) {
@@ -257,9 +257,9 @@ export const WebsiteContent: React.FC<{
 					/>
 					<div
 						ref={unknownDivRef}
-						className="flex flex-col w-20 absolute opacity-0 unknown-div-transition"
+						className="flex flex-col w-24 absolute opacity-0 unknown-div-transition"
 					>
-						<div className="flex flex-row flex-auto w-full justify-center text-negative text-stroke-effect text-2xl -mb-1.5 gap-3">
+						<div className="flex flex-row flex-auto w-full justify-center text-negative text-stroke-effect text-2xl -mb-0.5 gap-3">
 							<span className="transform -rotate-25">?</span>
 							<span>?</span>
 							<span className="transform rotate-25">?</span>
@@ -268,7 +268,7 @@ export const WebsiteContent: React.FC<{
 					</div>
 					<Img
 						ref={logoExtensionRef}
-						className="z-40 absolute w-6 h-auto opacity-0"
+						className="z-40 absolute w-8 h-auto opacity-0"
 						src={staticFile('icons/logo.svg')}
 					/>
 					<div

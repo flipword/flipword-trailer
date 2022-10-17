@@ -11,7 +11,7 @@ export const Scene: React.FC = () => {
 	const transitionTime = 15;
 	const firstTextSceneDuration = 2 * fps;
 	const textSceneDuration = 3 * fps;
-	const firstWebsiteSceneDuration = 10 * fps;
+	const firstWebsiteSceneDuration = 8 * fps;
 	const secondWebsiteSceneDuration = 5 * fps;
 	const applicationListDuration = 2 * fps;
 	const thirdWebsiteSceneDuration = 5 * fps;
