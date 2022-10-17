@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.cursor-transition {
-    transition: left 1s, top 1s;
-}
-
 .unknown-div-transition {
     transition: opacity 1s;
 }

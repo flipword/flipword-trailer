@@ -82,7 +82,7 @@ export const ApplicationLearningContent: React.FC<{
 			</div>
 			<Img
 				ref={cursorRef}
-				className="cursor-transition w-5 h-auto absolute z-40"
+				className="w-5 h-auto absolute z-40"
 				src={staticFile('icons/cursor.svg')}
 			/>
 			{!props.displayAddingPopup ? (

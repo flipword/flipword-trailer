@@ -14,22 +14,9 @@ export const WebsiteScene: React.FC<{
 	const currentFrame = useCurrentFrame();
 	const startScrolling = 2 * fps;
 	const intervalBetweenScroll = 1.5 * fps;
-	const readingStartFrame = startScrolling + intervalBetweenScroll + fps;
-	const [scrollPosition, setScrollPosition] = useState(0);
+	const readingStartFrame = fps;
 	const [url, setUrl] = useState('');
 	const [multiTab, setMultiTab] = useState(false);
-
-	useEffect(() => {
-		if (props.websiteScene === WebsiteSceneEnum.ArticleReading) {
-			if (currentFrame === startScrolling) {
-				setScrollPosition(60);
-			} else if (currentFrame >= startScrolling + intervalBetweenScroll) {
-				setScrollPosition(140);
-			}
-		} else if (props.websiteScene === WebsiteSceneEnum.WordHighlight) {
-			setScrollPosition(140);
-		}
-	}, [currentFrame]);
 
 	useEffect(() => {
 		if (
@@ -62,7 +49,6 @@ export const WebsiteScene: React.FC<{
 			</ApplicationLayout>
 		) : (
 			<WebsiteContent
-				scrollY={scrollPosition}
 				readingStartFrame={readingStartFrame}
 				websiteScene={props.websiteScene}
 			/>
