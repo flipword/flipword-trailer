@@ -1,6 +1,7 @@
 import React, {createRef, useEffect, useRef, useState} from 'react';
 import {
 	Img,
+	Sequence,
 	staticFile,
 	useCurrentFrame,
 	useVideoConfig,
@@ -9,14 +10,9 @@ import {
 import {ExtensionAddingPopup} from './ExtensionAddingPopup';
 import {ExtensionPopup} from './ExtensionPopup';
 import {WebsiteSceneEnum} from '../helpers/WebsiteSceneEnum';
-
-interface Coordinate {
-	top: number;
-	left: number;
-}
+import {Cursor} from './Cursor';
 
 export const WebsiteContent: React.FC<{
-	readingStartFrame: number;
 	websiteScene: number;
 }> = (props) => {
 	const {fps} = useVideoConfig();
@@ -36,20 +32,6 @@ export const WebsiteContent: React.FC<{
 
 	const scrollDivRef = createRef<HTMLDivElement>();
 
-	const cursorIcon = staticFile('icons/cursor.svg');
-	const cursorRef = useRef<HTMLImageElement>(null);
-	const initialCursorPosition: Coordinate = {top: 170, left: 470};
-	const [cursorPosition, setCursorPosition] = useState<Coordinate>(
-		initialCursorPosition
-	);
-	const [targetCursorPosition, setTargetCursorPosition] =
-		useState<Coordinate | null>(null);
-	const [needToLaunchCursorAnim, setNeedToLaunchCursorAnim] = useState(false);
-	const [startAnimFrame, setStartAnimFrame] = useState(0);
-	const [startAnimCursorPosition, setStartAnimCursorPosition] =
-		useState<Coordinate>({top: 0, left: 0});
-	const [cursorTransitionTime, setCursorTransitionTime] = useState(0)
-
 	const unknownDivRef = useRef<HTMLDivElement>(null);
 	const selectedDivRef = useRef<HTMLDivElement>(null);
 	const logoExtensionRef = useRef<HTMLImageElement>(null);
@@ -60,12 +42,6 @@ export const WebsiteContent: React.FC<{
 	const [keyWorkAbbrNode, setKeyWorkAbbrNode] = useState<HTMLElement | null>(
 		null
 	);
-
-	const moveCursorTo = (position: Coordinate, time = 1) => {
-		setTargetCursorPosition(position)
-		setCursorTransitionTime(time)
-	}
-
 	/* On mounted action */
 	useEffect(() => {
 		keyWorkAbbrNodeContainer.current?.childNodes.forEach((x) => {
@@ -74,45 +50,6 @@ export const WebsiteContent: React.FC<{
 			}
 		});
 	}, []);
-
-	useEffect(() => {
-		setNeedToLaunchCursorAnim(true);
-	}, [targetCursorPosition]);
-
-	useEffect(() => {
-		if (needToLaunchCursorAnim) {
-			setStartAnimFrame(currentFrame);
-			setStartAnimCursorPosition(cursorPosition);
-			setNeedToLaunchCursorAnim(false);
-		} else if (
-			JSON.stringify(targetCursorPosition) === JSON.stringify(cursorPosition)
-		) {
-			setTargetCursorPosition(null);
-		} else if (targetCursorPosition !== null) {
-			let newPositionTop = 0;
-			let newPositionLeft = 0;
-			if (targetCursorPosition) {
-				console.log("time: ", startAnimFrame, startAnimFrame + cursorTransitionTime * fps)
-				newPositionTop = interpolate(
-					currentFrame,
-					[startAnimFrame, startAnimFrame + cursorTransitionTime * fps],
-					[startAnimCursorPosition.top, targetCursorPosition.top],
-					{
-						extrapolateRight: 'clamp',
-					}
-				);
-				newPositionLeft = interpolate(
-					currentFrame,
-					[startAnimFrame, startAnimFrame + cursorTransitionTime * fps],
-					[startAnimCursorPosition.left, targetCursorPosition.left],
-					{
-						extrapolateRight: 'clamp',
-					}
-				);
-			}
-			setCursorPosition({top: newPositionTop, left: newPositionLeft});
-		}
-	}, [currentFrame]);
 
 	/* Scenario depend on frame */
 	useEffect(() => {
@@ -126,13 +63,13 @@ export const WebsiteContent: React.FC<{
 		) {
 			if (props.websiteScene === WebsiteSceneEnum.ArticleReading) {
 				if (currentFrame === fps) {
-					moveCursorTo({top: 240, left: 470}, 0.7);
+					// MoveCursorTo({top: 240, left: 470}, 0.7);
 				} else if (currentFrame === 3 * fps) {
-					moveCursorTo({top: 348, left: 500}, 0.5);
+					// MoveCursorTo({top: 348, left: 500}, 0.5);
 				} else if (currentFrame === 3.5 * fps) {
-					moveCursorTo({top: 348, left: 900}, 1);
-				} else if(currentFrame === 4.5 * fps) {
-					moveCursorTo({top: 373, left: 500}, 0.5)
+					// MoveCursorTo({top: 348, left: 900}, 1);
+				} else if (currentFrame === 4.5 * fps) {
+					// MoveCursorTo({top: 373, left: 500}, 0.5);
 				} else if (currentFrame === 6 * fps) {
 					unknownDivRef.current.style.left = `${
 						Number(keyWorkAbbrNode.offsetLeft) - 6
@@ -145,7 +82,7 @@ export const WebsiteContent: React.FC<{
 			} else if (props.websiteScene === WebsiteSceneEnum.WordHighlight) {
 				if (currentFrame === 1) {
 					unknownDivRef.current.style.opacity = '0';
-					moveCursorTo({top: 373, left: 465}, 0.1)
+					moveCursorTo({top: 373, left: 465}, 0.1);
 					selectedDivRef.current.style.left = `${
 						Number(keyWorkAbbrNode.offsetLeft) - 2
 					}px`;
@@ -169,21 +106,21 @@ export const WebsiteContent: React.FC<{
 					// CursorRef.current.style.left = `${
 					// 	Number(keyWorkAbbrNode.offsetLeft) + 60
 					// }px`;
-					moveCursorTo({top: 373, left: 540}, 1)
+					// moveCursorTo({top: 373, left: 540}, 1);
 					selectedDivRef.current.style.width = '88px';
 				}
 				if (currentFrame === 2.5 * fps) {
 					logoExtensionRef.current.style.opacity = '1';
 				}
 				if (currentFrame === 2.8 * fps) {
-					moveCursorTo({top: 380, left: 550}, 0.5)
+					// MoveCursorTo({top: 380, left: 550}, 0.5);
 				}
 				if (currentFrame === 3.6 * fps) {
 					extensionAddingPopupRef.current.style.opacity = '1';
 					logoExtensionRef.current.style.opacity = '0';
 				}
 				if (currentFrame === 4 * fps) {
-					moveCursorTo({top: 510, left: 620}, 0.5)
+					// MoveCursorTo({top: 510, left: 620}, 0.5);
 				}
 			} else if (props.websiteScene === WebsiteSceneEnum.ExtensionClick) {
 				if (currentFrame === 1) {
@@ -279,15 +216,48 @@ export const WebsiteContent: React.FC<{
 					</div>
 				</div>
 			</div>
-			<Img
-				ref={cursorRef}
-				className="w-7 h-auto absolute z-50"
-				src={cursorIcon}
-				style={{
-					top: cursorPosition.top,
-					left: cursorPosition.left,
-				}}
-			/>
+			<Sequence from={0} durationInFrames={fps}>
+				<Cursor
+					startPosition={{top: 170, left: 470}}
+					endPosition={{top: 170, left: 470}}
+					animationDuration={1}
+				/>
+			</Sequence>
+			<Sequence from={fps} durationInFrames={fps}>
+				<Cursor
+					startPosition={{top: 170, left: 470}}
+					endPosition={{top: 240, left: 470}}
+					animationDuration={fps}
+				/>
+			</Sequence>
+			<Sequence from={2 * fps} durationInFrames={fps}>
+				<Cursor
+					startPosition={{top: 240, left: 470}}
+					endPosition={{top: 348, left: 500}}
+					animationDuration={fps}
+				/>
+			</Sequence>
+			<Sequence from={3 * fps} durationInFrames={fps}>
+				<Cursor
+					startPosition={{top: 348, left: 500}}
+					endPosition={{top: 348, left: 900}}
+					animationDuration={fps}
+				/>
+			</Sequence>
+			<Sequence from={4 * fps} durationInFrames={fps}>
+				<Cursor
+					startPosition={{top: 348, left: 900}}
+					endPosition={{top: 373, left: 500}}
+					animationDuration={fps}
+				/>
+			</Sequence>
+			<Sequence from={5 * fps} durationInFrames={3 * fps}>
+				<Cursor
+					startPosition={{top: 373, left: 500}}
+					endPosition={{top: 373, left: 500}}
+					animationDuration={1}
+				/>
+			</Sequence>
 			<div
 				ref={extensionPopupRef}
 				className="z-40 absolute w-60 opacity-0 filter drop-shadow-md extension-popup-position"

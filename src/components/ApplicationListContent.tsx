@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {useCurrentFrame, useVideoConfig} from 'remotion';
+import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {WordCard} from './WordCard';
 import {Word} from '../helpers/Word';
 
@@ -33,15 +33,14 @@ export const ApplicationListContent: React.FC = () => {
 
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
-	const newCardRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		if (newCardRef.current) {
-			if (currentFrame === fps) {
-				newCardRef.current.style.opacity = '1';
-			}
+	const cartOpacity = interpolate(
+		currentFrame,
+		[0.5 * fps, 1.5 * fps],
+		[0, 1],
+		{
+			extrapolateRight: 'clamp',
 		}
-	}, [currentFrame]);
+	);
 
 	return (
 		<div className="flex flex-row justify-center mt-5">
@@ -71,7 +70,10 @@ export const ApplicationListContent: React.FC = () => {
 						nativeWord={wordList[4].nativeWord}
 						foreignWord={wordList[4].foreignWord}
 					/>
-					<div ref={newCardRef} className="opacity-0 word-card-transition">
+					<div
+						className="opacity-0 word-card-transition"
+						style={{opacity: cartOpacity}}
+					>
 						<WordCard
 							nativeWord={wordList[5].nativeWord}
 							foreignWord={wordList[5].foreignWord}
