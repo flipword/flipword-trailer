@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.unknown-div-transition {
-    transition: opacity 1s;
-}
-
 .text-stroke-effect {
     -webkit-text-stroke: 1px white;
     font-weight: 1000;
