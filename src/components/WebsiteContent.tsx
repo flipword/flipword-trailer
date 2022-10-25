@@ -12,6 +12,7 @@ import {WebsiteSceneEnum} from '../helpers/WebsiteSceneEnum';
 import {Cursor} from './Cursor';
 import {ScalingInteractiveText} from './intercativeText/ScalingInteractiveText';
 import {SelectInteractiveText} from './intercativeText/SelectInteractiveText';
+import {ClassicText} from './intercativeText/ClassicText';
 
 export const WebsiteContent: React.FC<{
 	websiteScene: number;
@@ -30,92 +31,35 @@ export const WebsiteContent: React.FC<{
 		'Once written, the brain is now able to visualize the word which will now be associated with the meaning of the word. "It has been found that meaning is first attached to the visual form followed by sound in second language written word learning".';
 	const imgPart3 = staticFile('img/eyes.png');
 
-	const scrollDivRef = createRef<HTMLDivElement>();
-
-	const logoExtensionRef = useRef<HTMLImageElement>(null);
-	const extensionAddingPopupRef = useRef<HTMLDivElement>(null);
-	const extensionPopupRef = useRef<HTMLDivElement>(null);
-
-	/* Scenario depend on frame */
-	useEffect(() => {
-		if (
-			logoExtensionRef.current &&
-			extensionAddingPopupRef.current &&
-			extensionPopupRef.current
-		) {
-			if (props.websiteScene === WebsiteSceneEnum.ExtensionClick) {
-				if (currentFrame === 1) {
-					// CursorRef.current.style.left = `${initialCursorPosition.left}px`;
-					// cursorRef.current.style.top = `${initialCursorPosition.top}px`;
-				} else if (currentFrame === fps) {
-					// CursorRef.current.style.transition = 'left 2s, top 2s';
-					// cursorRef.current.style.left = '1250px';
-					// cursorRef.current.style.top = '50px';
-				} else if (currentFrame === 3 * fps) {
-					extensionPopupRef.current.style.opacity = '1';
-					extensionPopupRef.current.style.top = '81px';
-				} else if (currentFrame === 3 * fps + 10) {
-					// CursorRef.current.style.transition = 'left 1s, top 1s';
-					// cursorRef.current.style.left = '1215px';
-					// cursorRef.current.style.top = '90px';
-				}
-			}
+	const FirstParagraphDisplay = () => {
+		if (props.websiteScene === WebsiteSceneEnum.ArticleReading) {
+			return <ScalingInteractiveText startAfter={5 * fps} />;
 		}
-	}, [currentFrame]);
+		if (props.websiteScene === WebsiteSceneEnum.WordHighlight) {
+			return <SelectInteractiveText />;
+		}
+		return <ClassicText />;
+	};
 
-	return (
-		<>
-			<div ref={scrollDivRef} className="w-full flex-1 overflow-auto">
-				<div className="bg-darkGrey flex flex-row justify-center relative">
-					<div className="w-7/12 bg-white py-6 px-12">
-						<h1 className="text-4xl">{title}</h1>
-						{/* Part 1 */}
-						<div className="px-5 mt-10 flex flex-row justify-start">
-							<h2 className="text-3xl">{titlePart2}</h2>
-						</div>
-						<div className="mt-6 w-full flex flex-row">
-							{props.websiteScene === WebsiteSceneEnum.ArticleReading ? (
-								<>
-									<ScalingInteractiveText startAfter={5 * fps} />
-								</>
-							) : (
-								<>
-									<SelectInteractiveText startAfter={fps} />
-								</>
-							)}
-							<div className="flex flex-row flex-1 justify-center">
-								<Img className="w-6/12 h-auto" src={imgPart2} />
-							</div>
-						</div>
-						{/* Part 2 */}
-						<div className="px-5 mt-6 flex flex-row justify-end">
-							<h2 className="text-3xl">{titlePart1}</h2>
-						</div>
-						<div className="mt-6 w-full flex flex-row">
-							<div className="flex-1">
-								<Img className="w-11/12 h-auto" src={imgPart1} />
-							</div>
-							<div className="text-xl flex flex-col flex-1 px-5 justify-center">
-								<span>{textPart1}</span>
-							</div>
-						</div>
-						{/* Part 3 */}
-						<div className="px-5 mt-6 flex flex-row justify-start">
-							<h2 className="text-3xl">{titlePart3}</h2>
-						</div>
-						<div className="mt-6 w-full flex flex-row">
-							<div className="text-xl flex flex-col flex-1 px-5 justify-center">
-								<span>{textPart3}</span>
-							</div>
-							<div className="flex-1">
-								<Img className="w-11/12 h-auto" src={imgPart3} />
-							</div>
-						</div>
-					</div>
+	const ExtensionPopupDisplay = () => {
+		if (
+			props.websiteScene === WebsiteSceneEnum.ExtensionClick &&
+			currentFrame >= 2.7 * fps
+		) {
+			return (
+				<div
+					className="z-40 absolute w-60 filter drop-shadow-md extension-popup-position"
+					style={{top: '96px', left: '1678px'}}
+				>
+					<ExtensionPopup />
 				</div>
-			</div>
-			(
-			{props.websiteScene === WebsiteSceneEnum.ArticleReading ? (
+			);
+		}
+	};
+
+	const CursorDisplay = () => {
+		if (props.websiteScene === WebsiteSceneEnum.ArticleReading) {
+			return (
 				<>
 					<Sequence from={0} durationInFrames={fps}>
 						<Cursor
@@ -160,7 +104,10 @@ export const WebsiteContent: React.FC<{
 						/>
 					</Sequence>
 				</>
-			) : (
+			);
+		}
+		if (props.websiteScene === WebsiteSceneEnum.WordHighlight) {
+			return (
 				<>
 					<Sequence from={0} durationInFrames={Number(fps)}>
 						<Cursor
@@ -205,14 +152,87 @@ export const WebsiteContent: React.FC<{
 						/>
 					</Sequence>
 				</>
-			)}
-			)
-			<div
-				ref={extensionPopupRef}
-				className="z-40 absolute w-60 opacity-0 filter drop-shadow-md extension-popup-position"
-			>
-				<ExtensionPopup />
+			);
+		}
+		return (
+			<>
+				<Sequence from={0} durationInFrames={fps}>
+					<Cursor
+						startPosition={{top: 495, left: 645}}
+						endPosition={{top: 495, left: 645}}
+						animationDuration={1}
+					/>
+				</Sequence>
+				<Sequence from={fps} durationInFrames={1.5 * fps}>
+					<Cursor
+						startPosition={{top: 495, left: 645}}
+						endPosition={{top: 70, left: 1880}}
+						animationDuration={1.5 * fps}
+					/>
+				</Sequence>
+				<Sequence from={2.5 * fps} durationInFrames={0.5 * fps}>
+					<Cursor
+						startPosition={{top: 70, left: 1880}}
+						endPosition={{top: 70, left: 1880}}
+						animationDuration={1}
+					/>
+				</Sequence>
+				<Sequence from={3 * fps} durationInFrames={Number(fps)}>
+					<Cursor
+						startPosition={{top: 70, left: 1880}}
+						endPosition={{top: 110, left: 1860}}
+						animationDuration={0.5 * fps}
+					/>
+				</Sequence>
+			</>
+		);
+	};
+
+	return (
+		<>
+			<div className="w-full flex-1 overflow-auto">
+				<div className="bg-darkGrey flex flex-row justify-center relative">
+					<div className="w-7/12 bg-white py-6 px-12">
+						<h1 className="text-4xl">{title}</h1>
+						{/* Part 1 */}
+						<div className="px-5 mt-10 flex flex-row justify-start">
+							<h2 className="text-3xl">{titlePart2}</h2>
+						</div>
+						<div className="mt-6 w-full flex flex-row">
+							{FirstParagraphDisplay()}
+							<div className="flex flex-row flex-1 justify-center">
+								<Img className="w-6/12 h-auto" src={imgPart2} />
+							</div>
+						</div>
+						{/* Part 2 */}
+						<div className="px-5 mt-6 flex flex-row justify-end">
+							<h2 className="text-3xl">{titlePart1}</h2>
+						</div>
+						<div className="mt-6 w-full flex flex-row">
+							<div className="flex-1">
+								<Img className="w-11/12 h-auto" src={imgPart1} />
+							</div>
+							<div className="text-xl flex flex-col flex-1 px-5 justify-center">
+								<span>{textPart1}</span>
+							</div>
+						</div>
+						{/* Part 3 */}
+						<div className="px-5 mt-6 flex flex-row justify-start">
+							<h2 className="text-3xl">{titlePart3}</h2>
+						</div>
+						<div className="mt-6 w-full flex flex-row">
+							<div className="text-xl flex flex-col flex-1 px-5 justify-center">
+								<span>{textPart3}</span>
+							</div>
+							<div className="flex-1">
+								<Img className="w-11/12 h-auto" src={imgPart3} />
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+			{CursorDisplay()}
+			{ExtensionPopupDisplay()}
 		</>
 	);
 };

@@ -20,11 +20,6 @@
     transition: opacity 1s;
 }
 
-.extension-popup-position {
-    top: 73px;
-    left: 1025px;
-}
-
 .flip-card {
     background-color: transparent;
     width: 240px;
