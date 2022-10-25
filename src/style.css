@@ -22,8 +22,8 @@
 
 .flip-card {
     background-color: transparent;
-    width: 240px;
-    height: 320px;
+    width: 340px;
+    height: 520px;
     transition: 0.4s ease-in-out transform, 0.3s ease-in-out box-shadow;
     perspective: 1000px;
 }
@@ -32,7 +32,6 @@
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.8s;
     transform-style: preserve-3d;
 }
 .reverse-card {
@@ -54,9 +53,4 @@
 .flip-card-back {
     background-color: #ffffff;
     transform: rotateY(180deg);
-}
-
-.adding-popup {
-    top: -200px;
-    transition: 0.4s ease-in-out top;
 }

@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {useCurrentFrame, useVideoConfig} from 'remotion';
 import {WebsiteContainer} from '../components/WebsiteContainer';
 import {WebsiteContent} from '../components/WebsiteContent';
 import {ApplicationListContent} from '../components/ApplicationListContent';
@@ -10,11 +9,6 @@ import {ApplicationLearningContent} from '../components/ApplicationLearningConte
 export const WebsiteScene: React.FC<{
 	websiteScene: WebsiteSceneEnum;
 }> = (props) => {
-	const {fps} = useVideoConfig();
-	const currentFrame = useCurrentFrame();
-	const startScrolling = 2 * fps;
-	const intervalBetweenScroll = 1.5 * fps;
-	const readingStartFrame = fps;
 	const [url, setUrl] = useState('');
 	const [multiTab, setMultiTab] = useState(false);
 
@@ -40,18 +34,11 @@ export const WebsiteScene: React.FC<{
 				{props.websiteScene === WebsiteSceneEnum.ApplicationWordList ? (
 					<ApplicationListContent />
 				) : (
-					<ApplicationLearningContent
-						displayAddingPopup={
-							props.websiteScene === WebsiteSceneEnum.ApplicationAdding
-						}
-					/>
+					<ApplicationLearningContent websiteScene={props.websiteScene} />
 				)}
 			</ApplicationLayout>
 		) : (
-			<WebsiteContent
-				readingStartFrame={readingStartFrame}
-				websiteScene={props.websiteScene}
-			/>
+			<WebsiteContent websiteScene={props.websiteScene} />
 		);
 	return (
 		<WebsiteContainer url={url} multiTab={multiTab}>

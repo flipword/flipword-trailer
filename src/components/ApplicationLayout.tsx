@@ -14,12 +14,12 @@ export const ApplicationLayout: React.FC<{children: React.ReactNode}> = (
 	return (
 		<div className="w-full flex flex-col flex-1 overflow-auto">
 			<div className="w-full flex-1">{props.children}</div>
-			<div className="w-full flex flex-row h-11 bg-white justify-center items-center gap-9">
-				<Img className="w-6 h-auto" src={homeIcon} />
-				<Img className="w-6 h-auto" src={listIcon} />
+			<div className="w-full flex flex-row h-16 bg-white justify-center items-center gap-9">
+				<Img className="w-8 h-auto" src={homeIcon} />
+				<Img className="w-8 h-auto" src={listIcon} />
 				<DiamondButton iconPath="icons/add.svg" />
-				<Img className="w-6 h-auto" src={settingsIcon} />
-				<Img className="w-6 h-auto" src={identityIcon} />
+				<Img className="w-8 h-auto" src={settingsIcon} />
+				<Img className="w-8 h-auto" src={identityIcon} />
 			</div>
 		</div>
 	);

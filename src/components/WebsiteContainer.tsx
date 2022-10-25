@@ -30,8 +30,8 @@ export const WebsiteContainer: React.FC<{
 		<div className="bg-lightGrey rounded-t-xl w-72">
 			<div className="w-full h-full flex flex-row py-1.5 px-2 justify-between items-center gap-5">
 				<div className="flex flex-row items-center gap-2">
-					<Img className="w-6 h-auto" src={staticFile('icons/logo.svg')} />
-					<span className="text-xs">Flipword</span>
+					<Img className="w-7 h-auto" src={staticFile('icons/logo.svg')} />
+					<span className="text-sm">Flipword</span>
 				</div>
 				<Img className="w-3 h-auto" src={staticFile('icons/clear.svg')} />
 			</div>
