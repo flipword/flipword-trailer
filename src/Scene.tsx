@@ -160,6 +160,26 @@ export const Scene: React.FC = () => {
 			>
 				<WebsiteScene websiteScene={WebsiteSceneEnum.ApplicationAdding} />
 			</Sequence>
+			<Sequence
+				from={
+					firstTextSceneDuration +
+					firstWebsiteSceneDuration +
+					textSceneDuration +
+					secondWebsiteSceneDuration +
+					applicationListDuration +
+					textSceneDuration +
+					thirdWebsiteSceneDuration +
+					fourthWebsiteSceneDuration +
+					textSceneDuration +
+					applicationAddingDuration
+				}
+				durationInFrames={textSceneDuration + transitionTime}
+				name="FirstScene"
+			>
+				<Transition type="in">
+					<TextScene message="<strong>Flipword</strong> est également disponible sur mobile pour réviser partout" />
+				</Transition>
+			</Sequence>
 		</>
 	);
 };
