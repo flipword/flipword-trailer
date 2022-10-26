@@ -24,11 +24,11 @@ export const ApplicationLearningContent: React.FC<{
 
 	const addingPopupTopOffset = `${
 		props.websiteScene === WebsiteSceneEnum.ApplicationAdding
-			? interpolate(currentFrame, [0.5 * fps, 1.5 * fps], [-220, 90], {
+			? interpolate(currentFrame, [0.5 * fps, fps], [-320, 90], {
 					extrapolateRight: 'clamp',
 					extrapolateLeft: 'clamp',
 			  })
-			: -220
+			: -320
 	}px`;
 
 	const cartRotateDeg = `${
@@ -81,7 +81,31 @@ export const ApplicationLearningContent: React.FC<{
 				</>
 			);
 		}
-		return <></>;
+		return (
+			<>
+				<Sequence from={0} durationInFrames={2 * fps}>
+					<Cursor
+						startPosition={{top: 800, left: 1060}}
+						endPosition={{top: 800, left: 1060}}
+						animationDuration={1}
+					/>
+				</Sequence>
+				<Sequence from={1.5 * fps} durationInFrames={4 * fps}>
+					<Cursor
+						startPosition={{top: 800, left: 1060}}
+						endPosition={{top: 240, left: 900}}
+						animationDuration={fps}
+					/>
+				</Sequence>
+				<Sequence from={5.5 * fps} durationInFrames={2 * fps}>
+					<Cursor
+						startPosition={{top: 240, left: 900}}
+						endPosition={{top: 300, left: 950}}
+						animationDuration={0.5 * fps}
+					/>
+				</Sequence>
+			</>
+		);
 	};
 
 	return (
@@ -111,8 +135,11 @@ export const ApplicationLearningContent: React.FC<{
 				className="absolute z-30 flex flex-row justify-center w-full"
 				style={{top: addingPopupTopOffset}}
 			>
-				<div className="w-72">
-					<AddingPopup />
+				<div className="w-96">
+					<AddingPopup
+						startWritingFrame={3 * fps}
+						foreignWordFrame={6.3 * fps}
+					/>
 				</div>
 			</div>
 		</>
