@@ -104,6 +104,13 @@ export const ApplicationLearningContent: React.FC<{
 						animationDuration={0.5 * fps}
 					/>
 				</Sequence>
+				<Sequence from={7.5 * fps} durationInFrames={1 * fps}>
+					<Cursor
+						startPosition={{top: 300, left: 950}}
+						endPosition={{top: 470, left: 950}}
+						animationDuration={0.5 * fps}
+					/>
+				</Sequence>
 			</>
 		);
 	};

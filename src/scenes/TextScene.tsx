@@ -3,7 +3,7 @@ import {AbsoluteFill} from 'remotion';
 
 export const TextScene: React.FC<{message: string}> = (props) => {
 	return (
-		<AbsoluteFill className="bg-darkGrey">
+		<AbsoluteFill className="bg-darkGrey z-50">
 			<div className="w-full h-full flex flex-col relative">
 				<div className="flex-auto w-full" />
 				<div className="w-full h-12 bg-primary bottom-text-radius" />

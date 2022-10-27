@@ -40,7 +40,7 @@ export const WebsiteContainer: React.FC<{
 		<></>
 	);
 	return (
-		<AbsoluteFill className="bg-darkGrey">
+		<AbsoluteFill className="bg-darkGrey z-0">
 			<div className="w-full h-full flex flex-col relative">
 				{/* Header */}
 				<div className="w-full h-24 flex flex-col drop-shadow-md z-50">
