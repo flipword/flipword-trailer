@@ -12,7 +12,7 @@ export const ApplicationLayout: React.FC<{children: React.ReactNode}> = (
 	const identityIcon = staticFile('icons/identity.svg');
 
 	return (
-		<div className="w-full flex flex-col flex-1 overflow-auto">
+		<div className="w-full flex flex-col h-full overflow-auto">
 			<div className="w-full flex-1">{props.children}</div>
 			<div className="w-full flex flex-row h-16 bg-white justify-center items-center gap-9">
 				<Img className="w-8 h-auto" src={homeIcon} />

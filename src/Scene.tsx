@@ -5,6 +5,7 @@ import {TextScene} from './scenes/TextScene';
 import {WebsiteScene} from './scenes/WebsiteScene';
 import {Transition} from './Transition';
 import {WebsiteSceneEnum} from './helpers/WebsiteSceneEnum';
+import {PhoneScene} from './scenes/PhoneScene';
 
 export const Scene: React.FC = () => {
 	const {fps} = useVideoConfig();
@@ -17,6 +18,7 @@ export const Scene: React.FC = () => {
 	const thirdWebsiteSceneDuration = 4 * fps;
 	const fourthWebsiteSceneDuration = 3.5 * fps;
 	const applicationAddingDuration = 8.5 * fps;
+	const phoneSceneDuration = 4 * fps;
 	return (
 		<>
 			<Sequence
@@ -178,6 +180,27 @@ export const Scene: React.FC = () => {
 			>
 				<Transition type="in">
 					<TextScene message="<strong>Flipword</strong> est également disponible sur mobile pour réviser partout" />
+				</Transition>
+			</Sequence>
+			<Sequence
+				from={
+					firstTextSceneDuration +
+					firstWebsiteSceneDuration +
+					textSceneDuration +
+					secondWebsiteSceneDuration +
+					applicationListDuration +
+					textSceneDuration +
+					thirdWebsiteSceneDuration +
+					fourthWebsiteSceneDuration +
+					textSceneDuration +
+					applicationAddingDuration +
+					textSceneDuration
+				}
+				durationInFrames={phoneSceneDuration + transitionTime}
+				name="FirstScene"
+			>
+				<Transition type="in">
+					<PhoneScene />
 				</Transition>
 			</Sequence>
 		</>

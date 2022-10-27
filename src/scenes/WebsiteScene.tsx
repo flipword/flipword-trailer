@@ -34,7 +34,13 @@ export const WebsiteScene: React.FC<{
 				{props.websiteScene === WebsiteSceneEnum.ApplicationWordList ? (
 					<ApplicationListContent />
 				) : (
-					<ApplicationLearningContent websiteScene={props.websiteScene} />
+					<ApplicationLearningContent
+						word={{
+							nativeWord: 'Merveilleux',
+							foreignWord: 'Wonderful',
+						}}
+						websiteScene={props.websiteScene}
+					/>
 				)}
 			</ApplicationLayout>
 		) : (

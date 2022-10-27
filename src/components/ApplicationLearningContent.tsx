@@ -8,11 +8,9 @@ import {WebsiteSceneEnum} from '../helpers/WebsiteSceneEnum';
 
 export const ApplicationLearningContent: React.FC<{
 	websiteScene: number;
+	isMobile?: boolean;
+	word: Word;
 }> = (props) => {
-	const word: Word = {
-		nativeWord: 'Merveilleux',
-		foreignWord: 'Wonderful',
-	};
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
 
@@ -42,6 +40,9 @@ export const ApplicationLearningContent: React.FC<{
 			: 0
 	}deg`;
 
+	const cardDimension = props.isMobile
+		? {width: '300px', height: '420px'}
+		: {width: '340px', height: '520px'};
 	const title = isReverse ? "Est-ce que c'est bon ?" : 'Essaie de deviner:';
 	const bottomButtons = isReverse ? (
 		<div className="flex flex-row gap-12">
@@ -53,6 +54,24 @@ export const ApplicationLearningContent: React.FC<{
 		<DiamondButton borderColor="primary" iconPath="icons/visibility.svg" />
 	);
 
+	const AddingPopupDisplay = () => {
+		if (props.websiteScene === WebsiteSceneEnum.ApplicationAdding) {
+			return (
+				<div
+					className="absolute z-30 flex flex-row justify-center w-full"
+					style={{top: addingPopupTopOffset}}
+				>
+					<div className="w-96">
+						<AddingPopup
+							startWritingFrame={3 * fps}
+							foreignWordFrame={6.3 * fps}
+						/>
+					</div>
+				</div>
+			);
+		}
+		return <></>;
+	};
 	const CursorDisplay = () => {
 		if (props.websiteScene === WebsiteSceneEnum.ApplicationLearning) {
 			return (
@@ -104,7 +123,7 @@ export const ApplicationLearningContent: React.FC<{
 						animationDuration={0.5 * fps}
 					/>
 				</Sequence>
-				<Sequence from={7.5 * fps} durationInFrames={1 * fps}>
+				<Sequence from={7.5 * fps} durationInFrames={Number(fps)}>
 					<Cursor
 						startPosition={{top: 300, left: 950}}
 						endPosition={{top: 470, left: 950}}
@@ -119,7 +138,7 @@ export const ApplicationLearningContent: React.FC<{
 		<>
 			<div className="flex flex-col justify-center mt-12 items-center gap-8 relative">
 				<span className="text-3xl">{title}</span>
-				<div className="flip-card">
+				<div className="flip-card" style={cardDimension}>
 					<div
 						className="flip-card-inner font-sans text-black text-4xl"
 						style={{
@@ -127,28 +146,18 @@ export const ApplicationLearningContent: React.FC<{
 						}}
 					>
 						<div className="flip-card-front flex flex-row mb-7 justify-center items-center">
-							<span>{word.foreignWord}</span>
+							<span>{props.word.foreignWord}</span>
 						</div>
 						<div />
 						<div className="flip-card-back flex flex-row mb-7 justify-center items-center">
-							<span>{word.nativeWord}</span>
+							<span>{props.word.nativeWord}</span>
 						</div>
 					</div>
 				</div>
 				{bottomButtons}
 			</div>
 			{CursorDisplay()}
-			<div
-				className="absolute z-30 flex flex-row justify-center w-full"
-				style={{top: addingPopupTopOffset}}
-			>
-				<div className="w-96">
-					<AddingPopup
-						startWritingFrame={3 * fps}
-						foreignWordFrame={6.3 * fps}
-					/>
-				</div>
-			</div>
+			{AddingPopupDisplay()}
 		</>
 	);
 };
