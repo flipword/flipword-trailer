@@ -38,7 +38,9 @@ module.exports = {
 		},
 		extend: {
 			borderRadius: {
+				'4xl': '4rem',
 				'5xl': '5rem',
+				'6xl': '8rem',
 			},
 			fontSize: {
 				title: '5vw',

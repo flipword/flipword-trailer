@@ -52,3 +52,15 @@
     background-color: #ffffff;
     transform: rotateY(180deg);
 }
+
+.end-card {
+    height: 80%;
+    width: 85%;
+    top: -0.25rem;
+    right: 0.5rem;
+}
+
+.end-card-shadow {
+    height: 80%;
+    width: 85%;
+}
