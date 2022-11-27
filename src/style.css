@@ -64,3 +64,12 @@
     height: 80%;
     width: 85%;
 }
+
+.triangle {
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 0 75px 150px 75px;
+    border-color: transparent transparent #FF9100 transparent;
+    transform: rotate(19deg);
+}

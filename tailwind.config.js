@@ -59,6 +59,10 @@ module.exports = {
 			padding: {
 				'1/12': '8.33%',
 			},
+			rotate: {
+				'25': '25deg',
+				'-25': '-25deg',
+			}
 		},
 		rotate: {
 			25: '25deg',
