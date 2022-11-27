@@ -177,7 +177,7 @@ export const WebsiteContent: React.FC<{
 						animationDuration={1}
 					/>
 				</Sequence>
-				<Sequence from={3 * fps} durationInFrames={Number(fps)}>
+				<Sequence from={3 * fps} durationInFrames={2* fps}>
 					<Cursor
 						startPosition={{top: 70, left: 1880}}
 						endPosition={{top: 110, left: 1860}}
