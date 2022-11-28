@@ -1,7 +1,7 @@
 import React from 'react';
 import {Img, interpolate, staticFile, useCurrentFrame} from 'remotion';
 
-interface Coordinate {
+export interface Coordinate {
 	top: number;
 	left: number;
 }

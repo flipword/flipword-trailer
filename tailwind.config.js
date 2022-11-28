@@ -25,6 +25,7 @@ module.exports = {
 			lightGrey: '#F4F4F4',
 			negative: '#FF0000',
 			positive: '#01da7c',
+			blue: '#7f70d0',
 		}),
 		fontFamily: {
 			sans: ['Roboto', 'sans-serif'],

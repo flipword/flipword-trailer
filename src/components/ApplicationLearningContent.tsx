@@ -5,6 +5,7 @@ import {DiamondButton} from './button/DiamondButton';
 import {AddingPopup} from './AddingPopup';
 import {Cursor} from './Cursor';
 import {WebsiteSceneEnum} from '../helpers/WebsiteSceneEnum';
+import {ClickEffect} from "./ClickEffect";
 
 export const ApplicationLearningContent: React.FC<{
 	websiteScene: number;
@@ -76,12 +77,15 @@ export const ApplicationLearningContent: React.FC<{
 		if (props.websiteScene === WebsiteSceneEnum.ApplicationLearning) {
 			return (
 				<>
-					<Sequence from={0} durationInFrames={0.5 * fps}>
+					<Sequence  durationInFrames={0.5 * fps}>
 						<Cursor
 							startPosition={{top: 110, left: 1860}}
 							endPosition={{top: 110, left: 1860}}
 							animationDuration={1}
 						/>
+					</Sequence>
+					<Sequence from={1.7 * fps} durationInFrames={2* fps}>
+						<ClickEffect position={{top: 800, left: 950}}/>
 					</Sequence>
 					<Sequence from={0.5 * fps} durationInFrames={2 * fps}>
 						<Cursor
@@ -89,6 +93,9 @@ export const ApplicationLearningContent: React.FC<{
 							endPosition={{top: 800, left: 950}}
 							animationDuration={fps}
 						/>
+					</Sequence>
+					<Sequence from={3.2 * fps} durationInFrames={2* fps}>
+						<ClickEffect position={{top: 800, left: 1060}}/>
 					</Sequence>
 					<Sequence from={2.5 * fps} durationInFrames={2 * fps}>
 						<Cursor
@@ -102,12 +109,15 @@ export const ApplicationLearningContent: React.FC<{
 		}
 		return (
 			<>
-				<Sequence from={0} durationInFrames={2 * fps}>
+				<Sequence  durationInFrames={2 * fps}>
 					<Cursor
 						startPosition={{top: 800, left: 1060}}
 						endPosition={{top: 800, left: 1060}}
 						animationDuration={1}
 					/>
+				</Sequence>
+				<Sequence from={2.7 * fps} durationInFrames={2* fps}>
+					<ClickEffect position={{top: 240, left: 900}}/>
 				</Sequence>
 				<Sequence from={1.5 * fps} durationInFrames={4 * fps}>
 					<Cursor
@@ -116,12 +126,18 @@ export const ApplicationLearningContent: React.FC<{
 						animationDuration={fps}
 					/>
 				</Sequence>
+				<Sequence from={6.2 * fps} durationInFrames={2* fps}>
+					<ClickEffect position={{top: 300, left: 950}}/>
+				</Sequence>
 				<Sequence from={5.5 * fps} durationInFrames={2 * fps}>
 					<Cursor
 						startPosition={{top: 240, left: 900}}
 						endPosition={{top: 300, left: 950}}
 						animationDuration={0.5 * fps}
 					/>
+				</Sequence>
+				<Sequence from={8.1 * fps} durationInFrames={2* fps}>
+					<ClickEffect position={{top: 470, left: 950}}/>
 				</Sequence>
 				<Sequence from={7.5 * fps} durationInFrames={Number(fps)}>
 					<Cursor

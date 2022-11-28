@@ -27,8 +27,7 @@ export const EndScene: React.FC = () => {
 							</div>
 						</div>
 					</div>
-					<div className="end-card-shadow bg-whiteShadow absolute top-0 right-0 rounded-b-6xl">
-					</div>
+					<div className="end-card-shadow bg-whiteShadow absolute top-0 right-0 rounded-b-6xl" />
 				</div>
 				<div className="flex-1 flex flex-col justify-center items-center gap-12">
 					<span className="text-6xl font-bold">{availableOn}</span>

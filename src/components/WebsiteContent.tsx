@@ -13,6 +13,7 @@ import {Cursor} from './Cursor';
 import {ScalingInteractiveText} from './intercativeText/ScalingInteractiveText';
 import {SelectInteractiveText} from './intercativeText/SelectInteractiveText';
 import {ClassicText} from './intercativeText/ClassicText';
+import {ClickEffect} from "./ClickEffect";
 
 export const WebsiteContent: React.FC<{
 	websiteScene: number;
@@ -61,7 +62,7 @@ export const WebsiteContent: React.FC<{
 		if (props.websiteScene === WebsiteSceneEnum.ArticleReading) {
 			return (
 				<>
-					<Sequence from={0} durationInFrames={fps}>
+					<Sequence  durationInFrames={fps}>
 						<Cursor
 							startPosition={{top: 170, left: 470}}
 							endPosition={{top: 170, left: 470}}
@@ -109,7 +110,7 @@ export const WebsiteContent: React.FC<{
 		if (props.websiteScene === WebsiteSceneEnum.WordHighlight) {
 			return (
 				<>
-					<Sequence from={0} durationInFrames={Number(fps)}>
+					<Sequence  durationInFrames={Number(fps)}>
 						<Cursor
 							startPosition={{top: 356, left: 460}}
 							endPosition={{top: 356, left: 460}}
@@ -130,21 +131,27 @@ export const WebsiteContent: React.FC<{
 							animationDuration={1}
 						/>
 					</Sequence>
-					<Sequence from={2.5 * fps} durationInFrames={0.5 * fps}>
+					<Sequence from={2.5 * fps} durationInFrames={0.8 * fps}>
 						<Cursor
 							startPosition={{top: 356, left: 540}}
 							endPosition={{top: 370, left: 555}}
 							animationDuration={0.5 * fps}
 						/>
 					</Sequence>
-					<Sequence from={3 * fps} durationInFrames={0.5 * fps}>
+					<Sequence from={3 * fps} durationInFrames={2* fps}>
+						<ClickEffect position={{top: 370, left: 555}}/>
+					</Sequence>
+					<Sequence from={3.3 * fps} durationInFrames={0.5 * fps}>
 						<Cursor
 							startPosition={{top: 370, left: 555}}
 							endPosition={{top: 495, left: 645}}
 							animationDuration={0.5 * fps}
 						/>
 					</Sequence>
-					<Sequence from={3.5 * fps} durationInFrames={3 * fps}>
+					<Sequence from={4 * fps} durationInFrames={2* fps}>
+						<ClickEffect position={{top: 495, left: 645}}/>
+					</Sequence>
+					<Sequence from={3.8 * fps} durationInFrames={3 * fps}>
 						<Cursor
 							startPosition={{top: 495, left: 645}}
 							endPosition={{top: 495, left: 645}}
@@ -156,7 +163,7 @@ export const WebsiteContent: React.FC<{
 		}
 		return (
 			<>
-				<Sequence from={0} durationInFrames={fps}>
+				<Sequence  durationInFrames={fps}>
 					<Cursor
 						startPosition={{top: 495, left: 645}}
 						endPosition={{top: 495, left: 645}}
@@ -170,12 +177,18 @@ export const WebsiteContent: React.FC<{
 						animationDuration={1.5 * fps}
 					/>
 				</Sequence>
+				<Sequence from={2.6 * fps} durationInFrames={2* fps}>
+					<ClickEffect position={{top: 70, left: 1880}}/>
+				</Sequence>
 				<Sequence from={2.5 * fps} durationInFrames={0.5 * fps}>
 					<Cursor
 						startPosition={{top: 70, left: 1880}}
 						endPosition={{top: 70, left: 1880}}
 						animationDuration={1}
 					/>
+				</Sequence>
+				<Sequence from={3.8 * fps} durationInFrames={2* fps}>
+					<ClickEffect position={{top: 110, left: 1860}}/>
 				</Sequence>
 				<Sequence from={3 * fps} durationInFrames={2* fps}>
 					<Cursor
@@ -184,6 +197,7 @@ export const WebsiteContent: React.FC<{
 						animationDuration={0.5 * fps}
 					/>
 				</Sequence>
+
 			</>
 		);
 	};
