@@ -40,7 +40,7 @@ export const AddingPopup: React.FC<{
 					<span className="font-bold">Google</span>
 					<span>Translate</span>
 				</div>
-				<div className="flex flex-row justify-center bg-primary rounded-b-2xl gap-2 self-center px-6 py-1 text-lg">
+				<div className="flex flex-row justify-center bg-primary rounded-b-2xl gap-2 self-center px-6 py-1 text-lg -mt-1">
 					<span>English</span>
 					<Img className="w-4 h-auto" src={staticFile('icons/swap.svg')} />
 					<span>French</span>
@@ -76,7 +76,7 @@ export const AddingPopup: React.FC<{
 				</div>
 				<div className="flex flex-row items-center justify-center bg-white h-16 w-full rounded-md text-lg">
 					{props.foreignWordFrame <= currentFrame ? (
-						<span>{foreignWord}</span>
+						<span>{nativeWord}</span>
 					) : (
 						<></>
 					)}
