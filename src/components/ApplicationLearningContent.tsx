@@ -23,7 +23,7 @@ export const ApplicationLearningContent: React.FC<{
 
 	const addingPopupTopOffset = `${
 		props.websiteScene === WebsiteSceneEnum.ApplicationAdding
-			? interpolate(currentFrame, [0.5 * fps, fps], [-320, 90], {
+			? interpolate(currentFrame, [1.5 * fps,2 * fps], [-330, 90], {
 					extrapolateRight: 'clamp',
 					extrapolateLeft: 'clamp',
 			  })
@@ -63,10 +63,10 @@ export const ApplicationLearningContent: React.FC<{
 					style={{top: addingPopupTopOffset}}
 				>
 					<div className="w-96">
-						<AddingPopup
-							startWritingFrame={3 * fps}
-							foreignWordFrame={6.3 * fps}
-						/>
+							<AddingPopup
+								startWritingFrame={3 * fps}
+								foreignWordFrame={6.3 * fps}
+							/>
 					</div>
 				</div>
 			);
@@ -109,11 +109,21 @@ export const ApplicationLearningContent: React.FC<{
 		}
 		return (
 			<>
-				<Sequence  durationInFrames={2 * fps}>
+				<Sequence  durationInFrames={0.5 * fps}>
 					<Cursor
 						startPosition={{top: 800, left: 1060}}
 						endPosition={{top: 800, left: 1060}}
 						animationDuration={1}
+					/>
+				</Sequence>
+				<Sequence from={1.2 * fps} durationInFrames={2* fps}>
+					<ClickEffect position={{top: 1000, left: 950}}/>
+				</Sequence>
+				<Sequence from={0.5 * fps} durationInFrames={fps}>
+					<Cursor
+						startPosition={{top: 800, left: 1060}}
+						endPosition={{top: 1000, left: 950}}
+						animationDuration={0.5 * fps}
 					/>
 				</Sequence>
 				<Sequence from={2.7 * fps} durationInFrames={2* fps}>
@@ -121,7 +131,7 @@ export const ApplicationLearningContent: React.FC<{
 				</Sequence>
 				<Sequence from={1.5 * fps} durationInFrames={4 * fps}>
 					<Cursor
-						startPosition={{top: 800, left: 1060}}
+						startPosition={{top: 1000, left: 950}}
 						endPosition={{top: 240, left: 900}}
 						animationDuration={fps}
 					/>
