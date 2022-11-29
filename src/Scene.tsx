@@ -1,3 +1,4 @@
+import {AbsoluteFill} from 'remotion'
 import React from 'react';
 import {Sequence, useVideoConfig} from 'remotion';
 
@@ -23,9 +24,8 @@ export const Scene: React.FC = () => {
 	const phoneSceneDuration = 4 * fps;
 	const endSceneDuration = 4 * fps;
 	return (
-		<>
+		<AbsoluteFill className="bg-darkGrey">
 			<Sequence
-				from={0}
 				durationInFrames={firstTextSceneDuration + transitionTime}
 				name="FirstTextSceneDuration"
 			>
@@ -240,6 +240,6 @@ export const Scene: React.FC = () => {
 					<EndScene />
 				</Transition>
 			</Sequence>
-		</>
+		</AbsoluteFill>
 	);
 };
