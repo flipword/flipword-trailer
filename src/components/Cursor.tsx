@@ -1,5 +1,5 @@
 import React from 'react';
-import {Img, interpolate, staticFile, useCurrentFrame} from 'remotion';
+import {Easing, Img, interpolate, staticFile, useCurrentFrame} from 'remotion';
 
 export interface Coordinate {
 	top: number;
@@ -17,6 +17,7 @@ export const Cursor: React.FC<{
 		[0, props.animationDuration],
 		[props.startPosition.top, props.endPosition.top],
 		{
+			easing: Easing.bezier(.58,1.06,1,1),
 			extrapolateRight: 'clamp',
 		}
 	);
@@ -25,6 +26,7 @@ export const Cursor: React.FC<{
 		[0, props.animationDuration],
 		[props.startPosition.left, props.endPosition.left],
 		{
+			easing: Easing.bezier(.58,1.06,1,1),
 			extrapolateRight: 'clamp',
 		}
 	);

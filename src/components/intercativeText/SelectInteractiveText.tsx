@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+	Easing,
 	Img,
 	interpolate,
 	staticFile,
@@ -16,6 +17,7 @@ export const SelectInteractiveText: React.FC = () => {
 	const selectedDivWidth = `${
 		currentFrame >= fps
 			? interpolate(currentFrame, [fps, 2 * fps], [0, 87], {
+					easing: Easing.bezier(.58,1.06,1,1),
 					extrapolateRight: 'clamp',
 					extrapolateLeft: 'clamp',
 			  })
