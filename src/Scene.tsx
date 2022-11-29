@@ -7,6 +7,7 @@ import {Transition} from './Transition';
 import {WebsiteSceneEnum} from './helpers/WebsiteSceneEnum';
 import {PhoneScene} from './scenes/PhoneScene';
 import {EndScene} from './scenes/EndScene';
+import {WordCardTransition} from "./components/WordCardTransition";
 
 export const Scene: React.FC = () => {
 	const {fps} = useVideoConfig();
@@ -65,6 +66,18 @@ export const Scene: React.FC = () => {
 				<Transition type="in">
 					<WebsiteScene websiteScene={WebsiteSceneEnum.WordHighlight} />
 				</Transition>
+			</Sequence>
+			<Sequence
+				from={
+				firstTextSceneDuration +
+				firstWebsiteSceneDuration +
+				textSceneDuration -
+				transitionTime +
+					4 * fps
+				}
+				durationInFrames={2.7 * fps}
+			>
+				<WordCardTransition />
 			</Sequence>
 			<Sequence
 				from={

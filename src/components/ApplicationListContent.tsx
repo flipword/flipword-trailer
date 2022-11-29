@@ -31,17 +31,6 @@ export const ApplicationListContent: React.FC = () => {
 		},
 	];
 
-	const {fps} = useVideoConfig();
-	const currentFrame = useCurrentFrame();
-	const cartOpacity = interpolate(
-		currentFrame,
-		[0.5 * fps, 1.5 * fps],
-		[0, 1],
-		{
-			extrapolateRight: 'clamp',
-		}
-	);
-
 	return (
 		<div className="flex flex-row justify-center mt-5">
 			<div className="flex flex-col gap-5">
@@ -70,15 +59,6 @@ export const ApplicationListContent: React.FC = () => {
 						nativeWord={wordList[4].nativeWord}
 						foreignWord={wordList[4].foreignWord}
 					/>
-					<div
-						className="opacity-0 word-card-transition"
-						style={{opacity: cartOpacity}}
-					>
-						<WordCard
-							nativeWord={wordList[5].nativeWord}
-							foreignWord={wordList[5].foreignWord}
-						/>
-					</div>
 				</div>
 			</div>
 		</div>
