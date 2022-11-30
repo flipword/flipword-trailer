@@ -16,7 +16,6 @@
     "@remotion/eslint-config": "^3.1.11",
     "@remotion/media-utils": "^3.1.11",
     "@remotion/renderer": "^3.1.11",
-    "@remotion/three": "^3.1.11",
     "@remotion/noise": "^3.1.11",
     "autoprefixer": "^10.4.7",
     "react": "^18.0.0",
