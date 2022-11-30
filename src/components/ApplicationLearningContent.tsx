@@ -65,7 +65,7 @@ export const ApplicationLearningContent: React.FC<{
 					<div className="w-96">
 							<AddingPopup
 								startWritingFrame={3 * fps}
-								foreignWordFrame={6.3 * fps}
+								foreignWordFrame={5.8 * fps}
 							/>
 					</div>
 				</div>
@@ -129,27 +129,27 @@ export const ApplicationLearningContent: React.FC<{
 				<Sequence from={2.7 * fps} durationInFrames={2* fps}>
 					<ClickEffect position={{top: 240, left: 900}}/>
 				</Sequence>
-				<Sequence from={1.5 * fps} durationInFrames={4 * fps}>
+				<Sequence from={1.5 * fps} durationInFrames={3.5 * fps}>
 					<Cursor
 						startPosition={{top: 1000, left: 950}}
 						endPosition={{top: 240, left: 900}}
 						animationDuration={fps}
 					/>
 				</Sequence>
-				<Sequence from={6.2 * fps} durationInFrames={2* fps}>
+				<Sequence from={5.5 * fps} durationInFrames={2* fps}>
 					<ClickEffect position={{top: 300, left: 950}}/>
 				</Sequence>
-				<Sequence from={5.5 * fps} durationInFrames={2 * fps}>
+				<Sequence from={5 * fps} durationInFrames={fps}>
 					<Cursor
 						startPosition={{top: 240, left: 900}}
 						endPosition={{top: 300, left: 950}}
 						animationDuration={0.5 * fps}
 					/>
 				</Sequence>
-				<Sequence from={8.1 * fps} durationInFrames={2* fps}>
+				<Sequence from={6.6 * fps} durationInFrames={2* fps}>
 					<ClickEffect position={{top: 470, left: 950}}/>
 				</Sequence>
-				<Sequence from={7.5 * fps} durationInFrames={Number(fps)}>
+				<Sequence from={6 * fps} durationInFrames={2 * fps}>
 					<Cursor
 						startPosition={{top: 300, left: 950}}
 						endPosition={{top: 470, left: 950}}

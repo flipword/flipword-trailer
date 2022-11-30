@@ -1,5 +1,4 @@
-import React, {createRef, useEffect} from 'react';
-import {AbsoluteFill, Img, staticFile} from 'remotion';
+import React from 'react';
 
 export const ExtensionAddingPopup: React.FC = () => {
 	const foreignLanguageLabel = 'English:';

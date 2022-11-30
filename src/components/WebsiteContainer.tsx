@@ -1,13 +1,21 @@
-import React, {createRef, useEffect} from 'react';
-import {AbsoluteFill, Img, staticFile} from 'remotion';
+import React from 'react';
+import {AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 
 export const WebsiteContainer: React.FC<{
 	url: string;
 	multiTab: boolean;
 	children: React.ReactNode;
 }> = (props) => {
+	const {fps} = useVideoConfig();
+	const currentFrame = useCurrentFrame();
+
+	const marginLeft = `${interpolate(currentFrame, [0, 0.2 * fps], [-300, 0], {
+		extrapolateRight: 'clamp',
+		extrapolateLeft: 'clamp',
+	})}px`
+
 	const tab1 = props.multiTab ? (
-		<div className="rounded-tr-xl w-80">
+		<div className="bg-base rounded-tr-xl w-80 z-10">
 			<div className="w-full h-full flex flex-row py-1.5 px-2 justify-between items-center gap-5">
 				<div className="flex flex-row items-center gap-2">
 					<Img className="w-7 h-auto" src={staticFile('icons/logo.svg')} />
@@ -16,7 +24,7 @@ export const WebsiteContainer: React.FC<{
 			</div>
 		</div>
 	) : (
-		<div className="bg-lightGrey rounded-tr-xl w-80">
+		<div className="bg-lightGrey rounded-tr-xl w-80 z-10">
 			<div className="w-full h-full flex flex-row py-1.5 px-2 justify-between items-center gap-5">
 				<div className="flex flex-row items-center gap-2">
 					<Img className="w-7 h-auto" src={staticFile('icons/logo.svg')} />
@@ -27,7 +35,7 @@ export const WebsiteContainer: React.FC<{
 		</div>
 	);
 	const tab2 = props.multiTab ? (
-		<div className="bg-lightGrey rounded-t-xl w-72">
+		<div className="bg-lightGrey rounded-t-xl w-72" style={{marginLeft}}>
 			<div className="w-full h-full flex flex-row py-1.5 px-2 justify-between items-center gap-5">
 				<div className="flex flex-row items-center gap-2">
 					<Img className="w-7 h-auto" src={staticFile('icons/logo.svg')} />

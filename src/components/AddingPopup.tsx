@@ -21,7 +21,7 @@ export const AddingPopup: React.FC<{
 		0,
 		interpolate(
 			currentFrame,
-			[props.startWritingFrame, props.startWritingFrame + 2 * fps],
+			[props.startWritingFrame, props.startWritingFrame + 1.5 * fps],
 			[0, nativeWord.length],
 			{
 				extrapolateRight: 'clamp',
