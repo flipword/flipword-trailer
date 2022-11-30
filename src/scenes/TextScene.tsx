@@ -1,6 +1,5 @@
 import React from 'react';
 import {AbsoluteFill, random, useCurrentFrame} from 'remotion';
-import { noise3D } from "@remotion/noise";
 
 
 export const TextScene: React.FC<{message: string}> = (props) => {
