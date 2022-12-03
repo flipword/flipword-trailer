@@ -34,7 +34,7 @@ export const WebsiteContent: React.FC<{
 
 	const FirstParagraphDisplay = () => {
 		if (props.websiteScene === WebsiteSceneEnum.ArticleReading) {
-			return <ScalingInteractiveText startAfter={4 * fps} />;
+			return <ScalingInteractiveText startAfter={4.5 * fps} />;
 		}
 		if (props.websiteScene === WebsiteSceneEnum.WordHighlight) {
 			return <SelectInteractiveText />;
@@ -62,42 +62,42 @@ export const WebsiteContent: React.FC<{
 		if (props.websiteScene === WebsiteSceneEnum.ArticleReading) {
 			return (
 				<>
-					<Sequence durationInFrames={fps}>
+					<Sequence durationInFrames={1.5 * fps}>
 						<Cursor
 							startPosition={{top: 170, left: 470}}
 							endPosition={{top: 170, left: 470}}
 							animationDuration={1}
 						/>
 					</Sequence>
-					<Sequence from={fps} durationInFrames={0.7 * fps}>
+					<Sequence from={1.5 * fps} durationInFrames={0.7 * fps}>
 						<Cursor
 							startPosition={{top: 170, left: 470}}
 							endPosition={{top: 240, left: 470}}
 							animationDuration={0.7 * fps}
 						/>
 					</Sequence>
-					<Sequence from={1.7 * fps} durationInFrames={0.7 * fps}>
+					<Sequence from={2.2 * fps} durationInFrames={0.7 * fps}>
 						<Cursor
 							startPosition={{top: 240, left: 470}}
 							endPosition={{top: 335, left: 500}}
 							animationDuration={0.7 * fps}
 						/>
 					</Sequence>
-					<Sequence from={2.4 * fps} durationInFrames={0.8 * fps}>
+					<Sequence from={2.9 * fps} durationInFrames={0.8 * fps}>
 						<Cursor
 							startPosition={{top: 335, left: 500}}
 							endPosition={{top: 335, left: 900}}
 							animationDuration={0.8 * fps}
 						/>
 					</Sequence>
-					<Sequence from={3.2 * fps} durationInFrames={0.8 * fps}>
+					<Sequence from={3.7 * fps} durationInFrames={0.8 * fps}>
 						<Cursor
 							startPosition={{top: 335, left: 900}}
 							endPosition={{top: 365, left: 500}}
 							animationDuration={0.8 * fps}
 						/>
 					</Sequence>
-					<Sequence from={4 * fps} durationInFrames={3 * fps}>
+					<Sequence from={4.5 * fps} durationInFrames={3 * fps}>
 						<Cursor
 							startPosition={{top: 365, left: 500}}
 							endPosition={{top: 365, left: 500}}

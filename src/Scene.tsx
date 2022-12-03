@@ -9,6 +9,7 @@ import {WebsiteSceneEnum} from './helpers/WebsiteSceneEnum';
 import {PhoneScene} from './scenes/PhoneScene';
 import {EndScene} from './scenes/EndScene';
 import {WordCardTransition} from "./components/WordCardTransition";
+import {ZoomInComputerScene} from "./scenes/ZoomInComputerScence";
 
 export const Scene: React.FC = () => {
 	const {fps} = useVideoConfig();
@@ -40,7 +41,7 @@ export const Scene: React.FC = () => {
 				name="firstWebsiteSceneDuration"
 			>
 				<Transition type="in">
-					<WebsiteScene websiteScene={WebsiteSceneEnum.ArticleReading} />
+					<ZoomInComputerScene />
 				</Transition>
 			</Sequence>
 			<Sequence
