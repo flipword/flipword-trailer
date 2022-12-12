@@ -42,7 +42,7 @@ export const ZoomInComputerScene: React.FC = (props) => {
                      top: offsetTop,
                 }}
              >
-                <WebsiteContainer url='https://flipword.io' multiTab={false}>
+                <WebsiteContainer url='https://flipword.io' multiTab={false} tabTransition={false}>
                     <WebsiteContent websiteScene={WebsiteSceneEnum.ArticleReading} />
                 </WebsiteContainer>
              </div>

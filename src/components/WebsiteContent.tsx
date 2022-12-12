@@ -1,11 +1,10 @@
-import React, {createRef, useEffect, useRef, useState} from 'react';
+import React from 'react';
 import {
 	Img,
 	Sequence,
 	staticFile,
 	useCurrentFrame,
 	useVideoConfig,
-	interpolate,
 } from 'remotion';
 import {ExtensionPopup} from './ExtensionPopup';
 import {WebsiteSceneEnum} from '../helpers/WebsiteSceneEnum';
@@ -45,7 +44,7 @@ export const WebsiteContent: React.FC<{
 	const ExtensionPopupDisplay = () => {
 		if (
 			props.websiteScene === WebsiteSceneEnum.ExtensionClick &&
-			currentFrame >= 2.7 * fps
+			currentFrame >= 1.7 * fps
 		) {
 			return (
 				<div
@@ -163,34 +162,34 @@ export const WebsiteContent: React.FC<{
 		}
 		return (
 			<>
-				<Sequence  durationInFrames={fps}>
+				<Sequence durationInFrames={fps}>
 					<Cursor
-						startPosition={{top: 495, left: 645}}
-						endPosition={{top: 495, left: 645}}
+						startPosition={{top: 300, left: 1400}}
+						endPosition={{top: 300, left: 1400}}
 						animationDuration={1}
 					/>
 				</Sequence>
-				<Sequence from={fps} durationInFrames={1.5 * fps}>
+				<Sequence from={fps} durationInFrames={0.5 * fps}>
 					<Cursor
-						startPosition={{top: 495, left: 645}}
+						startPosition={{top: 300, left: 1400 }}
 						endPosition={{top: 70, left: 1880}}
-						animationDuration={1.5 * fps}
+						animationDuration={0.5 * fps}
 					/>
 				</Sequence>
-				<Sequence from={2.6 * fps} durationInFrames={2* fps}>
+				<Sequence from={1.6 * fps} durationInFrames={2* fps}>
 					<ClickEffect position={{top: 70, left: 1880}}/>
 				</Sequence>
-				<Sequence from={2.5 * fps} durationInFrames={0.5 * fps}>
+				<Sequence from={1.5 * fps} durationInFrames={0.5 * fps}>
 					<Cursor
 						startPosition={{top: 70, left: 1880}}
 						endPosition={{top: 70, left: 1880}}
 						animationDuration={1}
 					/>
 				</Sequence>
-				<Sequence from={3.8 * fps} durationInFrames={2* fps}>
+				<Sequence from={2.8 * fps} durationInFrames={2* fps}>
 					<ClickEffect position={{top: 110, left: 1860}}/>
 				</Sequence>
-				<Sequence from={3 * fps} durationInFrames={2* fps}>
+				<Sequence from={2 * fps} durationInFrames={2* fps}>
 					<Cursor
 						startPosition={{top: 70, left: 1880}}
 						endPosition={{top: 110, left: 1860}}

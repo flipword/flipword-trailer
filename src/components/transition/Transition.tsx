@@ -26,13 +26,13 @@ export const Transition: React.FC<{
 	const percent = interpolate(
 		progress,
 		[0, 1],
-		type === 'in' ? [100, 0] : [0, 100]
+		type === 'in' ? [-100, 0] : [0, -100]
 	);
 
 	return (
 		<AbsoluteFill
 			style={{
-				transform: `translateX(${type === 'in' ? percent : 0 - percent}%)`,
+				transform: `translateY(${type === 'in' ? percent : 0 - percent}%)`,
 			}}
 		>
 			{children}

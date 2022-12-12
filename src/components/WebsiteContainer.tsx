@@ -4,15 +4,15 @@ import {AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame, useVideoCon
 export const WebsiteContainer: React.FC<{
 	url: string;
 	multiTab: boolean;
+	tabTransition: boolean;
 	children: React.ReactNode;
 }> = (props) => {
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
 
-	const marginLeft = `${interpolate(currentFrame, [0, 0.2 * fps], [-300, 0], {
-		extrapolateRight: 'clamp',
-		extrapolateLeft: 'clamp',
-	})}px`
+	const marginLeft = props.tabTransition ?
+		`${interpolate(currentFrame, [0, 0.2 * fps], [-300, 0], {extrapolateRight: 'clamp', extrapolateLeft: 'clamp',})}px` :
+		'0'
 
 	const tab1 = props.multiTab ? (
 		<div className="bg-base rounded-tr-xl w-80 z-10">

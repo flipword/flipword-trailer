@@ -79,8 +79,8 @@ export const ApplicationLearningContent: React.FC<{
 				<>
 					<Sequence  durationInFrames={0.5 * fps}>
 						<Cursor
-							startPosition={{top: 110, left: 1860}}
-							endPosition={{top: 110, left: 1860}}
+							startPosition={{top: 1030, left: 800}}
+							endPosition={{top: 1030, left: 800}}
 							animationDuration={1}
 						/>
 					</Sequence>
@@ -89,7 +89,7 @@ export const ApplicationLearningContent: React.FC<{
 					</Sequence>
 					<Sequence from={0.5 * fps} durationInFrames={2 * fps}>
 						<Cursor
-							startPosition={{top: 110, left: 1860}}
+							startPosition={{top: 1030, left: 800}}
 							endPosition={{top: 800, left: 950}}
 							animationDuration={fps}
 						/>

@@ -17,11 +17,10 @@ export const WebsiteScene: React.FC<{
 			props.websiteScene === WebsiteSceneEnum.ApplicationWordList ||
 			props.websiteScene === WebsiteSceneEnum.ApplicationLearning
 		) {
+			setMultiTab(true);
 			setUrl('https://app.flipword.io');
 		}
-		if (props.websiteScene === WebsiteSceneEnum.ApplicationLearning) {
-			setMultiTab(true);
-		} else {
+		else {
 			setUrl('https://flipword.io');
 		}
 	}, [props.websiteScene]);
@@ -30,7 +29,7 @@ export const WebsiteScene: React.FC<{
 		props.websiteScene === WebsiteSceneEnum.ApplicationWordList ||
 		props.websiteScene === WebsiteSceneEnum.ApplicationLearning ||
 		props.websiteScene === WebsiteSceneEnum.ApplicationAdding ? (
-			<ApplicationLayout>
+			<ApplicationLayout websiteScene={props.websiteScene}>
 				{props.websiteScene === WebsiteSceneEnum.ApplicationWordList ? (
 					<ApplicationListContent />
 				) : (
@@ -47,7 +46,10 @@ export const WebsiteScene: React.FC<{
 			<WebsiteContent websiteScene={props.websiteScene} />
 		);
 	return (
-		<WebsiteContainer url={url} multiTab={multiTab}>
+		<WebsiteContainer
+			url={url}
+			multiTab={multiTab}
+			tabTransition={props.websiteScene === WebsiteSceneEnum.ApplicationWordList}>
 			{websiteContent}
 		</WebsiteContainer>
 	);

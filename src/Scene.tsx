@@ -4,23 +4,22 @@ import {Sequence, useVideoConfig} from 'remotion';
 
 import {TextScene} from './scenes/TextScene';
 import {WebsiteScene} from './scenes/WebsiteScene';
-import {Transition} from './Transition';
+import {Transition} from './components/transition/Transition';
 import {WebsiteSceneEnum} from './helpers/WebsiteSceneEnum';
 import {PhoneScene} from './scenes/PhoneScene';
 import {EndScene} from './scenes/EndScene';
-import {WordCardTransition} from "./components/WordCardTransition";
 import {ZoomInComputerScene} from "./scenes/ZoomInComputerScence";
 
 export const Scene: React.FC = () => {
 	const {fps} = useVideoConfig();
-	const transitionTime = 15;
+	const transitionTime = 8;
 	const firstTextSceneDuration = 2 * fps;
 	const textSceneDuration = 3 * fps;
 	const longTextSceneDuration = 4 * fps;
 	const firstWebsiteSceneDuration = 6 * fps;
 	const secondWebsiteSceneDuration = 4.5 * fps;
-	const applicationListDuration = 2 * fps;
-	const thirdWebsiteSceneDuration = 4 * fps;
+	const applicationListDuration = 2.1 * fps;
+	const thirdWebsiteSceneDuration = 3 * fps;
 	const fourthWebsiteSceneDuration = 3.5 * fps;
 	const applicationAddingDuration = 7.5 * fps;
 	const phoneSceneDuration = 4 * fps;
@@ -65,21 +64,7 @@ export const Scene: React.FC = () => {
 				durationInFrames={secondWebsiteSceneDuration + transitionTime}
 				name="FirstScene"
 			>
-				<Transition type="in">
-					<WebsiteScene websiteScene={WebsiteSceneEnum.WordHighlight} />
-				</Transition>
-			</Sequence>
-			<Sequence
-				from={
-				firstTextSceneDuration +
-				firstWebsiteSceneDuration +
-				textSceneDuration -
-				transitionTime +
-					4 * fps
-				}
-				durationInFrames={2.7 * fps}
-			>
-				<WordCardTransition />
+				<WebsiteScene websiteScene={WebsiteSceneEnum.WordHighlight} />
 			</Sequence>
 			<Sequence
 				from={
@@ -87,22 +72,6 @@ export const Scene: React.FC = () => {
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration -
-					transitionTime
-				}
-				durationInFrames={applicationListDuration + transitionTime}
-				name="FirstScene"
-			>
-				<Transition type="in">
-					<WebsiteScene websiteScene={WebsiteSceneEnum.ApplicationWordList} />
-				</Transition>
-			</Sequence>
-			<Sequence
-				from={
-					firstTextSceneDuration +
-					firstWebsiteSceneDuration +
-					textSceneDuration +
-					secondWebsiteSceneDuration +
-					applicationListDuration -
 					transitionTime
 				}
 				durationInFrames={longTextSceneDuration + transitionTime}
@@ -118,7 +87,6 @@ export const Scene: React.FC = () => {
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration +
-					applicationListDuration +
 					longTextSceneDuration -
 					transitionTime
 				}
@@ -128,6 +96,21 @@ export const Scene: React.FC = () => {
 				<Transition type="in">
 					<WebsiteScene websiteScene={WebsiteSceneEnum.ExtensionClick} />
 				</Transition>
+			</Sequence>
+			<Sequence
+				from={
+					firstTextSceneDuration +
+					firstWebsiteSceneDuration +
+					textSceneDuration +
+					secondWebsiteSceneDuration +
+					thirdWebsiteSceneDuration +
+					longTextSceneDuration -
+					transitionTime
+				}
+				durationInFrames={applicationListDuration + transitionTime}
+				name="FirstScene"
+			>
+				<WebsiteScene websiteScene={WebsiteSceneEnum.ApplicationWordList} />
 			</Sequence>
 			<Sequence
 				from={
