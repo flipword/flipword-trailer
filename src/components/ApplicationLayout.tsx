@@ -1,6 +1,5 @@
-import React, {createRef, useEffect, useRef, useState} from 'react';
-import {Img, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
-import {ExtensionAddingPopup} from './ExtensionAddingPopup';
+import React from 'react';
+import {Img, staticFile} from 'remotion';
 import {DiamondButton} from './button/DiamondButton';
 import {WebsiteSceneEnum} from "../helpers/WebsiteSceneEnum";
 
@@ -10,8 +9,12 @@ export const ApplicationLayout: React.FC<{
 }> = (
 	props
 ) => {
-	const homeIcon = staticFile('icons/home.svg');
-	const listIcon = staticFile('icons/list.svg');
+	const homeIcon = props.websiteScene === WebsiteSceneEnum.ApplicationAdding || props.websiteScene === WebsiteSceneEnum.ApplicationLearning
+		? staticFile('icons/home_selected.svg')
+		: staticFile('icons/home.svg');
+	const listIcon = props.websiteScene === WebsiteSceneEnum.ApplicationWordList
+		? staticFile('icons/list_selected.svg')
+		: staticFile('icons/list.svg');
 	const settingsIcon = staticFile('icons/settings.svg');
 	const identityIcon = staticFile('icons/identity.svg');
 

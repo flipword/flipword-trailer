@@ -15,7 +15,8 @@ export const WebsiteScene: React.FC<{
 	useEffect(() => {
 		if (
 			props.websiteScene === WebsiteSceneEnum.ApplicationWordList ||
-			props.websiteScene === WebsiteSceneEnum.ApplicationLearning
+			props.websiteScene === WebsiteSceneEnum.ApplicationLearning ||
+			props.websiteScene === WebsiteSceneEnum.ApplicationAdding
 		) {
 			setMultiTab(true);
 			setUrl('https://app.flipword.io');
