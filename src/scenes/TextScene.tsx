@@ -1,8 +1,20 @@
 import React from 'react';
-import {AbsoluteFill} from 'remotion';
+import {AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 
 
 export const TextScene: React.FC<{message: string}> = (props) => {
+	const {fps} = useVideoConfig();
+	const currentFrame = useCurrentFrame();
+	const scale = interpolate(
+		currentFrame,
+		[0.2 * fps, fps],
+		[0.8, 1],
+		{
+			easing: Easing.bezier(.64,.02,.35,1.58),
+			extrapolateRight: 'clamp',
+			extrapolateLeft: 'clamp',
+		}
+	);
 	return (
 		<AbsoluteFill className="bg-darkGrey z-50">
 			<div className="w-full h-full flex flex-col relative">
@@ -11,6 +23,7 @@ export const TextScene: React.FC<{message: string}> = (props) => {
 				<div className="absolute flex flex-row justify-center items-center w-full h-full px-48">
 					<span
 						className="text-7xl leading-tight text-center"
+						style={{transform: `scale(${scale})`}}
 						dangerouslySetInnerHTML={{__html: props.message}}
 					/>
 				</div>
