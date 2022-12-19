@@ -130,7 +130,7 @@ export const WebsiteContent: React.FC<{
 							animationDuration={1}
 						/>
 					</Sequence>
-					<Sequence from={2.5 * fps} durationInFrames={0.8 * fps}>
+					<Sequence from={2.5 * fps} durationInFrames={2.8 * fps}>
 						<Cursor
 							startPosition={{top: 356, left: 540}}
 							endPosition={{top: 370, left: 555}}
@@ -140,17 +140,17 @@ export const WebsiteContent: React.FC<{
 					<Sequence from={3 * fps} durationInFrames={2* fps}>
 						<ClickEffect position={{top: 370, left: 555}}/>
 					</Sequence>
-					<Sequence from={3.3 * fps} durationInFrames={0.5 * fps}>
+					<Sequence from={5.3 * fps} durationInFrames={0.5 * fps}>
 						<Cursor
 							startPosition={{top: 370, left: 555}}
 							endPosition={{top: 495, left: 645}}
 							animationDuration={0.5 * fps}
 						/>
 					</Sequence>
-					<Sequence from={4 * fps} durationInFrames={2* fps}>
+					<Sequence from={6 * fps} durationInFrames={2* fps}>
 						<ClickEffect position={{top: 495, left: 645}}/>
 					</Sequence>
-					<Sequence from={3.8 * fps} durationInFrames={3 * fps}>
+					<Sequence from={5.8 * fps} durationInFrames={3 * fps}>
 						<Cursor
 							startPosition={{top: 495, left: 645}}
 							endPosition={{top: 495, left: 645}}

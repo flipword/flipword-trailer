@@ -48,8 +48,7 @@ export const WebsiteContainer: React.FC<{
 		<></>
 	);
 	return (
-		<AbsoluteFill className="bg-darkGrey z-0">
-			<div className="w-full h-full flex flex-col relative">
+			<div className="w-full h-full flex flex-col bg-darkGrey z-0 relative">
 				{/* Header */}
 				<div className="w-full h-24 flex flex-col drop-shadow-md z-50">
 					<div className="w-full flex flex-1 flex-row">
@@ -93,6 +92,5 @@ export const WebsiteContainer: React.FC<{
 				{/* Content */}
 				{props.children}
 			</div>
-		</AbsoluteFill>
 	);
 };

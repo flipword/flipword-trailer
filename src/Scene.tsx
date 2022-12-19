@@ -9,6 +9,7 @@ import {WebsiteSceneEnum} from './helpers/WebsiteSceneEnum';
 import {PhoneScene} from './scenes/PhoneScene';
 import {EndScene} from './scenes/EndScene';
 import {ZoomInComputerScene} from "./scenes/ZoomInComputerScence";
+import {LittleTextScene} from "./scenes/LittleTextScene";
 
 export const Scene: React.FC = () => {
 	const {fps} = useVideoConfig();
@@ -17,7 +18,7 @@ export const Scene: React.FC = () => {
 	const textSceneDuration = 3 * fps;
 	const longTextSceneDuration = 4 * fps;
 	const firstWebsiteSceneDuration = 6 * fps;
-	const secondWebsiteSceneDuration = 4.5 * fps;
+	const secondWebsiteSceneDuration = 7.5 * fps;
 	const applicationListDuration = 2.1 * fps;
 	const thirdWebsiteSceneDuration = 3 * fps;
 	const fourthWebsiteSceneDuration = 3.5 * fps;
@@ -64,7 +65,16 @@ export const Scene: React.FC = () => {
 				durationInFrames={secondWebsiteSceneDuration + transitionTime}
 				name="FirstScene"
 			>
-				<WebsiteScene websiteScene={WebsiteSceneEnum.WordHighlight} />
+				<div className="w-full h-full flex flex-row">
+					<LittleTextScene
+						startFrame={3.5 * fps}
+						firstMessage="Grace à l’<strong>extension navigateur</strong> ajouter des mots à votre liste"
+						secondMessage="<strong>Révisez</strong> les ensuite au sein de l’application"
+					/>
+					<div className="flex-auto">
+						 <WebsiteScene websiteScene={WebsiteSceneEnum.WordHighlight} />
+					</div>
+				</div>
 			</Sequence>
 			<Sequence
 				from={
@@ -74,28 +84,10 @@ export const Scene: React.FC = () => {
 					secondWebsiteSceneDuration -
 					transitionTime
 				}
-				durationInFrames={longTextSceneDuration + transitionTime}
-				name="FirstScene"
-			>
-				<Transition type="in">
-					<TextScene message="Grace à l’extension navigateur, ajouter des mots à votre liste. <strong>Révisez</strong> les ensuite au sein de l’application" />
-				</Transition>
-			</Sequence>
-			<Sequence
-				from={
-					firstTextSceneDuration +
-					firstWebsiteSceneDuration +
-					textSceneDuration +
-					secondWebsiteSceneDuration +
-					longTextSceneDuration -
-					transitionTime
-				}
 				durationInFrames={thirdWebsiteSceneDuration + transitionTime}
 				name="FirstScene"
 			>
-				<Transition type="in">
-					<WebsiteScene websiteScene={WebsiteSceneEnum.ExtensionClick} />
-				</Transition>
+				 <WebsiteScene websiteScene={WebsiteSceneEnum.ExtensionClick} />
 			</Sequence>
 			<Sequence
 				from={
@@ -103,8 +95,7 @@ export const Scene: React.FC = () => {
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration +
-					thirdWebsiteSceneDuration +
-					longTextSceneDuration -
+					thirdWebsiteSceneDuration -
 					transitionTime
 				}
 				durationInFrames={applicationListDuration + transitionTime}
@@ -119,7 +110,6 @@ export const Scene: React.FC = () => {
 					textSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
-					longTextSceneDuration +
 					thirdWebsiteSceneDuration
 				}
 				durationInFrames={fourthWebsiteSceneDuration + transitionTime}
@@ -134,7 +124,6 @@ export const Scene: React.FC = () => {
 					textSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
-					longTextSceneDuration +
 					thirdWebsiteSceneDuration +
 					fourthWebsiteSceneDuration
 				}
@@ -152,7 +141,6 @@ export const Scene: React.FC = () => {
 					textSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
-					longTextSceneDuration +
 					thirdWebsiteSceneDuration +
 					fourthWebsiteSceneDuration +
 					textSceneDuration
@@ -169,7 +157,6 @@ export const Scene: React.FC = () => {
 					textSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
-					longTextSceneDuration +
 					thirdWebsiteSceneDuration +
 					fourthWebsiteSceneDuration +
 					textSceneDuration +
@@ -189,7 +176,6 @@ export const Scene: React.FC = () => {
 					textSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
-					longTextSceneDuration +
 					thirdWebsiteSceneDuration +
 					fourthWebsiteSceneDuration +
 					textSceneDuration +
@@ -210,7 +196,6 @@ export const Scene: React.FC = () => {
 					textSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
-					longTextSceneDuration +
 					thirdWebsiteSceneDuration +
 					fourthWebsiteSceneDuration +
 					textSceneDuration +
