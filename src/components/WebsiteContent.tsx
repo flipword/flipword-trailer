@@ -203,9 +203,9 @@ export const WebsiteContent: React.FC<{
 
 	return (
 		<>
-			<div className="w-full flex-1 overflow-auto">
+			<div className="web-content-container w-full flex-1 overflow-auto">
 				<div className="bg-darkGrey flex flex-row justify-center relative">
-					<div className="w-7/12 bg-white py-6 px-12">
+					<div className="web-content-size bg-white py-6 px-12">
 						<h1 className="text-4xl">{title}</h1>
 						{/* Part 1 */}
 						<div className="px-5 mt-10 flex flex-row justify-start">
