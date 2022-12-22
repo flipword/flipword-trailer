@@ -47,23 +47,27 @@ export const LittleTextScene: React.FC<{
     const isDisplayedText = (firstTextStartFrame - 0.1 * fps <= currentFrame) || (secondTextStartFrame <= currentFrame)
     const displayedText = secondTextStartFrame >= currentFrame ? props.firstMessage : props.secondMessage
     return (
-        <div
-            className="h-full flex flex-col relative bg-darkGrey"
-            style={{width}}
-        >
-            <div className="flex-auto w-full" />
-            <div className="absolute flex flex-row justify-center items-center w-full h-full px-8">
-					<span
-                        dangerouslySetInnerHTML={{__html: displayedText}}
-                        className="text-7xl leading-tight text-center"
-                        style={{
-                            transform: `scale(${scale})`,
-                            visibility: `${isDisplayedText ? 'visible' : 'hidden'}`,
-                            opacity: textOpacity
-                        }}
-                    />
+        <div className="h-full flex flex-row z-50" style={{width}}>
+            <div className="flex flex-auto relative flex-col bg-darkGrey px-2">
+                <div className="flex-auto w-full" />
+                <div className="w-full h-12 bg-primary bottom-text-radius filter blur-sm" />
+                <div className="absolute flex flex-row justify-center items-center w-full h-full">
+                        <span
+                            dangerouslySetInnerHTML={{__html: displayedText}}
+                            className="text-7xl leading-tight text-center"
+                            style={{
+                                transform: `scale(${scale})`,
+                                visibility: `${isDisplayedText ? 'visible' : 'hidden'}`,
+                                opacity: textOpacity
+                            }}
+                        />
+                </div>
+                {/*<div className="w-16 h-16 bg-primary absolute rounded-xl filter blur-sm transform rotate-45" style={{top: '100px', left: '100px'}} />*/}
+                {/*<div className="w-16 h-16 bg-transparent border-4 border-primary absolute rounded-xl filter blur-sm transform rotate-45" style={{top: '140px', left: '120px'}} />*/}
+                {/*<div className="w-16 h-16 bg-transparent border-4 border-primary absolute rounded-xl filter blur-sm transform rotate-25" style={{top: '450px', left: '465px'}} />*/}
+                {/*<div className="w-16 h-16 bg-primary absolute rounded-xl filter blur-sm transform -rotate-25" style={{top: '850px', left: '100px'}} />*/}
             </div>
-
+            <div className="w-2 h-full bg-lightGrey" />
         </div>
     );
 };
