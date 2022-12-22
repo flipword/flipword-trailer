@@ -18,7 +18,7 @@ export const Scene: React.FC = () => {
 	const textSceneDuration = 3 * fps;
 	const longTextSceneDuration = 4 * fps;
 	const firstWebsiteSceneDuration = 6 * fps;
-	const secondWebsiteSceneDuration = 7.5 * fps;
+	const secondWebsiteSceneDuration = 12 * fps;
 	const applicationListDuration = 2.1 * fps;
 	const thirdWebsiteSceneDuration = 3 * fps;
 	const fourthWebsiteSceneDuration = 3.5 * fps;
@@ -84,20 +84,6 @@ export const Scene: React.FC = () => {
 					secondWebsiteSceneDuration -
 					transitionTime
 				}
-				durationInFrames={thirdWebsiteSceneDuration + transitionTime}
-				name="FirstScene"
-			>
-				 <WebsiteScene websiteScene={WebsiteSceneEnum.ExtensionClick} />
-			</Sequence>
-			<Sequence
-				from={
-					firstTextSceneDuration +
-					firstWebsiteSceneDuration +
-					textSceneDuration +
-					secondWebsiteSceneDuration +
-					thirdWebsiteSceneDuration -
-					transitionTime
-				}
 				durationInFrames={applicationListDuration + transitionTime}
 				name="FirstScene"
 			>
@@ -109,8 +95,7 @@ export const Scene: React.FC = () => {
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration +
-					applicationListDuration +
-					thirdWebsiteSceneDuration
+					applicationListDuration
 				}
 				durationInFrames={fourthWebsiteSceneDuration + transitionTime}
 				name="FirstScene"
@@ -124,7 +109,6 @@ export const Scene: React.FC = () => {
 					textSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
-					thirdWebsiteSceneDuration +
 					fourthWebsiteSceneDuration
 				}
 				durationInFrames={textSceneDuration + transitionTime}
@@ -141,7 +125,6 @@ export const Scene: React.FC = () => {
 					textSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
-					thirdWebsiteSceneDuration +
 					fourthWebsiteSceneDuration +
 					textSceneDuration
 				}
@@ -157,7 +140,6 @@ export const Scene: React.FC = () => {
 					textSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
-					thirdWebsiteSceneDuration +
 					fourthWebsiteSceneDuration +
 					textSceneDuration +
 					applicationAddingDuration
@@ -176,7 +158,6 @@ export const Scene: React.FC = () => {
 					textSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
-					thirdWebsiteSceneDuration +
 					fourthWebsiteSceneDuration +
 					textSceneDuration +
 					applicationAddingDuration +
@@ -196,7 +177,6 @@ export const Scene: React.FC = () => {
 					textSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
-					thirdWebsiteSceneDuration +
 					fourthWebsiteSceneDuration +
 					textSceneDuration +
 					applicationAddingDuration +

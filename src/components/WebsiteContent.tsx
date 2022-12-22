@@ -43,13 +43,13 @@ export const WebsiteContent: React.FC<{
 
 	const ExtensionPopupDisplay = () => {
 		if (
-			props.websiteScene === WebsiteSceneEnum.ExtensionClick &&
-			currentFrame >= 1.7 * fps
+			props.websiteScene === WebsiteSceneEnum.WordHighlight &&
+			currentFrame >= 5 * fps
 		) {
 			return (
 				<div
-					className="z-40 absolute w-60 filter drop-shadow-md extension-popup-position"
-					style={{top: '96px', left: '1678px'}}
+					className="z-50 absolute w-60 filter drop-shadow-md extension-popup-position"
+					style={{top: '96px', left: '1367px'}}
 				>
 					<ExtensionPopup />
 				</div>
@@ -150,55 +150,43 @@ export const WebsiteContent: React.FC<{
 					<Sequence from={6 * fps} durationInFrames={2* fps}>
 						<ClickEffect position={{top: 495, left: 645}}/>
 					</Sequence>
-					<Sequence from={5.8 * fps} durationInFrames={3 * fps}>
+					<Sequence from={5.8 * fps} durationInFrames={1.2 * fps}>
 						<Cursor
 							startPosition={{top: 495, left: 645}}
 							endPosition={{top: 495, left: 645}}
 							animationDuration={1}
 						/>
 					</Sequence>
+					<Sequence from={7 * fps} durationInFrames={0.5 * fps}>
+						<Cursor
+							startPosition={{top: 495, left: 645 }}
+							endPosition={{top: 65, left: 1580}}
+							animationDuration={0.5 * fps}
+						/>
+					</Sequence>
+					<Sequence from={8.6 * fps} durationInFrames={2* fps}>
+						<ClickEffect position={{top: 70, left: 1880}}/>
+					</Sequence>
+					<Sequence from={8.5 * fps} durationInFrames={0.5 * fps}>
+						<Cursor
+							startPosition={{top: 70, left: 1880}}
+							endPosition={{top: 70, left: 1880}}
+							animationDuration={1}
+						/>
+					</Sequence>
+					<Sequence from={9.8 * fps} durationInFrames={2* fps}>
+						<ClickEffect position={{top: 110, left: 1860}}/>
+					</Sequence>
+					<Sequence from={9 * fps} durationInFrames={2* fps}>
+						<Cursor
+							startPosition={{top: 70, left: 1880}}
+							endPosition={{top: 110, left: 1860}}
+							animationDuration={0.5 * fps}
+						/>
+					</Sequence>
 				</>
 			);
 		}
-		return (
-			<>
-				<Sequence durationInFrames={fps}>
-					<Cursor
-						startPosition={{top: 300, left: 1400}}
-						endPosition={{top: 300, left: 1400}}
-						animationDuration={1}
-					/>
-				</Sequence>
-				<Sequence from={fps} durationInFrames={0.5 * fps}>
-					<Cursor
-						startPosition={{top: 300, left: 1400 }}
-						endPosition={{top: 70, left: 1880}}
-						animationDuration={0.5 * fps}
-					/>
-				</Sequence>
-				<Sequence from={1.6 * fps} durationInFrames={2* fps}>
-					<ClickEffect position={{top: 70, left: 1880}}/>
-				</Sequence>
-				<Sequence from={1.5 * fps} durationInFrames={0.5 * fps}>
-					<Cursor
-						startPosition={{top: 70, left: 1880}}
-						endPosition={{top: 70, left: 1880}}
-						animationDuration={1}
-					/>
-				</Sequence>
-				<Sequence from={2.8 * fps} durationInFrames={2* fps}>
-					<ClickEffect position={{top: 110, left: 1860}}/>
-				</Sequence>
-				<Sequence from={2 * fps} durationInFrames={2* fps}>
-					<Cursor
-						startPosition={{top: 70, left: 1880}}
-						endPosition={{top: 110, left: 1860}}
-						animationDuration={0.5 * fps}
-					/>
-				</Sequence>
-
-			</>
-		);
 	};
 
 	return (
