@@ -10,7 +10,7 @@ export const LittleTextScene: React.FC<{
     const {fps} = useVideoConfig();
     const currentFrame = useCurrentFrame();
     const firstTextStartFrame = props.startFrame + 0.5 * fps
-    const firstTextEndFrame = props.startFrame + 2 * fps
+    const firstTextEndFrame = props.startFrame + 4.5 * fps
     const secondTextStartFrame = firstTextEndFrame + 0.2 * fps
     const scale = interpolate(
         currentFrame,
@@ -25,7 +25,7 @@ export const LittleTextScene: React.FC<{
     const width = `${interpolate(
         currentFrame,
         [props.startFrame, firstTextStartFrame],
-        [0, 1000],
+        [0, 550],
         {
             easing: Easing.bezier(.40,1,1,1),
             extrapolateRight: 'clamp',
@@ -46,15 +46,17 @@ export const LittleTextScene: React.FC<{
 
     const isDisplayedText = (firstTextStartFrame - 0.1 * fps <= currentFrame) || (secondTextStartFrame <= currentFrame)
     const displayedText = secondTextStartFrame >= currentFrame ? props.firstMessage : props.secondMessage
-    return (
-        <div className="h-full flex flex-row z-50" style={{width}}>
+
+    return props.startFrame >= currentFrame ?
+        (<></>) :
+        (<div className="h-full flex flex-row z-50" style={{width}}>
             <div className="flex flex-auto relative flex-col bg-darkGrey px-2">
                 <div className="flex-auto w-full" />
                 <div className="w-full h-12 bg-primary bottom-text-radius filter blur-sm" />
                 <div className="absolute flex flex-row justify-center items-center w-full h-full">
                         <span
                             dangerouslySetInnerHTML={{__html: displayedText}}
-                            className="text-7xl leading-tight text-center"
+                            className="text-7xl leading-tight text-center mr-5"
                             style={{
                                 transform: `scale(${scale})`,
                                 visibility: `${isDisplayedText ? 'visible' : 'hidden'}`,

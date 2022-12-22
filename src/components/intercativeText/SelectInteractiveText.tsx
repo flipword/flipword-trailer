@@ -13,7 +13,7 @@ export const SelectInteractiveText: React.FC = () => {
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
 	const isLogoDisplayed = currentFrame >= 2.3 * fps && currentFrame <= 4 * fps;
-	const isPopupDisplayed = currentFrame >= 3.2 * fps && currentFrame <= 6.1 * fps;
+	const isPopupDisplayed = currentFrame >= 3 * fps && currentFrame <= 8 * fps;
 	const selectedDivWidth = `${
 		currentFrame >= fps
 			? interpolate(currentFrame, [fps, 2 * fps], [0, 87], {

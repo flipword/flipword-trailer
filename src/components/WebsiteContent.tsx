@@ -44,12 +44,12 @@ export const WebsiteContent: React.FC<{
 	const ExtensionPopupDisplay = () => {
 		if (
 			props.websiteScene === WebsiteSceneEnum.WordHighlight &&
-			currentFrame >= 5 * fps
+			currentFrame >= 10.3 * fps
 		) {
 			return (
 				<div
-					className="z-50 absolute w-60 filter drop-shadow-md extension-popup-position"
-					style={{top: '96px', left: '1367px'}}
+					className="z-40 absolute w-60 filter drop-shadow-md extension-popup-position"
+					style={{top: '96px', left: '1128px'}}
 				>
 					<ExtensionPopup />
 				</div>
@@ -109,80 +109,69 @@ export const WebsiteContent: React.FC<{
 		if (props.websiteScene === WebsiteSceneEnum.WordHighlight) {
 			return (
 				<>
-					<Sequence  durationInFrames={Number(fps)}>
-						<Cursor
-							startPosition={{top: 356, left: 460}}
-							endPosition={{top: 356, left: 460}}
+					{/*Start highlight text*/}
+					<Sequence durationInFrames={Number(fps)}>
+						  <Cursor
+							startPosition={{top: 356, left: 475}}
+							endPosition={{top: 356, left: 475 }}
 							animationDuration={1}
 						/>
 					</Sequence>
-					<Sequence from={Number(fps)} durationInFrames={Number(fps)}>
+					{/*End highlight text*/}
+					<Sequence from={Number(fps)} durationInFrames={1.2 * fps}>
 						<Cursor
-							startPosition={{top: 356, left: 460}}
-							endPosition={{top: 356, left: 540}}
+							startPosition={{top: 356, left: 475}}
+							endPosition={{top: 356, left: 555}}
 							animationDuration={fps}
 						/>
 					</Sequence>
-					<Sequence from={2 * fps} durationInFrames={0.5 * fps}>
+					{/*Go to icon button to open popup*/}
+					<Sequence from={2.2 * fps} durationInFrames={4.3 * fps}>
 						<Cursor
-							startPosition={{top: 356, left: 540}}
-							endPosition={{top: 356, left: 540}}
-							animationDuration={1}
-						/>
-					</Sequence>
-					<Sequence from={2.5 * fps} durationInFrames={2.8 * fps}>
-						<Cursor
-							startPosition={{top: 356, left: 540}}
-							endPosition={{top: 370, left: 555}}
+							startPosition={{top: 356, left: 555}}
+							endPosition={{top: 370, left: 565}}
 							animationDuration={0.5 * fps}
 						/>
 					</Sequence>
-					<Sequence from={3 * fps} durationInFrames={2* fps}>
-						<ClickEffect position={{top: 370, left: 555}}/>
+					{/*ClickEffect on icon button to open popup*/}
+					<Sequence from={2.8 * fps} durationInFrames={2* fps}>
+						<ClickEffect position={{top: 370, left: 565}}/>
 					</Sequence>
-					<Sequence from={5.3 * fps} durationInFrames={0.5 * fps}>
+					{/*Go to submit button in popup*/}
+					<Sequence from={6.5 * fps} durationInFrames={3 * fps}>
 						<Cursor
-							startPosition={{top: 370, left: 555}}
-							endPosition={{top: 495, left: 645}}
+							startPosition={{top: 370, left: 565}}
+							endPosition={{top: 490, left: 445}}
+							animationDuration={fps}
+						/>
+					</Sequence>
+					{/*ClickEffect on submit button of popup*/}
+					<Sequence from={7.7 * fps} durationInFrames={2 * fps}>
+						<ClickEffect position={{top: 490, left: 445}}/>
+					</Sequence>
+					{/*Go to extension button in navbar*/}
+					<Sequence from={9.5 * fps} durationInFrames={fps}>
+						<Cursor
+							startPosition={{top:490, left: 445}}
+							endPosition={{top: 65, left: 1340}}
 							animationDuration={0.5 * fps}
 						/>
 					</Sequence>
-					<Sequence from={6 * fps} durationInFrames={2* fps}>
-						<ClickEffect position={{top: 495, left: 645}}/>
+					{/*ClickEffect on extension button in navbar*/}
+					<Sequence from={10.2 * fps} durationInFrames={2* fps}>
+						<ClickEffect position={{top: 65, left: 1340}}/>
 					</Sequence>
-					<Sequence from={5.8 * fps} durationInFrames={1.2 * fps}>
+					{/*Go to train button*/}
+					<Sequence from={10.5 * fps} durationInFrames={2 * fps}>
 						<Cursor
-							startPosition={{top: 495, left: 645}}
-							endPosition={{top: 495, left: 645}}
-							animationDuration={1}
-						/>
-					</Sequence>
-					<Sequence from={7 * fps} durationInFrames={0.5 * fps}>
-						<Cursor
-							startPosition={{top: 495, left: 645 }}
-							endPosition={{top: 65, left: 1580}}
+							startPosition={{top: 65, left: 1340}}
+							endPosition={{top: 110, left: 1320}}
 							animationDuration={0.5 * fps}
 						/>
 					</Sequence>
-					<Sequence from={8.6 * fps} durationInFrames={2* fps}>
-						<ClickEffect position={{top: 70, left: 1880}}/>
-					</Sequence>
-					<Sequence from={8.5 * fps} durationInFrames={0.5 * fps}>
-						<Cursor
-							startPosition={{top: 70, left: 1880}}
-							endPosition={{top: 70, left: 1880}}
-							animationDuration={1}
-						/>
-					</Sequence>
-					<Sequence from={9.8 * fps} durationInFrames={2* fps}>
-						<ClickEffect position={{top: 110, left: 1860}}/>
-					</Sequence>
-					<Sequence from={9 * fps} durationInFrames={2* fps}>
-						<Cursor
-							startPosition={{top: 70, left: 1880}}
-							endPosition={{top: 110, left: 1860}}
-							animationDuration={0.5 * fps}
-						/>
+					{/*ClickEffect on train button*/}
+					<Sequence from={11 * fps} durationInFrames={2 * fps}>
+						<ClickEffect position={{top: 110, left: 1320}}/>
 					</Sequence>
 				</>
 			);
