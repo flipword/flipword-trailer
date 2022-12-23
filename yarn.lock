@@ -184,77 +184,77 @@
     utility-types "^3.10.0"
     zustand "^3.5.1"
 
-"@remotion/bundler@3.3.5":
-  version "3.3.5"
-  resolved "https://registry.yarnpkg.com/@remotion/bundler/-/bundler-3.3.5.tgz#e2fb990bd08f5591399c7e95b7067766f2925481"
-  integrity sha512-c5Oh9YStdPDpPI026w9BRlRlhQNyUzZ8CxACacAXJE9G0ZKdb+TIWUYwXArtxlOuf3dgqggtyxcUPg0+bvKVYA==
+"@remotion/bundler@3.3.18":
+  version "3.3.18"
+  resolved "https://registry.yarnpkg.com/@remotion/bundler/-/bundler-3.3.18.tgz#f051467cdc3ac272fadc6dede0eeedcd5cb5ec54"
+  integrity sha512-lG+GfOJQrT8PDC5LKCfMaxSY+24UeRYcF/yvq2IYPJQhiM1+mHb/ARn1H4qgjnWBeeMFwqfpUUbL5v7TFpy8kQ==
   dependencies:
     css-loader "5.2.7"
     esbuild "0.15.13"
     react-refresh "0.9.0"
-    remotion "3.3.5"
+    remotion "3.3.18"
     style-loader "2.0.0"
     webpack "5.74.0"
 
-"@remotion/cli@^3.1.11":
-  version "3.3.5"
-  resolved "https://registry.yarnpkg.com/@remotion/cli/-/cli-3.3.5.tgz#bc1b123f2259c41aa5f4dc4ecb18b8e85af79063"
-  integrity sha512-jgZZbFkabvgvgKl7P2Lq6MsYuw8jpAHKLA2pDR//WigC5EsCUw5+rON/JTmYpboroy2H5P1W3Fx4x5sFNiPyjg==
+"@remotion/cli@^3.3.18":
+  version "3.3.18"
+  resolved "https://registry.yarnpkg.com/@remotion/cli/-/cli-3.3.18.tgz#8301b1e9127a55e46e58fd1627a5d4e6e94b2c9e"
+  integrity sha512-50Q+0hZp0vl4G3A/wAG5zHEFaWTIMBIdzPrrjTvPwedwzv6ADdb8NlA+FUzrPnE56BsGSnNLJaEyK/dIzzyXWw==
   dependencies:
-    "@remotion/bundler" "3.3.5"
-    "@remotion/media-utils" "3.3.5"
-    "@remotion/player" "3.3.5"
-    "@remotion/renderer" "3.3.5"
+    "@remotion/bundler" "3.3.18"
+    "@remotion/media-utils" "3.3.18"
+    "@remotion/player" "3.3.18"
+    "@remotion/renderer" "3.3.18"
     better-opn "2.1.1"
     dotenv "9.0.2"
     memfs "3.4.3"
     minimist "1.2.6"
     prompts "2.4.1"
-    remotion "3.3.5"
+    remotion "3.3.18"
     semver "7.3.5"
     source-map "0.6.1"
 
-"@remotion/eslint-config@^3.1.11":
-  version "3.3.5"
-  resolved "https://registry.yarnpkg.com/@remotion/eslint-config/-/eslint-config-3.3.5.tgz#8a26f5fabe5813af44d118a159acf209e9509001"
-  integrity sha512-RMVe7XTHQCChHdpThQ21rMhbozkihJgppoIDvB9FMGWXWuL14pTSlFe3hE2ZYLlOcEwIGjC7/cBGri1cKpzTCg==
+"@remotion/eslint-config@^3.3.18":
+  version "3.3.18"
+  resolved "https://registry.yarnpkg.com/@remotion/eslint-config/-/eslint-config-3.3.18.tgz#11b17e6a6b1997f9962d952845b40b3bb973ca59"
+  integrity sha512-9dQ/vvPTsKOWffOPEU3TRsrA9T01/iJEp6oxTuz7+gF4ryloK5wMLKdIqbY9UFcA/BjjidNyPCaOB8/G/CjyeQ==
   dependencies:
-    "@remotion/eslint-plugin" "3.3.5"
+    "@remotion/eslint-plugin" "3.3.18"
     "@typescript-eslint/eslint-plugin" "5.19.0"
     "@typescript-eslint/parser" "5.19.0"
     eslint-plugin-10x "1.5.2"
     eslint-plugin-react "7.29.4"
     eslint-plugin-react-hooks "4.4.0"
 
-"@remotion/eslint-plugin@3.3.5":
-  version "3.3.5"
-  resolved "https://registry.yarnpkg.com/@remotion/eslint-plugin/-/eslint-plugin-3.3.5.tgz#a0d5fc96dd5b7eb0478fcabd994108d64ddc608a"
-  integrity sha512-dleuavWN+RrQTVO/Yisu1UxMzlgEHWfHVbGavzk1f+KEO0yKNY7HgDo77Pwn9Y+apvUmpHqNQ2AwFMT7ZosHEQ==
+"@remotion/eslint-plugin@3.3.18":
+  version "3.3.18"
+  resolved "https://registry.yarnpkg.com/@remotion/eslint-plugin/-/eslint-plugin-3.3.18.tgz#4c9115b3496178c02a3c5749422aaecdf28057df"
+  integrity sha512-33j+dPVP08JC3OstYKGnHBkW7P3W2wVPz3jDa3LiWxY/FBmVeybTRR3uQViCRzHNHdZFow2aYvylYp5pP95foQ==
   dependencies:
     "@typescript-eslint/utils" "5.19.0"
 
-"@remotion/media-utils@3.3.5", "@remotion/media-utils@^3.1.11":
-  version "3.3.5"
-  resolved "https://registry.yarnpkg.com/@remotion/media-utils/-/media-utils-3.3.5.tgz#09f44a5356d39103c374f4711fde80c41c534d35"
-  integrity sha512-rTtFxQ/zI4jfCxIl1TLM2WZ7Xe1qCQhVzaLiQCYzxiqMEapOe3OrFw6sGry/RCcXhds91I1LG1LuWtThj1Vn8g==
+"@remotion/media-utils@3.3.18", "@remotion/media-utils@^3.3.18":
+  version "3.3.18"
+  resolved "https://registry.yarnpkg.com/@remotion/media-utils/-/media-utils-3.3.18.tgz#6b23559ba51d353e0d7d1289ba5032ed7222a4b4"
+  integrity sha512-+qGrYSRIbm3URtX3Uz4Kgxsuw/kzWbj1RySwWu1XJlHqPvdvfBVRc46DVjvHwaUdgZB8tI7lg7HvyIW0LZ8Fbw==
   dependencies:
-    remotion "3.3.5"
+    remotion "3.3.18"
 
-"@remotion/player@3.3.5":
-  version "3.3.5"
-  resolved "https://registry.yarnpkg.com/@remotion/player/-/player-3.3.5.tgz#86d293fb7d7568f6678f3f1b4b0234f645dadd53"
-  integrity sha512-+uJ0wo+bJ3WB2rWJ4FmejQ7vBRpQ9Wa+QW+2UdMEedWk693hlzU5ahOGhbaPSptEI+4L6tIMYcR+YHoAl+Mnnw==
+"@remotion/player@3.3.18":
+  version "3.3.18"
+  resolved "https://registry.yarnpkg.com/@remotion/player/-/player-3.3.18.tgz#4d6e223b8979bcf1ed7d00d1bef14fab4305e618"
+  integrity sha512-UcSIhfx0G4w5TmAGTnuNFZyPgC4+4I8ArpPYTiW43VhfinD0nE8mwi6Rc9VCvBO1lAFG3JiOtz0r9iWjC0LSEQ==
   dependencies:
-    remotion "3.3.5"
+    remotion "3.3.18"
 
-"@remotion/renderer@3.3.5", "@remotion/renderer@^3.1.11":
-  version "3.3.5"
-  resolved "https://registry.yarnpkg.com/@remotion/renderer/-/renderer-3.3.5.tgz#82662ed5c764bbb5bdf79356384c573d8fa4afd8"
-  integrity sha512-igOdzxvZ7/74u2EI00dSF7n4OIfRfmohbo3vS4em42yS4+YqJkfl+qR0bDAEsmKYylBaLzQKjGAJEVnSdjYFkQ==
+"@remotion/renderer@3.3.18", "@remotion/renderer@^3.3.18":
+  version "3.3.18"
+  resolved "https://registry.yarnpkg.com/@remotion/renderer/-/renderer-3.3.18.tgz#231ab4f337ebc33956e5fb5dd4897610aeb87d05"
+  integrity sha512-ge6Kuh2B1laFGACWYmKldM6Yp08Ni/A2pYiq81/cypQ5S4aiIc7APlxMp+CJIBhgelOMDGljd2vcU7A7lT9wwQ==
   dependencies:
     execa "5.1.1"
     extract-zip "2.0.1"
-    remotion "3.3.5"
+    remotion "3.3.18"
     source-map "^0.8.0-beta.0"
     ws "8.7.0"
 
@@ -2758,10 +2758,10 @@ regexpp@^3.2.0:
   resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-3.2.0.tgz#0425a2768d8f23bad70ca4b90461fa2f1213e1b2"
   integrity sha512-pq2bWo9mVD43nbts2wGv17XLiNLya+GklZ8kaDLV2Z08gDCsGpnKn9BFMepvWuHCbyVvY7J5o5+BVvoQbmlJLg==
 
-remotion@3.3.5, remotion@^3.0.0:
-  version "3.3.5"
-  resolved "https://registry.yarnpkg.com/remotion/-/remotion-3.3.5.tgz#1ef5e9bd0c35c9993df204cb82cab412514fd021"
-  integrity sha512-PnYREPbJrJC2weo3QYvQSQ82QV34Pvp8FnPWBEhSCL5QqvksMJ3qGoEXDBuvJmLUjqSrWnCLa0kO8dDy3CW3Ng==
+remotion@3.3.18, remotion@^3.3.18:
+  version "3.3.18"
+  resolved "https://registry.yarnpkg.com/remotion/-/remotion-3.3.18.tgz#f80296b51233a35a277e1c3c5b727d2985832d17"
+  integrity sha512-LE9l+Hgv9KptmBgND2xOFslACtKAb3HpYxNv8ygbO9sN7D/BdSjZ9tkovwGTKUqDWzeabPeygqIU7ekH2C2zAA==
 
 resize-observer-polyfill@^1.5.1:
   version "1.5.1"
