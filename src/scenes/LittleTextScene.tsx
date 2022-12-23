@@ -25,13 +25,13 @@ export const LittleTextScene: React.FC<{
     const width = `${interpolate(
         currentFrame,
         [props.startFrame, firstTextStartFrame],
-        [0, 550],
+        [0, 38],
         {
             easing: Easing.bezier(.40,1,1,1),
             extrapolateRight: 'clamp',
             extrapolateLeft: 'clamp',
         }
-    )}px`;
+    )}%`;
 
     const textOpacity = interpolate(
         currentFrame,
@@ -64,12 +64,12 @@ export const LittleTextScene: React.FC<{
                             }}
                         />
                 </div>
-                {/*<div className="w-16 h-16 bg-primary absolute rounded-xl filter blur-sm transform rotate-45" style={{top: '100px', left: '100px'}} />*/}
-                {/*<div className="w-16 h-16 bg-transparent border-4 border-primary absolute rounded-xl filter blur-sm transform rotate-45" style={{top: '140px', left: '120px'}} />*/}
-                {/*<div className="w-16 h-16 bg-transparent border-4 border-primary absolute rounded-xl filter blur-sm transform rotate-25" style={{top: '450px', left: '465px'}} />*/}
-                {/*<div className="w-16 h-16 bg-primary absolute rounded-xl filter blur-sm transform -rotate-25" style={{top: '850px', left: '100px'}} />*/}
+                {/* <div className="w-16 h-16 bg-primary absolute rounded-xl filter blur-sm transform rotate-45" style={{top: '100px', left: '100px'}} /> */}
+                {/* <div className="w-16 h-16 bg-transparent border-4 border-primary absolute rounded-xl filter blur-sm transform rotate-45" style={{top: '140px', left: '120px'}} /> */}
+                {/* <div className="w-16 h-16 bg-transparent border-4 border-primary absolute rounded-xl filter blur-sm transform rotate-25" style={{top: '450px', left: '465px'}} /> */}
+                {/* <div className="w-16 h-16 bg-primary absolute rounded-xl filter blur-sm transform -rotate-25" style={{top: '850px', left: '100px'}} /> */}
             </div>
-            <div className="w-2 h-full bg-lightGrey" />
+            <div className="w-2 h-full bg-lightGrey -mr-1" />
         </div>
     );
 };

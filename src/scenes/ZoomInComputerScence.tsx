@@ -31,7 +31,7 @@ export const ZoomInComputerScene: React.FC = (props) => {
     })}px`
     return (
         <AbsoluteFill>
-            <Img className="w-auto h-auto" src={staticFile('img/computer.png')} style={{
+            <Img src={staticFile('img/computer.png')} style={{
                 marginTop: containerOffsetTop,
                 transform: `scale(${scaleContainer})`,
             }}/>
