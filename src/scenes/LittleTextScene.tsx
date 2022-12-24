@@ -25,7 +25,7 @@ export const LittleTextScene: React.FC<{
     const width = `${interpolate(
         currentFrame,
         [props.startFrame, firstTextStartFrame],
-        [0, 38],
+        [0, 25],
         {
             easing: Easing.bezier(.40,1,1,1),
             extrapolateRight: 'clamp',
