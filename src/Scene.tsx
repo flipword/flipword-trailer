@@ -1,4 +1,4 @@
-import {AbsoluteFill} from 'remotion'
+import {AbsoluteFill} from 'remotion';
 import React from 'react';
 import {Sequence, useVideoConfig} from 'remotion';
 
@@ -8,12 +8,15 @@ import {Transition} from './components/transition/Transition';
 import {WebsiteSceneEnum} from './helpers/WebsiteSceneEnum';
 import {PhoneScene} from './scenes/PhoneScene';
 import {EndScene} from './scenes/EndScene';
-import {ZoomInComputerScene} from "./scenes/ZoomInComputerScence";
-import {LittleTextScene} from "./scenes/LittleTextScene";
+import {ZoomInComputerScene} from './scenes/ZoomInComputerScence';
+import {LittleTextScene} from './scenes/LittleTextScene';
 
 export const Scene: React.FC = () => {
 	const {fps} = useVideoConfig();
+
 	const transitionTime = 8;
+	const offsetFrame = (indexScene: number) => transitionTime * indexScene;
+
 	const firstTextSceneDuration = 2 * fps;
 	const textSceneDuration = 3 * fps;
 	const firstWebsiteSceneDuration = 6 * fps;
@@ -29,36 +32,37 @@ export const Scene: React.FC = () => {
 				durationInFrames={firstTextSceneDuration + transitionTime}
 				name="FirstTextSceneDuration"
 			>
-				<Transition type="out">
-					<TextScene message="Avez vous régulièrement besoin de <strong>traduire</strong> des mots lors de votre navigation ?" />
-				</Transition>
+				<TextScene
+					transitionIn={false}
+					durationInFrames={firstTextSceneDuration + transitionTime}
+					message="Avez vous régulièrement besoin de <strong>traduire</strong> des mots lors de votre navigation ?"
+				/>
 			</Sequence>
 			<Sequence
-				from={firstTextSceneDuration}
-				durationInFrames={firstWebsiteSceneDuration}
+				from={firstTextSceneDuration - offsetFrame(1)}
+				durationInFrames={firstWebsiteSceneDuration + transitionTime}
 				name="firstWebsiteSceneDuration"
 			>
-				<Transition type="in">
-					<ZoomInComputerScene />
-				</Transition>
+				<ZoomInComputerScene />
 			</Sequence>
 			<Sequence
 				from={
-					firstTextSceneDuration + firstWebsiteSceneDuration - transitionTime
+					firstTextSceneDuration + firstWebsiteSceneDuration - offsetFrame(2)
 				}
 				durationInFrames={textSceneDuration + transitionTime}
 				name="FirstScene"
 			>
-				<Transition type="in">
-					<TextScene message="<strong>Flipword</strong> peut vous permettre de créer facilement une liste de vocabulaire personnalisé" />
-				</Transition>
+				<TextScene
+					durationInFrames={textSceneDuration + transitionTime}
+					message="<strong>Flipword</strong> peut vous permettre de créer facilement une liste de vocabulaire personnalisé"
+				/>
 			</Sequence>
 			<Sequence
 				from={
 					firstTextSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration -
-					transitionTime
+					offsetFrame(3)
 				}
 				durationInFrames={secondWebsiteSceneDuration + transitionTime}
 				name="FirstScene"
@@ -70,7 +74,7 @@ export const Scene: React.FC = () => {
 						secondMessage="<strong>Révisez</strong> les ensuite au sein de l’application"
 					/>
 					<div className="flex-auto">
-						 <WebsiteScene websiteScene={WebsiteSceneEnum.WordHighlight} />
+						<WebsiteScene websiteScene={WebsiteSceneEnum.WordHighlight} />
 					</div>
 				</div>
 			</Sequence>
@@ -79,7 +83,8 @@ export const Scene: React.FC = () => {
 					firstTextSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration +
-					secondWebsiteSceneDuration
+					secondWebsiteSceneDuration -
+					offsetFrame(2)
 				}
 				durationInFrames={applicationListDuration + transitionTime}
 				name="FirstScene"
@@ -92,7 +97,8 @@ export const Scene: React.FC = () => {
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration +
-					applicationListDuration
+					applicationListDuration -
+					offsetFrame(1)
 				}
 				durationInFrames={fourthWebsiteSceneDuration + transitionTime}
 				name="FirstScene"
@@ -106,14 +112,16 @@ export const Scene: React.FC = () => {
 					textSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
-					fourthWebsiteSceneDuration
+					fourthWebsiteSceneDuration -
+					offsetFrame(2)
 				}
 				durationInFrames={textSceneDuration + transitionTime}
 				name="FirstScene"
 			>
-				<Transition type="in">
-					<TextScene message="Vous pouvez également ajouter des mots directement depuis <strong>l’application</strong>" />
-				</Transition>
+				<TextScene
+					durationInFrames={textSceneDuration + transitionTime}
+					message="Vous pouvez également ajouter des mots directement depuis <strong>l’application</strong>"
+				/>
 			</Sequence>
 			<Sequence
 				from={
@@ -123,7 +131,8 @@ export const Scene: React.FC = () => {
 					secondWebsiteSceneDuration +
 					applicationListDuration +
 					fourthWebsiteSceneDuration +
-					textSceneDuration
+					textSceneDuration -
+					offsetFrame(3)
 				}
 				durationInFrames={applicationAddingDuration + transitionTime}
 				name="FirstScene"
@@ -139,14 +148,16 @@ export const Scene: React.FC = () => {
 					applicationListDuration +
 					fourthWebsiteSceneDuration +
 					textSceneDuration +
-					applicationAddingDuration
+					applicationAddingDuration -
+					offsetFrame(3)
 				}
 				durationInFrames={textSceneDuration + transitionTime}
 				name="FirstScene"
 			>
-				<Transition type="in">
-					<TextScene message="<strong>Flipword</strong> est également disponible sur mobile pour réviser partout" />
-				</Transition>
+				<TextScene
+					durationInFrames={textSceneDuration + transitionTime}
+					message="<strong>Flipword</strong> est également disponible sur mobile pour réviser partout"
+				/>
 			</Sequence>
 			<Sequence
 				from={
@@ -158,14 +169,13 @@ export const Scene: React.FC = () => {
 					fourthWebsiteSceneDuration +
 					textSceneDuration +
 					applicationAddingDuration +
-					textSceneDuration
+					textSceneDuration -
+					offsetFrame(4)
 				}
 				durationInFrames={phoneSceneDuration + transitionTime}
 				name="FirstScene"
 			>
-				<Transition type="in">
-					<PhoneScene />
-				</Transition>
+				<PhoneScene />
 			</Sequence>
 			<Sequence
 				from={
@@ -178,14 +188,13 @@ export const Scene: React.FC = () => {
 					textSceneDuration +
 					applicationAddingDuration +
 					textSceneDuration +
-					phoneSceneDuration
+					phoneSceneDuration -
+					offsetFrame(3)
 				}
 				durationInFrames={endSceneDuration + transitionTime}
 				name="FirstScene"
 			>
-				<Transition type="in">
-					<EndScene />
-				</Transition>
+				<EndScene />
 			</Sequence>
 		</AbsoluteFill>
 	);

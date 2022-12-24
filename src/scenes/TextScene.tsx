@@ -2,9 +2,10 @@ import React from 'react';
 import {Easing, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 
 export const TextScene: React.FC<{
+	transitionIn?: boolean;
 	durationInFrames: number;
 	message: string;
-}> = ({durationInFrames, message}) => {
+}> = ({transitionIn = true, durationInFrames, message}) => {
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
 
@@ -17,15 +18,23 @@ export const TextScene: React.FC<{
 	});
 
 	const percent = () => {
-		console.log('current :', currentFrame);
-		if (currentFrame <= transitionDurationInFrame) {
-			return interpolate(currentFrame, [0, 0.5 * fps], [-100, 0]);
+		if (transitionIn && currentFrame <= transitionDurationInFrame) {
+			return interpolate(currentFrame, [0, 0.5 * fps], [-100, 0], {
+				easing: Easing.bezier(0.22, 0.8, 0.3, 0.91),
+				extrapolateRight: 'clamp',
+				extrapolateLeft: 'clamp',
+			});
 		}
 		if (currentFrame >= durationInFrames - transitionDurationInFrame) {
 			return interpolate(
 				currentFrame,
 				[durationInFrames - transitionDurationInFrame, durationInFrames],
-				[0, -100]
+				[0, -100],
+				{
+					easing: Easing.bezier(0.22, 0.8, 0.3, 0.91),
+					extrapolateRight: 'clamp',
+					extrapolateLeft: 'clamp',
+				}
 			);
 		}
 		return 0;
