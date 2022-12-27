@@ -24,7 +24,7 @@ export const Scene: React.FC = () => {
 	const applicationListDuration = 2.1 * fps;
 	const fourthWebsiteSceneDuration = 4.2 * fps;
 	const applicationAddingDuration = 7.5 * fps;
-	const phoneSceneDuration = 4 * fps;
+	const phoneSceneDuration = 4.5 * fps;
 	const endSceneDuration = 4 * fps;
 	return (
 		<AbsoluteFill className="bg-darkGrey">
@@ -175,7 +175,7 @@ export const Scene: React.FC = () => {
 				durationInFrames={phoneSceneDuration + transitionTime}
 				name="FirstScene"
 			>
-				<PhoneScene />
+				<PhoneScene durationInFrames={phoneSceneDuration + transitionTime}/>
 			</Sequence>
 			<Sequence
 				from={
@@ -194,7 +194,7 @@ export const Scene: React.FC = () => {
 				durationInFrames={endSceneDuration + transitionTime}
 				name="FirstScene"
 			>
-				<EndScene />
+				<EndScene/>
 			</Sequence>
 		</AbsoluteFill>
 	);

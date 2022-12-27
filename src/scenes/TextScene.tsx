@@ -48,7 +48,7 @@ export const TextScene: React.FC<{
 			}}
 		>
 			<div className="flex-auto w-full" />
-			<div className="w-full h-12 bg-primary bottom-text-radius filter blur-sm" />
+			<div className="w-full h-12 bg-primary bottom-text-radius filter blur-sm -mb-2" />
 			<div className="absolute flex flex-row justify-center items-center w-full h-full px-48">
 				<span
 					dangerouslySetInnerHTML={{__html: message}}

@@ -1,15 +1,27 @@
 import React from 'react';
-import {AbsoluteFill, Img, Sequence, staticFile, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Easing, Img, interpolate, Sequence, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {ApplicationLearningContent} from '../components/ApplicationLearningContent';
 import {ApplicationLayout} from '../components/ApplicationLayout';
 import {WebsiteSceneEnum} from '../helpers/WebsiteSceneEnum';
 import {ClickEffect} from "../components/ClickEffect";
 
-export const PhoneScene: React.FC = () => {
-	const { fps } = useVideoConfig()
+export const PhoneScene: React.FC<{durationInFrames: number}> = ({durationInFrames}) => {
+	const {fps} = useVideoConfig();
+	const currentFrame = useCurrentFrame();
+
+	const offsetTop = currentFrame >= durationInFrames ? 1 : `${interpolate(
+		currentFrame,
+		[durationInFrames - 0.5 * fps, durationInFrames],
+		[0, 1200],
+		{
+			easing: Easing.bezier(1,.49,.92,.74),
+			extrapolateRight: 'clamp',
+			extrapolateLeft: 'clamp',
+		}
+	)}px`;
 	return (
 		<AbsoluteFill className="bg-primary">
-			<div className="w-full h-full flex flex-row justify-center items-center">
+			<div className="w-full h-full flex flex-row justify-center items-center" style={{marginTop: offsetTop}}>
 				<div
 					className="bg-base relative overflow-hidden"
 					style={{height: '780px', width: '582px'}}
