@@ -1,5 +1,6 @@
 import React from 'react';
 import {Easing, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
+import {noise3D} from '@remotion/noise';
 
 export const TextScene: React.FC<{
 	transitionIn?: boolean;
@@ -58,31 +59,52 @@ export const TextScene: React.FC<{
 			</div>
 			<div
 				className="w-16 h-16 bg-primary absolute rounded-xl filter blur-sm transform rotate-45"
-				style={{top: '100px', left: '100px'}}
+				style={{
+					top: `${100 + noise3D('y', 100, 100, currentFrame * 0.01) * 10}px`,
+					left: `${100 + noise3D('x', 100, 100, currentFrame * 0.01) * 10}px`,
+				}}
 			/>
 			<div
 				className="w-16 h-16 bg-transparent border-4 border-primary absolute rounded-xl filter blur-sm transform rotate-45"
-				style={{top: '140px', left: '120px'}}
+				style={{
+					top: `${140 + noise3D('y', 100, 100, currentFrame * 0.01) * 10}px`,
+					left: `${120 + noise3D('x', 100, 100, currentFrame * 0.01) * 10}px`,
+				}}
 			/>
 			<div
 				className="w-16 h-16 bg-transparent border-4 border-primary absolute rounded-xl filter blur-sm transform rotate-25"
-				style={{top: '320px', left: '1700px'}}
+				style={{
+					top: `${320 + noise3D('y', 200, 200, currentFrame * 0.01) * 10}px`,
+					left: `${1700 + noise3D('x', 200, 200, currentFrame * 0.01) * 10}px`,
+				}}
 			/>
 			<div
 				className="w-16 h-16 bg-primary absolute rounded-xl filter blur-sm transform -rotate-25"
-				style={{top: '650px', left: '1600px'}}
+				style={{
+					top: `${650 + noise3D('y', 300, 300, currentFrame * 0.01) * 10}px`,
+					left: `${1600 + noise3D('x', 300, 300, currentFrame * 0.01) * 10}px`,
+				}}
 			/>
 			<div
 				className="w-16 h-16 bg-transparent border-4 border-primary absolute rounded-xl filter blur-sm transform -rotate-25"
-				style={{top: '250px', left: '650px'}}
+				style={{
+					top: `${250 + noise3D('y', 400, 400, currentFrame * 0.01) * 10}px`,
+					left: `${650 + noise3D('x', 400, 400, currentFrame * 0.01) * 10}px`,
+				}}
 			/>
 			<div
 				className="w-16 h-16 bg-primary absolute rounded-xl filter blur-sm transform rotate-25"
-				style={{top: '750px', left: '350px'}}
+				style={{
+					top: `${750 + noise3D('y', 500, 500, currentFrame * 0.01) * 10}px`,
+					left: `${350 + noise3D('x', 500, 500, currentFrame * 0.01) * 10}px`,
+				}}
 			/>
 			<div
 				className="w-16 h-16 bg-transparent border-4 border-primary absolute rounded-xl filter blur-sm transform rotate-25"
-				style={{top: '900px', left: '1000px'}}
+				style={{
+					top: `${900 + noise3D('y', 600, 600, currentFrame * 0.01) * 10}px`,
+					left: `${1000 + noise3D('x', 600, 600, currentFrame * 0.01) * 10}px`,
+				}}
 			/>
 		</div>
 	);
