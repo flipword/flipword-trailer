@@ -10,16 +10,20 @@ import {ClickEffect} from "./ClickEffect";
 export const ApplicationLearningContent: React.FC<{
 	websiteScene: number;
 	isMobile?: boolean;
-	word: Word;
+	words: Word[];
 }> = (props) => {
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
 
 	const timeToReverse = 2 * fps;
+	const timeToChangeWord = 3.7 * fps;
+
+	const currentWordIndex = props.websiteScene === WebsiteSceneEnum.ApplicationLearning ? currentFrame >= timeToChangeWord ? 1 : 0 : 1
+
 	const isReverse =
 		props.websiteScene === WebsiteSceneEnum.ApplicationLearning
-			? currentFrame >= timeToReverse
-			: true;
+			? currentFrame >= timeToReverse && currentWordIndex !== 1
+			: false;
 
 	const addingPopupTopOffset = `${
 		props.websiteScene === WebsiteSceneEnum.ApplicationAdding
@@ -31,9 +35,7 @@ export const ApplicationLearningContent: React.FC<{
 	}px`;
 
 	const cartRotateDeg = `${
-		props.websiteScene === WebsiteSceneEnum.ApplicationAdding
-			? 180
-			: isReverse
+		props.websiteScene === WebsiteSceneEnum.ApplicationAdding ? 0 : isReverse
 			? interpolate(currentFrame, [timeToReverse, 2.5 * fps], [0, 180], {
 					extrapolateRight: 'clamp',
 					extrapolateLeft: 'clamp',
@@ -87,17 +89,17 @@ export const ApplicationLearningContent: React.FC<{
 					<Sequence from={1.7 * fps} durationInFrames={2* fps}>
 						<ClickEffect position={{top: 800, left: 950}}/>
 					</Sequence>
-					<Sequence from={0.5 * fps} durationInFrames={2 * fps}>
+					<Sequence from={0.5 * fps} durationInFrames={2.5 * fps}>
 						<Cursor
 							startPosition={{top: 1030, left: 800}}
 							endPosition={{top: 800, left: 950}}
 							animationDuration={fps}
 						/>
 					</Sequence>
-					<Sequence from={3.2 * fps} durationInFrames={2* fps}>
+					<Sequence from={3.5 * fps} durationInFrames={2* fps}>
 						<ClickEffect position={{top: 800, left: 1060}}/>
 					</Sequence>
-					<Sequence from={2.5 * fps} durationInFrames={2 * fps}>
+					<Sequence from={3 * fps} durationInFrames={2 * fps}>
 						<Cursor
 							startPosition={{top: 800, left: 950}}
 							endPosition={{top: 800, left: 1060}}
@@ -172,11 +174,11 @@ export const ApplicationLearningContent: React.FC<{
 						}}
 					>
 						<div className="flip-card-front flex flex-row mb-7 justify-center items-center">
-							<span>{props.word.foreignWord}</span>
+							<span>{props.words[currentWordIndex].foreignWord}</span>
 						</div>
 						<div />
 						<div className="flip-card-back flex flex-row mb-7 justify-center items-center">
-							<span>{props.word.nativeWord}</span>
+							<span>{props.words[currentWordIndex].nativeWord}</span>
 						</div>
 					</div>
 				</div>

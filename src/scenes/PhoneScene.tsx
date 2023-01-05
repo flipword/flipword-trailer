@@ -29,10 +29,16 @@ export const PhoneScene: React.FC<{durationInFrames: number}> = ({durationInFram
 					<ApplicationLayout>
 						<ApplicationLearningContent
 							isMobile
-							word={{
+							words={[
+								{
 								nativeWord: 'Alarmiste',
 								foreignWord: 'Fearmongering',
-							}}
+								},
+								{
+									nativeWord: 'Conseil',
+									foreignWord: 'Advice',
+								}
+								]}
 							websiteScene={WebsiteSceneEnum.ApplicationLearning}
 						/>
 						<Sequence from={1.8 * fps} durationInFrames={2* fps}>

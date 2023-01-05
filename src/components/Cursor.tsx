@@ -32,7 +32,7 @@ export const Cursor: React.FC<{
 	);
 	return (
 		<Img
-			className="w-7 h-auto absolute z-50"
+			className="w-10 h-auto absolute z-50"
 			src={staticFile('icons/cursor.svg')}
 			style={{
 				top: newPositionTop,

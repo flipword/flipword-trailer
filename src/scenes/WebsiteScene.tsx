@@ -35,10 +35,16 @@ export const WebsiteScene: React.FC<{
 					<ApplicationListContent />
 				) : (
 					<ApplicationLearningContent
-						word={{
+						words={[
+							{
 							nativeWord: 'Merveilleux',
 							foreignWord: 'Wonderful',
-						}}
+							},
+							{
+								nativeWord: 'Alarmiste',
+								foreignWord: 'Fearmongering',
+							}
+							]}
 						websiteScene={props.websiteScene}
 					/>
 				)}

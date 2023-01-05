@@ -22,7 +22,7 @@ export const Scene: React.FC = () => {
 	const firstWebsiteSceneDuration = 6 * fps;
 	const secondWebsiteSceneDuration = 11 * fps;
 	const applicationListDuration = 2.1 * fps;
-	const fourthWebsiteSceneDuration = 4.2 * fps;
+	const fourthWebsiteSceneDuration = 4.8 * fps;
 	const applicationAddingDuration = 7.5 * fps;
 	const phoneSceneDuration = 4.5 * fps;
 	const endSceneDuration = 4 * fps;
