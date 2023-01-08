@@ -84,6 +84,6 @@
 }
 @container web-content-container (inline-size < 1600px) {
     .web-content-size {
-        width: 70%;
+        width: 76%;
     }
 }

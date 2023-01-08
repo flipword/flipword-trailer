@@ -12,7 +12,7 @@ import {Cursor} from './Cursor';
 import {ScalingInteractiveText} from './intercativeText/ScalingInteractiveText';
 import {SelectInteractiveText} from './intercativeText/SelectInteractiveText';
 import {ClassicText} from './intercativeText/ClassicText';
-import {ClickEffect} from "./ClickEffect";
+import {ClickEffect} from './ClickEffect';
 
 export const WebsiteContent: React.FC<{
 	websiteScene: number;
@@ -49,7 +49,7 @@ export const WebsiteContent: React.FC<{
 			return (
 				<div
 					className="z-40 absolute w-60 filter drop-shadow-md extension-popup-position"
-					style={{top: '96px', left: '1128px'}}
+					style={{top: '96px', left: '1198px'}}
 				>
 					<ExtensionPopup />
 				</div>
@@ -109,15 +109,15 @@ export const WebsiteContent: React.FC<{
 		if (props.websiteScene === WebsiteSceneEnum.WordHighlight) {
 			return (
 				<>
-					{/*Start highlight text*/}
+					{/* Start highlight text */}
 					<Sequence durationInFrames={Number(fps)}>
-						  <Cursor
+						<Cursor
 							startPosition={{top: 356, left: 475}}
-							endPosition={{top: 356, left: 475 }}
+							endPosition={{top: 356, left: 475}}
 							animationDuration={1}
 						/>
 					</Sequence>
-					{/*End highlight text*/}
+					{/* End highlight text */}
 					<Sequence from={Number(fps)} durationInFrames={1.2 * fps}>
 						<Cursor
 							startPosition={{top: 356, left: 475}}
@@ -125,7 +125,7 @@ export const WebsiteContent: React.FC<{
 							animationDuration={fps}
 						/>
 					</Sequence>
-					{/*Go to icon button to open popup*/}
+					{/* Go to icon button to open popup */}
 					<Sequence from={2.2 * fps} durationInFrames={4.3 * fps}>
 						<Cursor
 							startPosition={{top: 356, left: 555}}
@@ -133,11 +133,11 @@ export const WebsiteContent: React.FC<{
 							animationDuration={0.5 * fps}
 						/>
 					</Sequence>
-					{/*ClickEffect on icon button to open popup*/}
-					<Sequence from={2.8 * fps} durationInFrames={2* fps}>
-						<ClickEffect position={{top: 370, left: 565}}/>
+					{/* ClickEffect on icon button to open popup */}
+					<Sequence from={2.8 * fps} durationInFrames={2 * fps}>
+						<ClickEffect position={{top: 370, left: 565}} />
 					</Sequence>
-					{/*Go to submit button in popup*/}
+					{/* Go to submit button in popup */}
 					<Sequence from={6.5 * fps} durationInFrames={3 * fps}>
 						<Cursor
 							startPosition={{top: 370, left: 565}}
@@ -145,33 +145,33 @@ export const WebsiteContent: React.FC<{
 							animationDuration={fps}
 						/>
 					</Sequence>
-					{/*ClickEffect on submit button of popup*/}
+					{/* ClickEffect on submit button of popup */}
 					<Sequence from={7.7 * fps} durationInFrames={2 * fps}>
-						<ClickEffect position={{top: 490, left: 445}}/>
+						<ClickEffect position={{top: 490, left: 445}} />
 					</Sequence>
-					{/*Go to extension button in navbar*/}
+					{/* Go to extension button in navbar */}
 					<Sequence from={9.5 * fps} durationInFrames={fps}>
 						<Cursor
-							startPosition={{top:490, left: 445}}
-							endPosition={{top: 65, left: 1340}}
+							startPosition={{top: 490, left: 445}}
+							endPosition={{top: 65, left: 1400}}
 							animationDuration={0.5 * fps}
 						/>
 					</Sequence>
-					{/*ClickEffect on extension button in navbar*/}
-					<Sequence from={10.2 * fps} durationInFrames={2* fps}>
-						<ClickEffect position={{top: 65, left: 1340}}/>
+					{/* ClickEffect on extension button in navbar */}
+					<Sequence from={10.2 * fps} durationInFrames={2 * fps}>
+						<ClickEffect position={{top: 65, left: 1400}} />
 					</Sequence>
-					{/*Go to train button*/}
+					{/* Go to train button */}
 					<Sequence from={10.5 * fps} durationInFrames={2 * fps}>
 						<Cursor
-							startPosition={{top: 65, left: 1340}}
+							startPosition={{top: 65, left: 1400}}
 							endPosition={{top: 110, left: 1320}}
 							animationDuration={0.5 * fps}
 						/>
 					</Sequence>
-					{/*ClickEffect on train button*/}
+					{/* ClickEffect on train button */}
 					<Sequence from={11 * fps} durationInFrames={2 * fps}>
-						<ClickEffect position={{top: 110, left: 1320}}/>
+						<ClickEffect position={{top: 110, left: 1320}} />
 					</Sequence>
 				</>
 			);
