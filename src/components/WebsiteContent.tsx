@@ -141,13 +141,13 @@ export const WebsiteContent: React.FC<{
 					<Sequence from={6.5 * fps} durationInFrames={3 * fps}>
 						<Cursor
 							startPosition={{top: 370, left: 565}}
-							endPosition={{top: 490, left: 445}}
+							endPosition={{top: 490, left: 425}}
 							animationDuration={fps}
 						/>
 					</Sequence>
 					{/* ClickEffect on submit button of popup */}
 					<Sequence from={7.7 * fps} durationInFrames={2 * fps}>
-						<ClickEffect position={{top: 490, left: 445}} />
+						<ClickEffect position={{top: 490, left: 425}} />
 					</Sequence>
 					{/* Go to extension button in navbar */}
 					<Sequence from={9.5 * fps} durationInFrames={fps}>
@@ -165,13 +165,13 @@ export const WebsiteContent: React.FC<{
 					<Sequence from={10.5 * fps} durationInFrames={2 * fps}>
 						<Cursor
 							startPosition={{top: 65, left: 1400}}
-							endPosition={{top: 110, left: 1320}}
+							endPosition={{top: 110, left: 1370}}
 							animationDuration={0.5 * fps}
 						/>
 					</Sequence>
 					{/* ClickEffect on train button */}
 					<Sequence from={11 * fps} durationInFrames={2 * fps}>
-						<ClickEffect position={{top: 110, left: 1320}} />
+						<ClickEffect position={{top: 110, left: 1370}} />
 					</Sequence>
 				</>
 			);
