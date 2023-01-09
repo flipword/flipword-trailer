@@ -43,7 +43,9 @@ export const PhoneScene: React.FC<{durationInFrames: number}> = ({
 					className="bg-base relative overflow-hidden"
 					style={{height: '780px', width: '582px'}}
 				>
-					<ApplicationLayout>
+					<ApplicationLayout
+						websiteScene={WebsiteSceneEnum.ApplicationLearning}
+					>
 						<ApplicationLearningContent
 							isMobile
 							words={[
