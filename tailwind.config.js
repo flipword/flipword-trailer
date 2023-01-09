@@ -43,6 +43,9 @@ module.exports = {
 				'5xl': '5rem',
 				'6xl': '8rem',
 			},
+			blur: {
+				xs: '2px',
+			},
 			fontSize: {
 				title: '5vw',
 				subtitle: '1.75vw',
@@ -61,9 +64,9 @@ module.exports = {
 				'1/12': '8.33%',
 			},
 			rotate: {
-				'25': '25deg',
+				25: '25deg',
 				'-25': '-25deg',
-			}
+			},
 		},
 		rotate: {
 			25: '25deg',

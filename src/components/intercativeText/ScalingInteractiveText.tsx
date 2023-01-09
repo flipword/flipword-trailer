@@ -35,12 +35,19 @@ export const ScalingInteractiveText: React.FC<{
 					className="relative"
 					style={{
 						transform: `scale(${scale})`,
-						backgroundColor: 'white',
-						borderRadius: '30px',
-						paddingRight: '5px',
 					}}
 				>
-					<span>wonderful</span>
+					<span className="z-30">wonderful</span>
+					<div
+						className="bg-white w-12 h-5 absolute z-10 filter blur-xs rounded-xl"
+						style={{
+							top: '5px',
+							left: '30px',
+							transform: `scale(${scale})`,
+							zIndex: -10,
+							opacity,
+						}}
+					/>
 					<div
 						className="flex flex-row flex-auto w-full justify-center items-end text-negative text-stroke-effect text-3xl gap-4 absolute"
 						style={{
