@@ -5,7 +5,7 @@ import {Sequence, useVideoConfig} from 'remotion';
 import {TextScene} from './scenes/TextScene';
 import {WebsiteScene} from './scenes/WebsiteScene';
 import {Transition} from './components/transition/Transition';
-import {WebsiteSceneEnum} from './helpers/WebsiteSceneEnum';
+import {WebsiteSceneEnum} from './models/WebsiteSceneEnum';
 import {PhoneScene} from './scenes/PhoneScene';
 import {EndScene} from './scenes/EndScene';
 import {ZoomInComputerScene} from './scenes/ZoomInComputerScence';

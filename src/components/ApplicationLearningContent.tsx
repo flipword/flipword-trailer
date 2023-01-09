@@ -1,11 +1,11 @@
 import React from 'react';
 import {useCurrentFrame, useVideoConfig, interpolate, Sequence} from 'remotion';
-import {Word} from '../helpers/Word';
+import {Word} from '../models/Word';
 import {DiamondButton} from './button/DiamondButton';
 import {AddingPopup} from './AddingPopup';
 import {Cursor} from './Cursor';
-import {WebsiteSceneEnum} from '../helpers/WebsiteSceneEnum';
-import {ClickEffect} from "./ClickEffect";
+import {WebsiteSceneEnum} from '../models/WebsiteSceneEnum';
+import {ClickEffect} from './ClickEffect';
 
 export const ApplicationLearningContent: React.FC<{
 	websiteScene: number;
@@ -18,7 +18,12 @@ export const ApplicationLearningContent: React.FC<{
 	const timeToReverse = 2 * fps;
 	const timeToChangeWord = 3.7 * fps;
 
-	const currentWordIndex = props.websiteScene === WebsiteSceneEnum.ApplicationLearning ? currentFrame >= timeToChangeWord ? 1 : 0 : 1
+	const currentWordIndex =
+		props.websiteScene === WebsiteSceneEnum.ApplicationLearning
+			? currentFrame >= timeToChangeWord
+				? 1
+				: 0
+			: 1;
 
 	const isReverse =
 		props.websiteScene === WebsiteSceneEnum.ApplicationLearning
@@ -27,7 +32,7 @@ export const ApplicationLearningContent: React.FC<{
 
 	const addingPopupTopOffset = `${
 		props.websiteScene === WebsiteSceneEnum.ApplicationAdding
-			? interpolate(currentFrame, [1.5 * fps,2 * fps], [-330, 90], {
+			? interpolate(currentFrame, [1.5 * fps, 2 * fps], [-330, 90], {
 					extrapolateRight: 'clamp',
 					extrapolateLeft: 'clamp',
 			  })
@@ -35,7 +40,9 @@ export const ApplicationLearningContent: React.FC<{
 	}px`;
 
 	const cartRotateDeg = `${
-		props.websiteScene === WebsiteSceneEnum.ApplicationAdding ? 0 : isReverse
+		props.websiteScene === WebsiteSceneEnum.ApplicationAdding
+			? 0
+			: isReverse
 			? interpolate(currentFrame, [timeToReverse, 2.5 * fps], [0, 180], {
 					extrapolateRight: 'clamp',
 					extrapolateLeft: 'clamp',
@@ -65,10 +72,10 @@ export const ApplicationLearningContent: React.FC<{
 					style={{top: addingPopupTopOffset}}
 				>
 					<div className="w-96">
-							<AddingPopup
-								startWritingFrame={3 * fps}
-								foreignWordFrame={5.8 * fps}
-							/>
+						<AddingPopup
+							startWritingFrame={3 * fps}
+							foreignWordFrame={5.8 * fps}
+						/>
 					</div>
 				</div>
 			);
@@ -79,15 +86,15 @@ export const ApplicationLearningContent: React.FC<{
 		if (props.websiteScene === WebsiteSceneEnum.ApplicationLearning) {
 			return (
 				<>
-					<Sequence  durationInFrames={0.5 * fps}>
+					<Sequence durationInFrames={0.5 * fps}>
 						<Cursor
 							startPosition={{top: 1030, left: 800}}
 							endPosition={{top: 1030, left: 800}}
 							animationDuration={1}
 						/>
 					</Sequence>
-					<Sequence from={1.7 * fps} durationInFrames={2* fps}>
-						<ClickEffect position={{top: 800, left: 950}}/>
+					<Sequence from={1.7 * fps} durationInFrames={2 * fps}>
+						<ClickEffect position={{top: 800, left: 950}} />
 					</Sequence>
 					<Sequence from={0.5 * fps} durationInFrames={2.5 * fps}>
 						<Cursor
@@ -96,8 +103,8 @@ export const ApplicationLearningContent: React.FC<{
 							animationDuration={fps}
 						/>
 					</Sequence>
-					<Sequence from={3.5 * fps} durationInFrames={2* fps}>
-						<ClickEffect position={{top: 800, left: 1060}}/>
+					<Sequence from={3.5 * fps} durationInFrames={2 * fps}>
+						<ClickEffect position={{top: 800, left: 1060}} />
 					</Sequence>
 					<Sequence from={3 * fps} durationInFrames={2 * fps}>
 						<Cursor
@@ -111,15 +118,15 @@ export const ApplicationLearningContent: React.FC<{
 		}
 		return (
 			<>
-				<Sequence  durationInFrames={0.5 * fps}>
+				<Sequence durationInFrames={0.5 * fps}>
 					<Cursor
 						startPosition={{top: 800, left: 1060}}
 						endPosition={{top: 800, left: 1060}}
 						animationDuration={1}
 					/>
 				</Sequence>
-				<Sequence from={1.2 * fps} durationInFrames={2* fps}>
-					<ClickEffect position={{top: 1000, left: 950}}/>
+				<Sequence from={1.2 * fps} durationInFrames={2 * fps}>
+					<ClickEffect position={{top: 1000, left: 950}} />
 				</Sequence>
 				<Sequence from={0.5 * fps} durationInFrames={fps}>
 					<Cursor
@@ -128,8 +135,8 @@ export const ApplicationLearningContent: React.FC<{
 						animationDuration={0.5 * fps}
 					/>
 				</Sequence>
-				<Sequence from={2.7 * fps} durationInFrames={2* fps}>
-					<ClickEffect position={{top: 240, left: 900}}/>
+				<Sequence from={2.7 * fps} durationInFrames={2 * fps}>
+					<ClickEffect position={{top: 240, left: 900}} />
 				</Sequence>
 				<Sequence from={1.5 * fps} durationInFrames={3.5 * fps}>
 					<Cursor
@@ -138,8 +145,8 @@ export const ApplicationLearningContent: React.FC<{
 						animationDuration={fps}
 					/>
 				</Sequence>
-				<Sequence from={5.5 * fps} durationInFrames={2* fps}>
-					<ClickEffect position={{top: 300, left: 950}}/>
+				<Sequence from={5.5 * fps} durationInFrames={2 * fps}>
+					<ClickEffect position={{top: 300, left: 950}} />
 				</Sequence>
 				<Sequence from={5 * fps} durationInFrames={fps}>
 					<Cursor
@@ -148,8 +155,8 @@ export const ApplicationLearningContent: React.FC<{
 						animationDuration={0.5 * fps}
 					/>
 				</Sequence>
-				<Sequence from={6.6 * fps} durationInFrames={2* fps}>
-					<ClickEffect position={{top: 470, left: 950}}/>
+				<Sequence from={6.6 * fps} durationInFrames={2 * fps}>
+					<ClickEffect position={{top: 470, left: 950}} />
 				</Sequence>
 				<Sequence from={6 * fps} durationInFrames={2 * fps}>
 					<Cursor

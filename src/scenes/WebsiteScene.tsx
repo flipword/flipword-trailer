@@ -3,7 +3,7 @@ import {WebsiteContainer} from '../components/WebsiteContainer';
 import {WebsiteContent} from '../components/WebsiteContent';
 import {ApplicationListContent} from '../components/ApplicationListContent';
 import {ApplicationLayout} from '../components/ApplicationLayout';
-import {WebsiteSceneEnum} from '../helpers/WebsiteSceneEnum';
+import {WebsiteSceneEnum} from '../models/WebsiteSceneEnum';
 import {ApplicationLearningContent} from '../components/ApplicationLearningContent';
 
 export const WebsiteScene: React.FC<{
@@ -20,8 +20,7 @@ export const WebsiteScene: React.FC<{
 		) {
 			setMultiTab(true);
 			setUrl('https://app.flipword.io');
-		}
-		else {
+		} else {
 			setUrl('https://flipword.io');
 		}
 	}, [props.websiteScene]);
@@ -37,14 +36,14 @@ export const WebsiteScene: React.FC<{
 					<ApplicationLearningContent
 						words={[
 							{
-							nativeWord: 'Merveilleux',
-							foreignWord: 'Wonderful',
+								nativeWord: 'Merveilleux',
+								foreignWord: 'Wonderful',
 							},
 							{
 								nativeWord: 'Alarmiste',
 								foreignWord: 'Fearmongering',
-							}
-							]}
+							},
+						]}
 						websiteScene={props.websiteScene}
 					/>
 				)}
@@ -56,7 +55,10 @@ export const WebsiteScene: React.FC<{
 		<WebsiteContainer
 			url={url}
 			multiTab={multiTab}
-			tabTransition={props.websiteScene === WebsiteSceneEnum.ApplicationWordList}>
+			tabTransition={
+				props.websiteScene === WebsiteSceneEnum.ApplicationWordList
+			}
+		>
 			{websiteContent}
 		</WebsiteContainer>
 	);

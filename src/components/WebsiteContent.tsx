@@ -7,7 +7,7 @@ import {
 	useVideoConfig,
 } from 'remotion';
 import {ExtensionPopup} from './ExtensionPopup';
-import {WebsiteSceneEnum} from '../helpers/WebsiteSceneEnum';
+import {WebsiteSceneEnum} from '../models/WebsiteSceneEnum';
 import {Cursor} from './Cursor';
 import {ScalingInteractiveText} from './intercativeText/ScalingInteractiveText';
 import {SelectInteractiveText} from './intercativeText/SelectInteractiveText';

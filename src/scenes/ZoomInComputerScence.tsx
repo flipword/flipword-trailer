@@ -1,7 +1,7 @@
 import React from 'react';
 import {WebsiteContainer} from '../components/WebsiteContainer';
 import {WebsiteContent} from '../components/WebsiteContent';
-import {WebsiteSceneEnum} from '../helpers/WebsiteSceneEnum';
+import {WebsiteSceneEnum} from '../models/WebsiteSceneEnum';
 import {
 	AbsoluteFill,
 	Easing,
