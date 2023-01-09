@@ -20,7 +20,7 @@ export const Scene: React.FC = () => {
 	const firstTextSceneDuration = 2 * fps;
 	const textSceneDuration = 3 * fps;
 	const firstWebsiteSceneDuration = 6 * fps;
-	const secondWebsiteSceneDuration = 11 * fps;
+	const secondWebsiteSceneDuration = 12.7 * fps;
 	const applicationListDuration = 2.1 * fps;
 	const fourthWebsiteSceneDuration = 4.8 * fps;
 	const applicationAddingDuration = 7.5 * fps;
@@ -175,7 +175,7 @@ export const Scene: React.FC = () => {
 				durationInFrames={phoneSceneDuration + transitionTime}
 				name="FirstScene"
 			>
-				<PhoneScene durationInFrames={phoneSceneDuration + transitionTime}/>
+				<PhoneScene durationInFrames={phoneSceneDuration + transitionTime} />
 			</Sequence>
 			<Sequence
 				from={
@@ -194,7 +194,7 @@ export const Scene: React.FC = () => {
 				durationInFrames={endSceneDuration + transitionTime}
 				name="FirstScene"
 			>
-				<EndScene/>
+				<EndScene />
 			</Sequence>
 		</AbsoluteFill>
 	);

@@ -44,7 +44,7 @@ export const WebsiteContent: React.FC<{
 	const ExtensionPopupDisplay = () => {
 		if (
 			props.websiteScene === WebsiteSceneEnum.WordHighlight &&
-			currentFrame >= 10.3 * fps
+			currentFrame >= 11.1 * fps
 		) {
 			return (
 				<div
@@ -138,7 +138,7 @@ export const WebsiteContent: React.FC<{
 						<ClickEffect position={{top: 370, left: 565}} />
 					</Sequence>
 					{/* Go to submit button in popup */}
-					<Sequence from={6.5 * fps} durationInFrames={3 * fps}>
+					<Sequence from={6.5 * fps} durationInFrames={3.5 * fps}>
 						<Cursor
 							startPosition={{top: 370, left: 565}}
 							endPosition={{top: 490, left: 425}}
@@ -150,19 +150,19 @@ export const WebsiteContent: React.FC<{
 						<ClickEffect position={{top: 490, left: 425}} />
 					</Sequence>
 					{/* Go to extension button in navbar */}
-					<Sequence from={9.5 * fps} durationInFrames={fps}>
+					<Sequence from={10 * fps} durationInFrames={2 * fps}>
 						<Cursor
 							startPosition={{top: 490, left: 445}}
 							endPosition={{top: 65, left: 1400}}
-							animationDuration={0.5 * fps}
+							animationDuration={0.8 * fps}
 						/>
 					</Sequence>
 					{/* ClickEffect on extension button in navbar */}
-					<Sequence from={10.2 * fps} durationInFrames={2 * fps}>
+					<Sequence from={11 * fps} durationInFrames={2 * fps}>
 						<ClickEffect position={{top: 65, left: 1400}} />
 					</Sequence>
 					{/* Go to train button */}
-					<Sequence from={10.5 * fps} durationInFrames={2 * fps}>
+					<Sequence from={12 * fps} durationInFrames={2 * fps}>
 						<Cursor
 							startPosition={{top: 65, left: 1400}}
 							endPosition={{top: 110, left: 1370}}
@@ -170,7 +170,7 @@ export const WebsiteContent: React.FC<{
 						/>
 					</Sequence>
 					{/* ClickEffect on train button */}
-					<Sequence from={11 * fps} durationInFrames={2 * fps}>
+					<Sequence from={12.7 * fps} durationInFrames={2 * fps}>
 						<ClickEffect position={{top: 110, left: 1370}} />
 					</Sequence>
 				</>
