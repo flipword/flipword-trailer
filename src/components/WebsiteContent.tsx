@@ -49,7 +49,7 @@ export const WebsiteContent: React.FC<{
 			return (
 				<div
 					className="z-40 absolute w-60 filter drop-shadow-md extension-popup-position"
-					style={{top: '96px', left: '1198px'}}
+					style={{top: '96px', left: '1678px'}}
 				>
 					<ExtensionPopup />
 				</div>
@@ -153,25 +153,25 @@ export const WebsiteContent: React.FC<{
 					<Sequence from={10 * fps} durationInFrames={2 * fps}>
 						<Cursor
 							startPosition={{top: 490, left: 445}}
-							endPosition={{top: 65, left: 1400}}
+							endPosition={{top: 65, left: 1880}}
 							animationDuration={0.8 * fps}
 						/>
 					</Sequence>
 					{/* ClickEffect on extension button in navbar */}
 					<Sequence from={11 * fps} durationInFrames={2 * fps}>
-						<ClickEffect position={{top: 65, left: 1400}} />
+						<ClickEffect position={{top: 65, left: 1880}} />
 					</Sequence>
 					{/* Go to train button */}
 					<Sequence from={12 * fps} durationInFrames={2 * fps}>
 						<Cursor
-							startPosition={{top: 65, left: 1400}}
-							endPosition={{top: 110, left: 1370}}
+							startPosition={{top: 65, left: 1880}}
+							endPosition={{top: 110, left: 1860}}
 							animationDuration={0.5 * fps}
 						/>
 					</Sequence>
 					{/* ClickEffect on train button */}
 					<Sequence from={12.7 * fps} durationInFrames={2 * fps}>
-						<ClickEffect position={{top: 110, left: 1370}} />
+						<ClickEffect position={{top: 110, left: 1860}} />
 					</Sequence>
 				</>
 			);

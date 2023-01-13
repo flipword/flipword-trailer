@@ -70,6 +70,7 @@ export const Scene: React.FC = () => {
 				<div className="w-full h-full flex flex-row">
 					<LittleTextScene
 						startFrame={3.5 * fps}
+						endFrame={10 * fps}
 						firstMessage="Grace à l’<strong>extension navigateur</strong> ajouter des mots à votre liste"
 						secondMessage="<strong>Révisez</strong> les ensuite au sein de l’application"
 					/>
