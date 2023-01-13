@@ -180,7 +180,7 @@ export const WebsiteContent: React.FC<{
 
 	return (
 		<>
-			<div className="web-content-container w-full flex-1 overflow-auto">
+			<div className="web-content-container w-full flex-1 overflow-auto text-browser-family">
 				<div className="bg-darkGrey flex flex-row justify-center relative">
 					<div className="web-content-size bg-white py-6 px-12">
 						<h1 className="text-4xl">{title}</h1>

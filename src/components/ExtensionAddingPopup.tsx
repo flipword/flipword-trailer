@@ -6,7 +6,7 @@ export const ExtensionAddingPopup: React.FC = () => {
 	const foreignWord = 'Wonderful';
 	const nativeWord = 'Merveilleux';
 	return (
-		<div className="h-full w-full bg-base rounded-md text-sm py-2 ">
+		<div className="h-full w-full bg-base rounded-md text-sm py-2 font-sans">
 			<div className="w-full h-full flex flex-col items-center justify-center gap-3">
 				<div className="w-4/5">
 					<span className="ml-2 px-2 font-bold bg-white rounded-t-sm">

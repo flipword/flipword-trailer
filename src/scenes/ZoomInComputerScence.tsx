@@ -95,7 +95,7 @@ export const ZoomInComputerScene: React.FC = (props) => {
 				}}
 			>
 				<WebsiteContainer
-					url="https://flipword.io"
+					url="https://random-learn-voc.com"
 					multiTab={false}
 					tabTransition={false}
 				>

@@ -83,7 +83,7 @@ export const WebsiteScene: React.FC<{
 			setMultiTab(true);
 			setUrl('https://app.flipword.io');
 		} else {
-			setUrl('https://flipword.io');
+			setUrl('https://random-learn-voc.com');
 		}
 	}, [props.websiteScene]);
 
