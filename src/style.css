@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    @font-face {
+        font-family: 'QuicksandCustom';
+        src: url('../public/fonts/Quicksand-Custom.ttf') format('truetype');
+    }
+}
+
+.text-browser-family {
+    font-family: Arial, sans-serif;
+}
+
 .text-stroke-effect {
     -webkit-text-stroke: 1px white;
     font-weight: 1000;

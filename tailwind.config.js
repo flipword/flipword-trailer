@@ -31,6 +31,10 @@ module.exports = {
 			sans: ['Roboto', 'sans-serif'],
 			serif: ['Merriweather', 'serif'],
 		},
+		fontWeight: {
+			normal: 400,
+			bold: 900,
+		},
 		textColor: {
 			black: '#1E1E1E',
 			white: '#FFFFFF',
@@ -38,6 +42,9 @@ module.exports = {
 			blue: '#7f70d0',
 		},
 		extend: {
+			fontFamily: {
+				sans: ['QuicksandCustom'],
+			},
 			borderRadius: {
 				'4xl': '4rem',
 				'5xl': '5rem',
