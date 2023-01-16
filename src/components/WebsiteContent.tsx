@@ -1,6 +1,7 @@
 import React from 'react';
 import {
 	Img,
+	interpolate,
 	Sequence,
 	staticFile,
 	useCurrentFrame,
@@ -49,13 +50,27 @@ export const WebsiteContent: React.FC<{
 			return (
 				<div
 					className="z-40 absolute w-60 filter drop-shadow-md extension-popup-position"
-					style={{top: '96px', left: '1678px'}}
+					style={{top: '82px', left: '1678px'}}
 				>
 					<ExtensionPopup />
 				</div>
 			);
 		}
 	};
+
+	const webContainerWidth = `${
+		props.websiteScene === WebsiteSceneEnum.WordHighlight
+			? interpolate(
+					currentFrame,
+					[3.5 * fps, 3.8 * fps, 9.5 * fps, 10 * fps],
+					[57, 100, 100, 57],
+					{
+						extrapolateRight: 'clamp',
+						extrapolateLeft: 'clamp',
+					}
+			  )
+			: 57
+	}%`;
 
 	const CursorDisplay = () => {
 		if (props.websiteScene === WebsiteSceneEnum.ArticleReading) {
@@ -112,66 +127,66 @@ export const WebsiteContent: React.FC<{
 					{/* Start highlight text */}
 					<Sequence durationInFrames={Number(fps)}>
 						<Cursor
-							startPosition={{top: 356, left: 475}}
-							endPosition={{top: 356, left: 475}}
+							startPosition={{top: 340, left: 475}}
+							endPosition={{top: 340, left: 475}}
 							animationDuration={1}
 						/>
 					</Sequence>
 					{/* End highlight text */}
 					<Sequence from={Number(fps)} durationInFrames={1.2 * fps}>
 						<Cursor
-							startPosition={{top: 356, left: 475}}
-							endPosition={{top: 356, left: 555}}
+							startPosition={{top: 340, left: 475}}
+							endPosition={{top: 340, left: 555}}
 							animationDuration={fps}
 						/>
 					</Sequence>
 					{/* Go to icon button to open popup */}
 					<Sequence from={2.2 * fps} durationInFrames={4.3 * fps}>
 						<Cursor
-							startPosition={{top: 356, left: 555}}
-							endPosition={{top: 370, left: 565}}
+							startPosition={{top: 340, left: 555}}
+							endPosition={{top: 354, left: 565}}
 							animationDuration={0.5 * fps}
 						/>
 					</Sequence>
 					{/* ClickEffect on icon button to open popup */}
 					<Sequence from={2.8 * fps} durationInFrames={2 * fps}>
-						<ClickEffect position={{top: 370, left: 565}} />
+						<ClickEffect position={{top: 354, left: 565}} />
 					</Sequence>
 					{/* Go to submit button in popup */}
-					<Sequence from={6.5 * fps} durationInFrames={3.5 * fps}>
+					<Sequence from={6.5 * fps} durationInFrames={3 * fps}>
 						<Cursor
-							startPosition={{top: 370, left: 565}}
-							endPosition={{top: 490, left: 425}}
+							startPosition={{top: 354, left: 565}}
+							endPosition={{top: 520, left: 250}}
 							animationDuration={fps}
 						/>
 					</Sequence>
 					{/* ClickEffect on submit button of popup */}
 					<Sequence from={7.7 * fps} durationInFrames={2 * fps}>
-						<ClickEffect position={{top: 490, left: 425}} />
+						<ClickEffect position={{top: 520, left: 250}} />
 					</Sequence>
 					{/* Go to extension button in navbar */}
-					<Sequence from={10 * fps} durationInFrames={2 * fps}>
+					<Sequence from={9.5 * fps} durationInFrames={2.5 * fps}>
 						<Cursor
-							startPosition={{top: 490, left: 445}}
-							endPosition={{top: 65, left: 1880}}
+							startPosition={{top: 520, left: 250}}
+							endPosition={{top: 50, left: 1880}}
 							animationDuration={0.8 * fps}
 						/>
 					</Sequence>
 					{/* ClickEffect on extension button in navbar */}
 					<Sequence from={11 * fps} durationInFrames={2 * fps}>
-						<ClickEffect position={{top: 65, left: 1880}} />
+						<ClickEffect position={{top: 50, left: 1880}} />
 					</Sequence>
 					{/* Go to train button */}
 					<Sequence from={12 * fps} durationInFrames={2 * fps}>
 						<Cursor
 							startPosition={{top: 65, left: 1880}}
-							endPosition={{top: 110, left: 1860}}
+							endPosition={{top: 100, left: 1860}}
 							animationDuration={0.5 * fps}
 						/>
 					</Sequence>
 					{/* ClickEffect on train button */}
 					<Sequence from={12.7 * fps} durationInFrames={2 * fps}>
-						<ClickEffect position={{top: 110, left: 1860}} />
+						<ClickEffect position={{top: 100, left: 1860}} />
 					</Sequence>
 				</>
 			);
@@ -180,9 +195,12 @@ export const WebsiteContent: React.FC<{
 
 	return (
 		<>
-			<div className="web-content-container w-full flex-1 overflow-auto text-browser-family">
+			<div className="w-full overflow-auto text-browser-family">
 				<div className="bg-darkGrey flex flex-row justify-center relative">
-					<div className="web-content-size bg-white py-6 px-12">
+					<div
+						className="bg-white py-6 px-12"
+						style={{width: webContainerWidth}}
+					>
 						<h1 className="text-4xl">{title}</h1>
 						{/* Part 1 */}
 						<div className="px-5 mt-10 flex flex-row justify-start">

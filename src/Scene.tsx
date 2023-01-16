@@ -17,7 +17,6 @@ export const Scene: React.FC = () => {
 	const transitionTime = 8;
 	const offsetFrame = (indexScene: number) => transitionTime * indexScene;
 
-	const firstTextSceneDuration = 2 * fps;
 	const textSceneDuration = 3 * fps;
 	const firstWebsiteSceneDuration = 6 * fps;
 	const secondWebsiteSceneDuration = 12.7 * fps;
@@ -29,26 +28,24 @@ export const Scene: React.FC = () => {
 	return (
 		<AbsoluteFill className="bg-darkGrey">
 			<Sequence
-				durationInFrames={firstTextSceneDuration + transitionTime}
-				name="FirstTextSceneDuration"
+				durationInFrames={textSceneDuration + transitionTime}
+				name="textSceneDuration"
 			>
 				<TextScene
 					transitionIn={false}
-					durationInFrames={firstTextSceneDuration + transitionTime}
+					durationInFrames={textSceneDuration + transitionTime}
 					message="Avez vous régulièrement besoin de <strong>traduire</strong> des mots lors de votre navigation ?"
 				/>
 			</Sequence>
 			<Sequence
-				from={firstTextSceneDuration - offsetFrame(1)}
+				from={textSceneDuration - offsetFrame(1)}
 				durationInFrames={firstWebsiteSceneDuration + transitionTime}
 				name="firstWebsiteSceneDuration"
 			>
 				<ZoomInComputerScene />
 			</Sequence>
 			<Sequence
-				from={
-					firstTextSceneDuration + firstWebsiteSceneDuration - offsetFrame(2)
-				}
+				from={textSceneDuration + firstWebsiteSceneDuration - offsetFrame(2)}
 				durationInFrames={textSceneDuration + transitionTime}
 				name="FirstScene"
 			>
@@ -59,7 +56,7 @@ export const Scene: React.FC = () => {
 			</Sequence>
 			<Sequence
 				from={
-					firstTextSceneDuration +
+					textSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration -
 					offsetFrame(3)
@@ -74,14 +71,14 @@ export const Scene: React.FC = () => {
 						firstMessage="Grace à l’<strong>extension navigateur</strong> ajouter des mots à votre liste"
 						secondMessage="<strong>Révisez</strong> les ensuite au sein de l’application"
 					/>
-					<div className="flex-auto">
+					<div className="flex-1">
 						<WebsiteScene websiteScene={WebsiteSceneEnum.WordHighlight} />
 					</div>
 				</div>
 			</Sequence>
 			<Sequence
 				from={
-					firstTextSceneDuration +
+					textSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration -
@@ -94,7 +91,7 @@ export const Scene: React.FC = () => {
 			</Sequence>
 			<Sequence
 				from={
-					firstTextSceneDuration +
+					textSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration +
@@ -108,7 +105,7 @@ export const Scene: React.FC = () => {
 			</Sequence>
 			<Sequence
 				from={
-					firstTextSceneDuration +
+					textSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration +
@@ -126,7 +123,7 @@ export const Scene: React.FC = () => {
 			</Sequence>
 			<Sequence
 				from={
-					firstTextSceneDuration +
+					textSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration +
@@ -142,7 +139,7 @@ export const Scene: React.FC = () => {
 			</Sequence>
 			<Sequence
 				from={
-					firstTextSceneDuration +
+					textSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration +
@@ -162,7 +159,7 @@ export const Scene: React.FC = () => {
 			</Sequence>
 			<Sequence
 				from={
-					firstTextSceneDuration +
+					textSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration +
@@ -180,7 +177,7 @@ export const Scene: React.FC = () => {
 			</Sequence>
 			<Sequence
 				from={
-					firstTextSceneDuration +
+					textSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration +

@@ -30,7 +30,7 @@ export const LittleTextScene: React.FC<{
 			props.endFrame - 0.5 * fps,
 			props.endFrame,
 		],
-		[0, 25, 25, 0],
+		[0, 30, 30, 0],
 		{
 			easing: Easing.bezier(0.4, 1, 1, 1),
 			extrapolateRight: 'clamp',

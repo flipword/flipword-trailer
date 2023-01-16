@@ -84,17 +84,3 @@
     border-color: transparent transparent #FF9100 transparent;
     transform: rotate(19deg);
 }
-
-.web-content-container {
-    container-type: inline-size;
-    container-name: web-content-container;
-}
-
-.web-content-size {
-    width: 57%;
-}
-@container web-content-container (inline-size < 1600px) {
-    .web-content-size {
-        width: 76%;
-    }
-}
