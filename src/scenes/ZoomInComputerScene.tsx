@@ -11,6 +11,7 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
+import {RANDOM_LEARN_URL} from "../constants/constant";
 
 export const ZoomInComputerScene: React.FC = (props) => {
 	const {fps} = useVideoConfig();
@@ -95,7 +96,7 @@ export const ZoomInComputerScene: React.FC = (props) => {
 				}}
 			>
 				<WebsiteContainer
-					url="https://random-learn-voc.com"
+					url={RANDOM_LEARN_URL}
 					multiTab={false}
 					tabTransition={false}
 				>

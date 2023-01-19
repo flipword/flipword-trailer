@@ -1,0 +1,1 @@
+export const RANDOM_LEARN_URL = "https://random-learn-voc.com"

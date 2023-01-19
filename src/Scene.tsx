@@ -4,12 +4,12 @@ import {Sequence, useVideoConfig} from 'remotion';
 
 import {TextScene} from './scenes/TextScene';
 import {WebsiteScene} from './scenes/WebsiteScene';
-import {Transition} from './components/transition/Transition';
 import {WebsiteSceneEnum} from './models/WebsiteSceneEnum';
 import {PhoneScene} from './scenes/PhoneScene';
 import {EndScene} from './scenes/EndScene';
-import {ZoomInComputerScene} from './scenes/ZoomInComputerScence';
-import {LittleTextScene} from './scenes/LittleTextScene';
+import {ZoomInComputerScene} from './scenes/ZoomInComputerScene';
+import {LeftTextDrawer} from './components/LeftTextDrawer';
+import {WordHighlightScene} from "./scenes/WordHighlightScene";
 
 export const Scene: React.FC = () => {
 	const {fps} = useVideoConfig();
@@ -64,17 +64,7 @@ export const Scene: React.FC = () => {
 				durationInFrames={secondWebsiteSceneDuration + transitionTime}
 				name="FirstScene"
 			>
-				<div className="w-full h-full flex flex-row">
-					<LittleTextScene
-						startFrame={3.5 * fps}
-						endFrame={10 * fps}
-						firstMessage="Grace à l’<strong>extension navigateur</strong> ajouter des mots à votre liste"
-						secondMessage="<strong>Révisez</strong> les ensuite au sein de l’application"
-					/>
-					<div className="flex-1">
-						<WebsiteScene websiteScene={WebsiteSceneEnum.WordHighlight} />
-					</div>
-				</div>
+				<WordHighlightScene />
 			</Sequence>
 			<Sequence
 				from={

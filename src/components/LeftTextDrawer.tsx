@@ -1,7 +1,7 @@
 import React from 'react';
 import {Easing, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 
-export const LittleTextScene: React.FC<{
+export const LeftTextDrawer: React.FC<{
 	firstMessage: string;
 	secondMessage: string;
 	startFrame: number;
