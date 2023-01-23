@@ -61,10 +61,10 @@ export const PhoneScene: React.FC<{durationInFrames: number}> = ({
 							websiteScene={WebsiteSceneEnum.ApplicationLearning}
 						/>
 						<Sequence from={1.8 * fps} durationInFrames={2 * fps}>
-							<ClickEffect position={{top: 590, left: 280}} />
+							<ClickEffect isPhoneClick position={{top: 590, left: 280}}/>
 						</Sequence>
 						<Sequence from={3.5 * fps} durationInFrames={2 * fps}>
-							<ClickEffect position={{top: 590, left: 390}} />
+							<ClickEffect isPhoneClick position={{top: 590, left: 390}}/>
 						</Sequence>
 					</ApplicationLayout>
 				</div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Easing, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
+import {Audio, Easing, interpolate, staticFile, useCurrentFrame, useVideoConfig, Sequence} from 'remotion';
 import {noise3D} from '@remotion/noise';
 
 export const TextScene: React.FC<{
@@ -48,6 +48,10 @@ export const TextScene: React.FC<{
 				transform: `translateY(${percent()}%)`,
 			}}
 		>
+			<Audio src={staticFile("song/transition.wav")} volume={0.5}/>
+			<Sequence from={durationInFrames - 0.5 * fps}>
+				<Audio src={staticFile("song/transition.wav")} volume={0.5}/>
+			</Sequence>
 			<div className="flex-auto w-full" />
 			<div className="w-full h-12 bg-primary bottom-text-radius filter blur-sm -mb-2" />
 			<div className="absolute flex flex-row justify-center items-center w-full h-full px-48">

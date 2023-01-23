@@ -1,11 +1,13 @@
+import {staticFile, Audio} from 'remotion'
 import React from 'react';
 import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Coordinate} from "./Cursor";
 
 export const ClickEffect: React.FC<{
     position: Coordinate;
+    isPhoneClick?: boolean
 }> = (
-    props
+    {position, isPhoneClick = false}
 ) => {
     const currentFrame = useCurrentFrame()
     const {fps} = useVideoConfig()
@@ -17,15 +19,18 @@ export const ClickEffect: React.FC<{
         extrapolateRight: 'clamp',
         extrapolateLeft: 'clamp',
     })
+    const ClickSound = isPhoneClick ? <></> : <Audio src={staticFile("song/mouse-click.wav")}/>
     return (
         <div
             className="w-8 h-8 bg-blue rounded-full absolute z-50 opacity-75 filter blur-sm"
             style={{
-                top: props.position.top - 3,
-                left: props.position.left - 3,
+                top: position.top - 3,
+                left: position.left - 3,
                 transform: `scale(${scale})`,
                 opacity
             }}
-        />
+        >
+            {ClickSound}
+        </div>
     );
 };
