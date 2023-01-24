@@ -10,7 +10,7 @@ export const LeftTextDrawer: React.FC<{
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
 	const firstTextStartFrame = props.startFrame + 0.5 * fps;
-	const firstTextEndFrame = props.startFrame + 4.5 * fps;
+	const firstTextEndFrame = props.startFrame + 5 * fps;
 	const secondTextStartFrame = firstTextEndFrame + 0.2 * fps;
 	const scale = interpolate(
 		currentFrame,

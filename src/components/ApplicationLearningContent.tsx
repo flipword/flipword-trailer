@@ -6,6 +6,7 @@ import {AddingPopup} from './AddingPopup';
 import {Cursor} from './Cursor';
 import {WebsiteSceneEnum} from '../models/WebsiteSceneEnum';
 import {ClickEffect} from './ClickEffect';
+import {SaveWordToast} from './SaveWordToast';
 
 export const ApplicationLearningContent: React.FC<{
 	websiteScene: number;
@@ -67,17 +68,30 @@ export const ApplicationLearningContent: React.FC<{
 	const AddingPopupDisplay = () => {
 		if (props.websiteScene === WebsiteSceneEnum.ApplicationAdding) {
 			return (
-				<div
-					className="absolute z-30 flex flex-row justify-center w-full"
-					style={{top: addingPopupTopOffset}}
-				>
-					<div className="w-96">
-						<AddingPopup
-							startWritingFrame={3 * fps}
-							foreignWordFrame={5.8 * fps}
-						/>
+				<>
+					<div
+						className="absolute z-30 flex flex-row justify-center w-full"
+						style={{top: addingPopupTopOffset}}
+					>
+						<div className="w-96 relative">
+							<AddingPopup
+								startWritingFrame={3 * fps}
+								foreignWordFrame={5.8 * fps}
+								saveWordFrame={6.5 * fps}
+							/>
+						</div>
 					</div>
-				</div>
+					<Sequence from={6.5 * fps}>
+						<div
+							className="absolute z-50"
+							style={{bottom: '120px', left: '50%'}}
+						>
+							<div className="relative" style={{left: '-50%'}}>
+								<SaveWordToast />
+							</div>
+						</div>
+					</Sequence>
+				</>
 			);
 		}
 		return <></>;

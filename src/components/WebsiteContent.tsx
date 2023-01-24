@@ -45,7 +45,7 @@ export const WebsiteContent: React.FC<{
 	const ExtensionPopupDisplay = () => {
 		if (
 			props.websiteScene === WebsiteSceneEnum.WordHighlight &&
-			currentFrame >= 11.1 * fps
+			currentFrame >= 12.1 * fps
 		) {
 			return (
 				<div
@@ -62,7 +62,7 @@ export const WebsiteContent: React.FC<{
 		props.websiteScene === WebsiteSceneEnum.WordHighlight
 			? interpolate(
 					currentFrame,
-					[3.5 * fps, 3.8 * fps, 9.5 * fps, 10 * fps],
+					[3.5 * fps, 3.8 * fps, 10.5 * fps, 11 * fps],
 					[57, 100, 100, 57],
 					{
 						extrapolateRight: 'clamp',
@@ -153,7 +153,7 @@ export const WebsiteContent: React.FC<{
 						<ClickEffect position={{top: 354, left: 565}} />
 					</Sequence>
 					{/* Go to submit button in popup */}
-					<Sequence from={6.5 * fps} durationInFrames={3 * fps}>
+					<Sequence from={6.5 * fps} durationInFrames={4 * fps}>
 						<Cursor
 							startPosition={{top: 354, left: 565}}
 							endPosition={{top: 520, left: 250}}
@@ -165,7 +165,7 @@ export const WebsiteContent: React.FC<{
 						<ClickEffect position={{top: 520, left: 250}} />
 					</Sequence>
 					{/* Go to extension button in navbar */}
-					<Sequence from={9.5 * fps} durationInFrames={2.5 * fps}>
+					<Sequence from={10.5 * fps} durationInFrames={2.5 * fps}>
 						<Cursor
 							startPosition={{top: 520, left: 250}}
 							endPosition={{top: 50, left: 1880}}
@@ -173,11 +173,11 @@ export const WebsiteContent: React.FC<{
 						/>
 					</Sequence>
 					{/* ClickEffect on extension button in navbar */}
-					<Sequence from={11 * fps} durationInFrames={2 * fps}>
+					<Sequence from={12 * fps} durationInFrames={2 * fps}>
 						<ClickEffect position={{top: 50, left: 1880}} />
 					</Sequence>
 					{/* Go to train button */}
-					<Sequence from={12 * fps} durationInFrames={2 * fps}>
+					<Sequence from={13 * fps} durationInFrames={2 * fps}>
 						<Cursor
 							startPosition={{top: 65, left: 1880}}
 							endPosition={{top: 100, left: 1860}}
@@ -185,7 +185,7 @@ export const WebsiteContent: React.FC<{
 						/>
 					</Sequence>
 					{/* ClickEffect on train button */}
-					<Sequence from={12.7 * fps} durationInFrames={2 * fps}>
+					<Sequence from={13.7 * fps} durationInFrames={2 * fps}>
 						<ClickEffect position={{top: 100, left: 1860}} />
 					</Sequence>
 				</>

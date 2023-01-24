@@ -3,21 +3,21 @@ import {
 	Easing,
 	Img,
 	interpolate,
+	Sequence,
 	staticFile,
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
 import {ExtensionAddingPopup} from '../ExtensionAddingPopup';
+import {SaveWordToast} from '../SaveWordToast';
 
 export const SelectInteractiveText: React.FC = () => {
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
-	const isLogoDisplayed = currentFrame >= 2.3 * fps && currentFrame <= 4 * fps;
-	const isPopupDisplayed = currentFrame >= 3 * fps && currentFrame <= 8 * fps;
 	const selectedDivWidth = `${
 		currentFrame >= fps
 			? interpolate(currentFrame, [fps, 2 * fps], [0, 87], {
-					easing: Easing.bezier(.58,1.06,1,1),
+					easing: Easing.bezier(0.58, 1.06, 1, 1),
 					extrapolateRight: 'clamp',
 					extrapolateLeft: 'clamp',
 			  })
@@ -34,25 +34,29 @@ export const SelectInteractiveText: React.FC = () => {
 						style={{top: '3px', zIndex: -1, width: selectedDivWidth}}
 					/>
 					<span>wonderful</span>
-					<Img
-						className="z-40 absolute w-8 h-auto"
-						style={{
-							top: '20px',
-							right: '-30px',
-							visibility: isLogoDisplayed ? 'visible' : 'hidden',
-						}}
-						src={staticFile('icons/logo.svg')}
-					/>
-					<div
-						className="z-40 absolute w-52 h-40 filter drop-shadow-md"
-						style={{
-							top: '20px',
-							right: '-205px',
-							visibility: isPopupDisplayed ? 'visible' : 'hidden',
-						}}
-					>
-						<ExtensionAddingPopup />
-					</div>
+					<Sequence from={2.3 * fps} durationInFrames={1.7 * fps}>
+						<Img
+							className="z-40 absolute w-8 h-auto"
+							style={{top: '20px', right: '-30px'}}
+							src={staticFile('icons/logo.svg')}
+						/>
+					</Sequence>
+					<Sequence from={3 * fps} durationInFrames={5 * fps}>
+						<div
+							className="z-40 absolute w-52 h-40 filter drop-shadow-md"
+							style={{top: '20px', right: '-205px'}}
+						>
+							<ExtensionAddingPopup />
+						</div>
+					</Sequence>
+					<Sequence from={8 * fps}>
+						<div
+							className="z-40 absolute"
+							style={{top: '90px', right: '-205px'}}
+						>
+							<SaveWordToast />
+						</div>
+					</Sequence>
 				</div>
 				<p>affects on learning new languages.</p>
 			</div>

@@ -9,7 +9,7 @@ import {PhoneScene} from './scenes/PhoneScene';
 import {EndScene} from './scenes/EndScene';
 import {ZoomInComputerScene} from './scenes/ZoomInComputerScene';
 import {LeftTextDrawer} from './components/LeftTextDrawer';
-import {WordHighlightScene} from "./scenes/WordHighlightScene";
+import {WordHighlightScene} from './scenes/WordHighlightScene';
 
 export const Scene: React.FC = () => {
 	const {fps} = useVideoConfig();
@@ -19,10 +19,10 @@ export const Scene: React.FC = () => {
 
 	const textSceneDuration = 3 * fps;
 	const firstWebsiteSceneDuration = 6 * fps;
-	const secondWebsiteSceneDuration = 12.7 * fps;
+	const secondWebsiteSceneDuration = 13.7 * fps;
 	const applicationListDuration = 2.1 * fps;
 	const fourthWebsiteSceneDuration = 4.8 * fps;
-	const applicationAddingDuration = 7.5 * fps;
+	const applicationAddingDuration = 8 * fps;
 	const phoneSceneDuration = 4.5 * fps;
 	const endSceneDuration = 4 * fps;
 	return (

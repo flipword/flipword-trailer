@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+	Easing,
 	Img,
 	interpolate,
 	staticFile,
@@ -10,13 +11,14 @@ import {
 export const AddingPopup: React.FC<{
 	startWritingFrame: number;
 	foreignWordFrame: number;
+	saveWordFrame: number;
 }> = (props) => {
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
 	const isTypingBarVisible =
 		currentFrame % fps >= fps / 2 ? 'visible' : 'hidden';
-	const foreignWord = 'Advice';
-	const nativeWord = 'Conseil';
+	const foreignWord = props.saveWordFrame >= currentFrame ? 'Advice' : '';
+	const nativeWord = props.saveWordFrame >= currentFrame ? 'Conseil' : '';
 	const typingText = foreignWord.substring(
 		0,
 		interpolate(
@@ -24,13 +26,14 @@ export const AddingPopup: React.FC<{
 			[props.startWritingFrame, props.startWritingFrame + 1.5 * fps],
 			[0, nativeWord.length],
 			{
+				easing: Easing.bezier(0.13, 0.75, 0.5, 1),
 				extrapolateRight: 'clamp',
 				extrapolateLeft: 'clamp',
 			}
 		)
 	);
 	return (
-		<div className="w-full flex flex-col bg-base filter drop-shadow-md rounded-b-2xl px-4 gap-3 items-center pb-2">
+		<div className="w-full flex flex-col bg-base filter drop-shadow-md rounded-b-2xl px-4 gap-3 items-center pb-2 relative">
 			<div className="flex flex-col w-full ">
 				<div className="flex flex-row justify-center w-full bg-primary rounded-b-2xl py-2 text-3xl gap-2">
 					<Img
@@ -51,7 +54,8 @@ export const AddingPopup: React.FC<{
 					English:
 				</div>
 				<div className="flex flex-row items-center justify-center bg-white h-16 w-full rounded-md text-lg gap-0.5">
-					{props.startWritingFrame <= currentFrame ? (
+					{props.startWritingFrame <= currentFrame &&
+					props.saveWordFrame >= currentFrame ? (
 						<>
 							<span>{typingText}</span>
 							<div
