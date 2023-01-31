@@ -28,35 +28,23 @@ export const Scene: React.FC = () => {
 	return (
 		<AbsoluteFill className="bg-darkGrey">
 			<Sequence
-				durationInFrames={textSceneDuration + transitionTime}
-				name="textSceneDuration"
-			>
-				<TextScene
-					transitionIn={false}
-					durationInFrames={textSceneDuration + transitionTime}
-					message="Avez vous régulièrement besoin de <strong>traduire</strong> des mots lors de votre navigation ?"
-				/>
-			</Sequence>
-			<Sequence
-				from={textSceneDuration - offsetFrame(1)}
 				durationInFrames={firstWebsiteSceneDuration + transitionTime}
 				name="firstWebsiteSceneDuration"
 			>
 				<ZoomInComputerScene />
 			</Sequence>
 			<Sequence
-				from={textSceneDuration + firstWebsiteSceneDuration - offsetFrame(2)}
+				from={firstWebsiteSceneDuration - offsetFrame(2)}
 				durationInFrames={textSceneDuration + transitionTime}
 				name="FirstScene"
 			>
 				<TextScene
 					durationInFrames={textSceneDuration + transitionTime}
-					message="<strong>Flipword</strong> peut vous permettre de créer facilement une liste de vocabulaire personnalisé"
+					message="Lors de votre <strong>navigation</strong>, vous vous êtes déjà retrouvé bloqué par un mot ? "
 				/>
 			</Sequence>
 			<Sequence
 				from={
-					textSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration -
 					offsetFrame(3)
@@ -68,7 +56,6 @@ export const Scene: React.FC = () => {
 			</Sequence>
 			<Sequence
 				from={
-					textSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration -
@@ -81,7 +68,6 @@ export const Scene: React.FC = () => {
 			</Sequence>
 			<Sequence
 				from={
-					textSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration +
@@ -95,7 +81,6 @@ export const Scene: React.FC = () => {
 			</Sequence>
 			<Sequence
 				from={
-					textSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration +
@@ -108,12 +93,11 @@ export const Scene: React.FC = () => {
 			>
 				<TextScene
 					durationInFrames={textSceneDuration + transitionTime}
-					message="Vous pouvez également ajouter des mots directement depuis <strong>l’application</strong>"
+					message="<strong>Ajoutez</strong> des mots directement depuis l’application"
 				/>
 			</Sequence>
 			<Sequence
 				from={
-					textSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration +
@@ -129,7 +113,6 @@ export const Scene: React.FC = () => {
 			</Sequence>
 			<Sequence
 				from={
-					textSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration +
@@ -144,12 +127,11 @@ export const Scene: React.FC = () => {
 			>
 				<TextScene
 					durationInFrames={textSceneDuration + transitionTime}
-					message="<strong>Flipword</strong> est également disponible sur mobile pour réviser partout"
+					message="Disponible sur <strong>mobile</strong> pour réviser partout"
 				/>
 			</Sequence>
 			<Sequence
 				from={
-					textSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration +
@@ -167,7 +149,6 @@ export const Scene: React.FC = () => {
 			</Sequence>
 			<Sequence
 				from={
-					textSceneDuration +
 					firstWebsiteSceneDuration +
 					textSceneDuration +
 					secondWebsiteSceneDuration +

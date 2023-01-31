@@ -12,7 +12,7 @@ module.exports = {
 			darkGrey: '#DCDCDC',
 			lightGrey: '#F4F4F4',
 			negative: '#FF0000',
-			blue: '#7f70d0',
+			blue: '#5e77c7',
 		}),
 		borderColor: (theme) => ({
 			...theme('colors'),

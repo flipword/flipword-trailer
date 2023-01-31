@@ -72,7 +72,7 @@ export const WordHighlightScene: React.FC = () => {
 			<LeftTextDrawer
 				startFrame={3.5 * fps}
 				endFrame={11 * fps}
-				firstMessage="Grace à l’<strong>extension navigateur</strong> ajouter des mots à votre liste"
+				firstMessage="Avec <strong>FlipWord</strong> traduisez et ajoutez des mots à votre liste"
 				secondMessage="<strong>Révisez</strong> les ensuite au sein de l’application"
 			/>
 			<div className="flex-1">
