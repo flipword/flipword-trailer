@@ -4,7 +4,7 @@ import {WebsiteContent} from '../components/WebsiteContent';
 import {WebsiteSceneEnum} from '../models/WebsiteSceneEnum';
 import {Easing, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {RANDOM_LEARN_URL} from '../constants/constant';
-import {LeftTextDrawer} from '../components/LeftTextDrawer';
+import {PopupWindow} from '../components/PopupWindow';
 
 export const WordHighlightScene: React.FC = () => {
 	const {fps} = useVideoConfig();
@@ -21,7 +21,7 @@ export const WordHighlightScene: React.FC = () => {
 			11.5 * fps,
 			12 * fps,
 		],
-		[200, 200, 200, 0, 0, 300],
+		[200, 200, 200, 0, 0, 340],
 		{
 			easing: Easing.bezier(0.4, 1, 1, 1),
 			extrapolateRight: 'clamp',
@@ -68,31 +68,30 @@ export const WordHighlightScene: React.FC = () => {
 		currentFrame <= startDecreasingFrame ? 'absolute' : 'relative';
 
 	return (
-		<div className="w-full h-full flex flex-row">
-			<LeftTextDrawer
-				startFrame={3.5 * fps}
-				endFrame={11 * fps}
-				firstMessage="Avec <strong>FlipWord</strong> traduisez et ajoutez des mots à votre liste"
-				secondMessage="<strong>Révisez</strong> les ensuite au sein de l’application"
-			/>
-			<div className="flex-1">
-				<div
-					className="w-full h-full"
-					style={{
-						transform: `scale(${scaleContent})`,
-						top: offsetTop,
-						left: offsetLeft,
-						position: containerPosition,
-					}}
+		<div className="w-full h-full relative">
+			<div
+				style={{
+					transform: `scale(${scaleContent})`,
+					top: offsetTop,
+					left: offsetLeft,
+					position: containerPosition,
+				}}
+			>
+				<WebsiteContainer
+					url={RANDOM_LEARN_URL}
+					multiTab={false}
+					tabTransition={false}
 				>
-					<WebsiteContainer
-						url={RANDOM_LEARN_URL}
-						multiTab={false}
-						tabTransition={false}
-					>
-						<WebsiteContent websiteScene={WebsiteSceneEnum.WordHighlight} />
-					</WebsiteContainer>
-				</div>
+					<WebsiteContent websiteScene={WebsiteSceneEnum.WordHighlight} />
+				</WebsiteContainer>
+			</div>
+			<div className="absolute" style={{top: '230px', left: '925px'}}>
+				<PopupWindow
+					startFrame={3.5 * fps}
+					endFrame={11 * fps}
+					firstMessage="Avec <strong>FlipWord</strong> traduisez et ajoutez des mots à votre liste"
+					secondMessage="<strong>Révisez</strong> les ensuite au sein de l’application"
+				/>
 			</div>
 		</div>
 	);

@@ -8,7 +8,7 @@ import {WebsiteSceneEnum} from './models/WebsiteSceneEnum';
 import {PhoneScene} from './scenes/PhoneScene';
 import {EndScene} from './scenes/EndScene';
 import {ZoomInComputerScene} from './scenes/ZoomInComputerScene';
-import {LeftTextDrawer} from './components/LeftTextDrawer';
+import {PopupWindow} from './components/PopupWindow';
 import {WordHighlightScene} from './scenes/WordHighlightScene';
 
 export const Scene: React.FC = () => {
@@ -44,11 +44,7 @@ export const Scene: React.FC = () => {
 				/>
 			</Sequence>
 			<Sequence
-				from={
-					firstWebsiteSceneDuration +
-					textSceneDuration -
-					offsetFrame(3)
-				}
+				from={firstWebsiteSceneDuration + textSceneDuration - offsetFrame(3)}
 				durationInFrames={secondWebsiteSceneDuration + transitionTime}
 				name="FirstScene"
 			>
