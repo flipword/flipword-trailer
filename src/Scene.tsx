@@ -8,7 +8,6 @@ import {WebsiteSceneEnum} from './models/WebsiteSceneEnum';
 import {PhoneScene} from './scenes/PhoneScene';
 import {EndScene} from './scenes/EndScene';
 import {ZoomInComputerScene} from './scenes/ZoomInComputerScene';
-import {PopupWindow} from './components/PopupWindow';
 import {WordHighlightScene} from './scenes/WordHighlightScene';
 
 export const Scene: React.FC = () => {
@@ -18,7 +17,7 @@ export const Scene: React.FC = () => {
 	const offsetFrame = (indexScene: number) => transitionTime * indexScene;
 
 	const textSceneDuration = 3 * fps;
-	const firstWebsiteSceneDuration = 6 * fps;
+	const firstWebsiteSceneDuration = 6.5 * fps;
 	const secondWebsiteSceneDuration = 13.7 * fps;
 	const applicationListDuration = 2.1 * fps;
 	const fourthWebsiteSceneDuration = 4.8 * fps;

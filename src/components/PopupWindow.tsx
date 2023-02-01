@@ -65,7 +65,7 @@ export const PopupWindow: React.FC<{
 			}}
 		>
 			<div className="flex flex-col flex-auto relative flex-col bg-lightGrey rounded-xl filter drop-shadow-lg">
-				<div className="flex flex-row w-full h-8 justify-end items-center gap-2 px-3">
+				<div className="flex flex-row bg-lightGrey w-full h-8 justify-end items-center gap-2 px-3 rounded-t-xl">
 					<div className="w-3 h-3 rounded-full bg-negative" />
 					<div className="w-3 h-3 rounded-full bg-primary" />
 					<div className="w-3 h-3 rounded-full bg-positive" />
@@ -80,10 +80,6 @@ export const PopupWindow: React.FC<{
 						}}
 					/>
 				</div>
-				{/* <div className="w-16 h-16 bg-primary absolute rounded-xl filter blur-sm transform rotate-45" style={{top: '100px', left: '100px'}} /> */}
-				{/* <div className="w-16 h-16 bg-transparent border-4 border-primary absolute rounded-xl filter blur-sm transform rotate-45" style={{top: '140px', left: '120px'}} /> */}
-				{/* <div className="w-16 h-16 bg-transparent border-4 border-primary absolute rounded-xl filter blur-sm transform rotate-25" style={{top: '450px', left: '465px'}} /> */}
-				{/* <div className="w-16 h-16 bg-primary absolute rounded-xl filter blur-sm transform -rotate-25" style={{top: '850px', left: '100px'}} /> */}
 			</div>
 		</div>
 	);

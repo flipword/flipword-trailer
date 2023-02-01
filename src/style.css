@@ -14,7 +14,7 @@
 }
 
 .text-stroke-effect {
-    -webkit-text-stroke: 1px white;
+    -webkit-text-stroke: 1px #FF9100;
     font-weight: 1000;
 }
 

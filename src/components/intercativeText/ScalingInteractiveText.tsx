@@ -28,8 +28,8 @@ export const ScalingInteractiveText: React.FC<{
 	);
 
 	return (
-		<div className="text-xl z-30 flex flex-col flex-1 px-5 justify-center">
-			<p>Taking a pen to paper is a bit outdated, however it has</p>
+		<div className="text-xl z-30 flex flex-col flex-1 px-5 justify-center ">
+			<p className="whitespace-nowrap">Taking a pen to paper is a bit outdated, however it has</p>
 			<div className="flex flex-row items-center gap-1">
 				<div
 					className="relative"
@@ -49,7 +49,7 @@ export const ScalingInteractiveText: React.FC<{
 						}}
 					/>
 					<div
-						className="flex flex-row flex-auto w-full justify-center items-end text-negative text-stroke-effect text-3xl gap-4 absolute"
+						className="flex flex-row flex-auto w-full justify-center items-end text-white text-stroke-effect text-3xl gap-4 absolute"
 						style={{
 							top: '-30px',
 							opacity,

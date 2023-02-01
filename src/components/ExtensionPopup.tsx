@@ -3,7 +3,7 @@ import {Img, staticFile} from 'remotion';
 
 export const ExtensionPopup: React.FC = () => {
 	return (
-		<div className="flex flex-col h-full w-full bg-base border border-darkGrey">
+		<div className="flex flex-col h-full w-full bg-base border border-darkGrey rounded-lg">
 			<div className="flex flex-row w-full justify-between items-center px-2 py-1">
 				<div className="flex flex-row gap-1">
 					<Img className="w-6 h-auto" src={staticFile('icons/logo.svg')} />
