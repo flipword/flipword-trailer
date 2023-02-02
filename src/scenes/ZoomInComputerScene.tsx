@@ -46,7 +46,7 @@ export const ZoomInComputerScene: React.FC = (props) => {
 	const containerOffsetTop = `${interpolate(
 		currentFrame,
 		[animationStartFps, animationEndFps],
-		[0, 10],
+		[0, 60],
 		{
 			easing: Easing.bezier(0.4, 1, 1, 1),
 			extrapolateRight: 'clamp',
@@ -61,7 +61,7 @@ export const ZoomInComputerScene: React.FC = (props) => {
 			animationEndFps + 2.5 * fps,
 			animationEndFps + 3.5 * fps,
 		],
-		[-3, 0, 0, 200],
+		[-35, 0, 0, 200],
 		{
 			easing: Easing.bezier(0.4, 1, 1, 1),
 			extrapolateRight: 'clamp',
