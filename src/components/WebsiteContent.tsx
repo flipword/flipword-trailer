@@ -183,7 +183,7 @@ export const WebsiteContent: React.FC<{
 		<>
 			<div className="w-full overflow-auto text-browser-family">
 				<div className="bg-darkGrey flex flex-row justify-center relative">
-					<div className="bg-white py-6 px-12" style={{width: '57%'}}>
+					<div className="bg-white py-6 px-12" style={{width: '65%'}}>
 						<h1 className="text-4xl">{title}</h1>
 						{/* Part 1 */}
 						<div className="px-5 mt-10 flex flex-row justify-start">
