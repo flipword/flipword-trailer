@@ -26,7 +26,7 @@ export const SelectInteractiveText: React.FC = () => {
 
 	return (
 		<div className="text-xl z-30 flex flex-col flex-1 px-5 justify-center">
-			<p>Taking a pen to paper is a bit outdated, however it has</p>
+			<p className="whitespace-nowrap">Taking a pen to paper is a bit outdated, however it has</p>
 			<div className="flex flex-row items-center gap-1">
 				<div className="relative">
 					<div
@@ -60,10 +60,8 @@ export const SelectInteractiveText: React.FC = () => {
 				</div>
 				<p>affects on learning new languages.</p>
 			</div>
-			<p>
-				It helps with written word learning, by connecting orthography spelling
-				and phonology at the whole word level.
-			</p>
+			<p className="whitespace-nowrap">It helps with written word learning, by connecting orthography</p>
+			<p>spelling and phonology at the whole word level.</p>
 		</div>
 	);
 };

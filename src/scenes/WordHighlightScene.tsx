@@ -39,7 +39,7 @@ export const WordHighlightScene: React.FC = () => {
 			11.5 * fps,
 			12 * fps,
 		],
-		[250, 250, 250, 0, 0, -578],
+		[250, 250, 250, 0, 0, 578],
 		{
 			easing: Easing.bezier(0.4, 1, 1, 1),
 			extrapolateRight: 'clamp',
@@ -58,14 +58,11 @@ export const WordHighlightScene: React.FC = () => {
 		],
 		[1.5, 1.5, 1.5, 1, 1, 1.6],
 		{
-			easing: Easing.bezier(0.35, 1, 1, 1),
+			easing: Easing.bezier(0.4, 1, 1, 1),
 			extrapolateRight: 'clamp',
 			extrapolateLeft: 'clamp',
 		}
 	);
-
-	const containerPosition =
-		currentFrame <= startDecreasingFrame ? 'absolute' : 'relative';
 
 	return (
 		<div className="w-full h-full relative">
@@ -74,7 +71,6 @@ export const WordHighlightScene: React.FC = () => {
 					transform: `scale(${scaleContent})`,
 					top: offsetTop,
 					left: offsetLeft,
-					position: containerPosition,
 				}}
 			>
 				<WebsiteContainer
