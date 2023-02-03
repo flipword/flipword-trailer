@@ -113,42 +113,42 @@ export const WebsiteContent: React.FC<{
 					{/* Start highlight text */}
 					<Sequence durationInFrames={Number(fps)}>
 						<Cursor
-							startPosition={{top: 340, left: 475}}
-							endPosition={{top: 340, left: 475}}
+							startPosition={{top: 385, left: 395}}
+							endPosition={{top: 385, left: 395}}
 							animationDuration={1}
 						/>
 					</Sequence>
 					{/* End highlight text */}
 					<Sequence from={Number(fps)} durationInFrames={1.2 * fps}>
 						<Cursor
-							startPosition={{top: 340, left: 475}}
-							endPosition={{top: 340, left: 555}}
+							startPosition={{top: 385, left: 395}}
+							endPosition={{top: 385, left: 475}}
 							animationDuration={fps}
 						/>
 					</Sequence>
 					{/* Go to icon button to open popup */}
 					<Sequence from={2.2 * fps} durationInFrames={4.3 * fps}>
 						<Cursor
-							startPosition={{top: 340, left: 555}}
-							endPosition={{top: 354, left: 565}}
+							startPosition={{top: 385, left: 475}}
+							endPosition={{top: 395, left: 490}}
 							animationDuration={0.5 * fps}
 						/>
 					</Sequence>
 					{/* ClickEffect on icon button to open popup */}
 					<Sequence from={2.8 * fps} durationInFrames={2 * fps}>
-						<ClickEffect position={{top: 354, left: 565}} />
+						<ClickEffect position={{top: 395, left: 490}} />
 					</Sequence>
 					{/* Go to submit button in popup */}
 					<Sequence from={6.5 * fps} durationInFrames={4 * fps}>
 						<Cursor
-							startPosition={{top: 354, left: 565}}
-							endPosition={{top: 490, left: 650}}
+							startPosition={{top: 395, left: 490}}
+							endPosition={{top: 520, left: 580}}
 							animationDuration={fps}
 						/>
 					</Sequence>
 					{/* ClickEffect on submit button of popup */}
 					<Sequence from={7.7 * fps} durationInFrames={2 * fps}>
-						<ClickEffect position={{top: 490, left: 650}} />
+						<ClickEffect position={{top: 520, left: 580}} />
 					</Sequence>
 					{/* Go to extension button in navbar */}
 					<Sequence from={10.5 * fps} durationInFrames={2.5 * fps}>
