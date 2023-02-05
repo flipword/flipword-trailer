@@ -71,7 +71,7 @@ export const WordHighlightScene: React.FC = () => {
 					transform: `scale(${scaleContent})`,
 					top: offsetTop,
 					left: offsetLeft,
-					position: "relative"
+					position: 'relative',
 				}}
 			>
 				<WebsiteContainer
@@ -85,7 +85,7 @@ export const WordHighlightScene: React.FC = () => {
 			<div className="absolute" style={{top: '230px', left: '925px'}}>
 				<PopupWindow
 					startFrame={3.5 * fps}
-					endFrame={11 * fps}
+					endFrame={11.5 * fps}
 					firstMessage="Avec <strong>FlipWord</strong> traduisez et ajoutez des mots à votre liste"
 					secondMessage="<strong>Révisez</strong> les ensuite au sein de l’application"
 				/>

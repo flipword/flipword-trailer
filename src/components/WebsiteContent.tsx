@@ -45,7 +45,7 @@ export const WebsiteContent: React.FC<{
 	const ExtensionPopupDisplay = () => {
 		if (
 			props.websiteScene === WebsiteSceneEnum.WordHighlight &&
-			currentFrame >= 12.1 * fps
+			currentFrame >= 12.6 * fps
 		) {
 			return (
 				<div
@@ -62,45 +62,51 @@ export const WebsiteContent: React.FC<{
 		if (props.websiteScene === WebsiteSceneEnum.ArticleReading) {
 			return (
 				<>
+					{/* Start reading */}
 					<Sequence durationInFrames={1.5 * fps}>
 						<Cursor
-							startPosition={{top: 170, left: 470}}
-							endPosition={{top: 170, left: 470}}
+							startPosition={{top: 150, left: 470}}
+							endPosition={{top: 150, left: 470}}
 							animationDuration={1}
 						/>
 					</Sequence>
+					{/* Go to first title */}
 					<Sequence from={1.5 * fps} durationInFrames={0.7 * fps}>
 						<Cursor
-							startPosition={{top: 170, left: 470}}
-							endPosition={{top: 240, left: 470}}
+							startPosition={{top: 150, left: 470}}
+							endPosition={{top: 240, left: 450}}
 							animationDuration={0.7 * fps}
 						/>
 					</Sequence>
+					{/* Go to start first line text */}
 					<Sequence from={2.2 * fps} durationInFrames={0.7 * fps}>
 						<Cursor
-							startPosition={{top: 240, left: 470}}
-							endPosition={{top: 335, left: 500}}
+							startPosition={{top: 240, left: 450}}
+							endPosition={{top: 340, left: 440}}
 							animationDuration={0.7 * fps}
 						/>
 					</Sequence>
+					{/* Go to end first line text */}
 					<Sequence from={2.9 * fps} durationInFrames={0.8 * fps}>
 						<Cursor
-							startPosition={{top: 335, left: 500}}
-							endPosition={{top: 335, left: 900}}
+							startPosition={{top: 340, left: 500}}
+							endPosition={{top: 340, left: 850}}
 							animationDuration={0.8 * fps}
 						/>
 					</Sequence>
+					{/* Go to unknown word */}
 					<Sequence from={3.7 * fps} durationInFrames={0.8 * fps}>
 						<Cursor
-							startPosition={{top: 335, left: 900}}
-							endPosition={{top: 365, left: 500}}
+							startPosition={{top: 335, left: 850}}
+							endPosition={{top: 375, left: 430}}
 							animationDuration={0.8 * fps}
 						/>
 					</Sequence>
+					{/* Idle cursor on last word */}
 					<Sequence from={4.5 * fps} durationInFrames={3 * fps}>
 						<Cursor
-							startPosition={{top: 365, left: 500}}
-							endPosition={{top: 365, left: 500}}
+							startPosition={{top: 375, left: 430}}
+							endPosition={{top: 375, left: 430}}
 							animationDuration={1}
 						/>
 					</Sequence>
@@ -139,7 +145,7 @@ export const WebsiteContent: React.FC<{
 						<ClickEffect position={{top: 395, left: 490}} />
 					</Sequence>
 					{/* Go to submit button in popup */}
-					<Sequence from={6.5 * fps} durationInFrames={4 * fps}>
+					<Sequence from={6.5 * fps} durationInFrames={4.5 * fps}>
 						<Cursor
 							startPosition={{top: 395, left: 490}}
 							endPosition={{top: 520, left: 580}}
@@ -151,7 +157,7 @@ export const WebsiteContent: React.FC<{
 						<ClickEffect position={{top: 520, left: 580}} />
 					</Sequence>
 					{/* Go to extension button in navbar */}
-					<Sequence from={10.5 * fps} durationInFrames={2.5 * fps}>
+					<Sequence from={11 * fps} durationInFrames={2.5 * fps}>
 						<Cursor
 							startPosition={{top: 490, left: 650}}
 							endPosition={{top: 60, left: 1880}}
@@ -159,11 +165,11 @@ export const WebsiteContent: React.FC<{
 						/>
 					</Sequence>
 					{/* ClickEffect on extension button in navbar */}
-					<Sequence from={12 * fps} durationInFrames={2 * fps}>
+					<Sequence from={12.5 * fps} durationInFrames={2 * fps}>
 						<ClickEffect position={{top: 60, left: 1880}} />
 					</Sequence>
 					{/* Go to train button */}
-					<Sequence from={13 * fps} durationInFrames={2 * fps}>
+					<Sequence from={13.5 * fps} durationInFrames={2 * fps}>
 						<Cursor
 							startPosition={{top: 65, left: 1880}}
 							endPosition={{top: 110, left: 1860}}
@@ -171,7 +177,7 @@ export const WebsiteContent: React.FC<{
 						/>
 					</Sequence>
 					{/* ClickEffect on train button */}
-					<Sequence from={13.7 * fps} durationInFrames={2 * fps}>
+					<Sequence from={14.2 * fps} durationInFrames={2 * fps}>
 						<ClickEffect position={{top: 110, left: 1860}} />
 					</Sequence>
 				</>

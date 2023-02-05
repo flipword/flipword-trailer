@@ -18,7 +18,7 @@ export const Scene: React.FC = () => {
 
 	const textSceneDuration = 3 * fps;
 	const firstWebsiteSceneDuration = 6.5 * fps;
-	const secondWebsiteSceneDuration = 13.7 * fps;
+	const secondWebsiteSceneDuration = 14.2 * fps;
 	const applicationListDuration = 2.1 * fps;
 	const fourthWebsiteSceneDuration = 4.8 * fps;
 	const applicationAddingDuration = 8 * fps;
@@ -39,7 +39,7 @@ export const Scene: React.FC = () => {
 			>
 				<TextScene
 					durationInFrames={textSceneDuration + transitionTime}
-					message="Lors de votre <strong>navigation</strong>, vous vous êtes déjà retrouvé bloqué par un mot ? "
+					message="Lors de votre <strong>navigation</strong>, vous êtes vous déjà retrouvé bloqué par un mot ? "
 				/>
 			</Sequence>
 			<Sequence
@@ -88,7 +88,7 @@ export const Scene: React.FC = () => {
 			>
 				<TextScene
 					durationInFrames={textSceneDuration + transitionTime}
-					message="<strong>Ajoutez</strong> des mots directement depuis l’application"
+					message="Vous pouvez également <strong>ajoutez</strong> des mots directement depuis l’application"
 				/>
 			</Sequence>
 			<Sequence
@@ -122,7 +122,7 @@ export const Scene: React.FC = () => {
 			>
 				<TextScene
 					durationInFrames={textSceneDuration + transitionTime}
-					message="Disponible sur <strong>mobile</strong> pour réviser partout"
+					message="Disponible sur <strong>mobile</strong>  pour réviser partout"
 				/>
 			</Sequence>
 			<Sequence
