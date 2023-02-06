@@ -1,5 +1,5 @@
 import React from 'react';
-import {Easing, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
+import {Audio, Easing, interpolate, Sequence, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 
 export const PopupWindow: React.FC<{
 	firstMessage: string;
@@ -81,6 +81,10 @@ export const PopupWindow: React.FC<{
 					/>
 				</div>
 			</div>
+			<Sequence from={props.startFrame + 0.3 * fps}>
+				<Audio src={staticFile("song/pop.wav")}/>
+			</Sequence>
+
 		</div>
 	);
 };
