@@ -18,12 +18,13 @@ export const Scene: React.FC = () => {
 
 	const textSceneDuration = 3 * fps;
 	const firstWebsiteSceneDuration = 6.5 * fps;
+	const firstTextSceneDuration = 3.5 * fps;
 	const secondWebsiteSceneDuration = 14.2 * fps;
 	const applicationListDuration = 2.1 * fps;
 	const fourthWebsiteSceneDuration = 4.8 * fps;
 	const applicationAddingDuration = 8 * fps;
-	const phoneSceneDuration = 4.5 * fps;
-	const endSceneDuration = 4 * fps;
+	const phoneSceneDuration = 7 * fps;
+	const endSceneDuration = 10 * fps;
 	return (
 		<AbsoluteFill className="bg-darkGrey">
 			<Sequence
@@ -34,16 +35,18 @@ export const Scene: React.FC = () => {
 			</Sequence>
 			<Sequence
 				from={firstWebsiteSceneDuration - offsetFrame(2)}
-				durationInFrames={textSceneDuration + transitionTime}
+				durationInFrames={firstTextSceneDuration + transitionTime}
 				name="FirstScene"
 			>
 				<TextScene
-					durationInFrames={textSceneDuration + transitionTime}
+					durationInFrames={firstTextSceneDuration + transitionTime}
 					message="Lors de votre <strong>navigation</strong>, vous êtes vous déjà retrouvé bloqué par un mot ? "
 				/>
 			</Sequence>
 			<Sequence
-				from={firstWebsiteSceneDuration + textSceneDuration - offsetFrame(3)}
+				from={
+					firstWebsiteSceneDuration + firstTextSceneDuration - offsetFrame(3)
+				}
 				durationInFrames={secondWebsiteSceneDuration + transitionTime}
 				name="FirstScene"
 			>
@@ -52,7 +55,7 @@ export const Scene: React.FC = () => {
 			<Sequence
 				from={
 					firstWebsiteSceneDuration +
-					textSceneDuration +
+					firstTextSceneDuration +
 					secondWebsiteSceneDuration -
 					offsetFrame(2)
 				}
@@ -64,7 +67,7 @@ export const Scene: React.FC = () => {
 			<Sequence
 				from={
 					firstWebsiteSceneDuration +
-					textSceneDuration +
+					firstTextSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration -
 					offsetFrame(1)
@@ -77,7 +80,7 @@ export const Scene: React.FC = () => {
 			<Sequence
 				from={
 					firstWebsiteSceneDuration +
-					textSceneDuration +
+					firstTextSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
 					fourthWebsiteSceneDuration -
@@ -94,7 +97,7 @@ export const Scene: React.FC = () => {
 			<Sequence
 				from={
 					firstWebsiteSceneDuration +
-					textSceneDuration +
+					firstTextSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
 					fourthWebsiteSceneDuration +
@@ -109,7 +112,7 @@ export const Scene: React.FC = () => {
 			<Sequence
 				from={
 					firstWebsiteSceneDuration +
-					textSceneDuration +
+					firstTextSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
 					fourthWebsiteSceneDuration +
@@ -128,7 +131,7 @@ export const Scene: React.FC = () => {
 			<Sequence
 				from={
 					firstWebsiteSceneDuration +
-					textSceneDuration +
+					firstTextSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
 					fourthWebsiteSceneDuration +
@@ -145,7 +148,7 @@ export const Scene: React.FC = () => {
 			<Sequence
 				from={
 					firstWebsiteSceneDuration +
-					textSceneDuration +
+					firstTextSceneDuration +
 					secondWebsiteSceneDuration +
 					applicationListDuration +
 					fourthWebsiteSceneDuration +

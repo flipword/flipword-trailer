@@ -18,6 +18,7 @@ export const ApplicationLearningContent: React.FC<{
 
 	const timeToReverse = 2 * fps;
 	const timeToChangeWord = 3.7 * fps;
+	const timeToReverseSecondWord = 5 * fps;
 
 	const currentWordIndex =
 		props.websiteScene === WebsiteSceneEnum.ApplicationLearning
@@ -28,7 +29,8 @@ export const ApplicationLearningContent: React.FC<{
 
 	const isReverse =
 		props.websiteScene === WebsiteSceneEnum.ApplicationLearning
-			? currentFrame >= timeToReverse && currentWordIndex !== 1
+			? (currentFrame >= timeToReverse && currentWordIndex !== 1) ||
+			  (currentFrame >= timeToReverseSecondWord && currentWordIndex === 1)
 			: false;
 
 	const addingPopupTopOffset = `${
