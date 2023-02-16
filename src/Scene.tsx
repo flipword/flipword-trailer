@@ -23,7 +23,7 @@ export const Scene: React.FC = () => {
 	const applicationListDuration = 2.1 * fps;
 	const fourthWebsiteSceneDuration = 4.8 * fps;
 	const applicationAddingDuration = 8 * fps;
-	const phoneSceneDuration = 7 * fps;
+	const phoneSceneDuration = 8 * fps;
 	const endSceneDuration = 10 * fps;
 	return (
 		<AbsoluteFill className="bg-darkGrey">
