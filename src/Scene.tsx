@@ -1,4 +1,4 @@
-import {AbsoluteFill} from 'remotion';
+import {AbsoluteFill, Audio, staticFile} from 'remotion';
 import React from 'react';
 import {Sequence, useVideoConfig} from 'remotion';
 
@@ -163,6 +163,7 @@ export const Scene: React.FC = () => {
 			>
 				<EndScene />
 			</Sequence>
+			<Audio src={staticFile("song/music.mp3")} volume={0.5}/>
 		</AbsoluteFill>
 	);
 };
