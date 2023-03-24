@@ -1,6 +1,7 @@
 import {Composition} from 'remotion';
 import {Scene} from './Scene';
 import './style.css';
+import useI18n from "./plugins/i18n.plugin";
 
 // Welcome to the Remotion Three Starter Kit!
 // Two compositions have been created, showing how to use
@@ -32,6 +33,10 @@ export const RemotionVideo: React.FC = () => {
 				fps={30}
 				width={1920}
 				height={1080}
+				defaultProps={{
+					nativeLang: "fr",
+					foreignLang: "fr"
+				}}
 			/>
 		</>
 	);
