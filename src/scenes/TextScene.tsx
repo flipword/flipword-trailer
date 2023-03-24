@@ -1,14 +1,24 @@
 import React from 'react';
-import {Audio, Easing, interpolate, staticFile, useCurrentFrame, useVideoConfig, Sequence} from 'remotion';
+import {
+	Audio,
+	Easing,
+	interpolate,
+	staticFile,
+	useCurrentFrame,
+	useVideoConfig,
+	Sequence,
+} from 'remotion';
 import {noise3D} from '@remotion/noise';
+import useI18n from '../plugins/i18n.plugin';
 
 export const TextScene: React.FC<{
 	transitionIn?: boolean;
 	durationInFrames: number;
-	message: string;
-}> = ({transitionIn = true, durationInFrames, message}) => {
+	messageKey: string;
+}> = ({transitionIn = true, durationInFrames, messageKey}) => {
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
+	const {t} = useI18n();
 
 	const transitionDurationInFrame = 0.5 * fps;
 
@@ -48,15 +58,15 @@ export const TextScene: React.FC<{
 				transform: `translateY(${percent()}%)`,
 			}}
 		>
-			<Audio src={staticFile("song/transition.wav")} volume={0.5}/>
+			<Audio src={staticFile('song/transition.wav')} volume={0.5} />
 			<Sequence from={durationInFrames - 0.5 * fps}>
-				<Audio src={staticFile("song/transition.wav")} volume={0.5}/>
+				<Audio src={staticFile('song/transition.wav')} volume={0.5} />
 			</Sequence>
 			<div className="flex-auto w-full" />
 			<div className="w-full h-12 bg-primary bottom-text-radius filter blur-sm -mb-2" />
 			<div className="absolute flex flex-row justify-center items-center w-full h-full px-48">
 				<span
-					dangerouslySetInnerHTML={{__html: message}}
+					dangerouslySetInnerHTML={{__html: t(messageKey)}}
 					className="text-7xl leading-tight text-center"
 					style={{transform: `scale(${scale})`}}
 				/>

@@ -20,20 +20,6 @@ export const Scene: React.FC<{
 	foreignLang: string;
 }> = ({nativeLang, foreignLang}) => {
 	const {fps} = useVideoConfig();
-	const {t, currentNativeLang, setCurrentNativeLang, setCurrentForeignLang} =
-		useI18n();
-
-	const [handle] = useState(() => delayRender());
-
-	const initLang = useCallback(() => {
-		setCurrentNativeLang(nativeLang);
-		setCurrentForeignLang(foreignLang);
-		continueRender(handle);
-	}, []);
-
-	useEffect(() => {
-		initLang();
-	}, []);
 
 	const transitionTime = 8;
 	const offsetFrame = (indexScene: number) => transitionTime * indexScene;
@@ -51,157 +37,153 @@ export const Scene: React.FC<{
 		<NativeLangContext.Provider value={nativeLang}>
 			<ForeignLangContext.Provider value={foreignLang}>
 				<div>
-					{currentNativeLang && foreignLang ? (
-						<AbsoluteFill className="bg-darkGrey">
-							<Sequence
-								durationInFrames={firstWebsiteSceneDuration + transitionTime}
-								name="firstWebsiteSceneDuration"
-							>
-								<ZoomInComputerScene />
-							</Sequence>
-							<Sequence
-								from={firstWebsiteSceneDuration - offsetFrame(2)}
+					<AbsoluteFill className="bg-darkGrey">
+						<Sequence
+							durationInFrames={firstWebsiteSceneDuration + transitionTime}
+							name="firstWebsiteSceneDuration"
+						>
+							<ZoomInComputerScene />
+						</Sequence>
+						<Sequence
+							from={firstWebsiteSceneDuration - offsetFrame(2)}
+							durationInFrames={firstTextSceneDuration + transitionTime}
+							name="FirstScene"
+						>
+							<TextScene
 								durationInFrames={firstTextSceneDuration + transitionTime}
-								name="FirstScene"
-							>
-								<TextScene
-									durationInFrames={firstTextSceneDuration + transitionTime}
-									message={t('blocked_on_word')}
-								/>
-							</Sequence>
-							<Sequence
-								from={
-									firstWebsiteSceneDuration +
-									firstTextSceneDuration -
-									offsetFrame(3)
-								}
-								durationInFrames={secondWebsiteSceneDuration + transitionTime}
-								name="FirstScene"
-							>
-								<WordHighlightScene />
-							</Sequence>
-							<Sequence
-								from={
-									firstWebsiteSceneDuration +
-									firstTextSceneDuration +
-									secondWebsiteSceneDuration -
-									offsetFrame(2)
-								}
-								durationInFrames={applicationListDuration + transitionTime}
-								name="FirstScene"
-							>
-								<WebsiteScene
-									websiteScene={WebsiteSceneEnum.ApplicationWordList}
-								/>
-							</Sequence>
-							<Sequence
-								from={
-									firstWebsiteSceneDuration +
-									firstTextSceneDuration +
-									secondWebsiteSceneDuration +
-									applicationListDuration -
-									offsetFrame(1)
-								}
-								durationInFrames={fourthWebsiteSceneDuration + transitionTime}
-								name="FirstScene"
-							>
-								<WebsiteScene
-									websiteScene={WebsiteSceneEnum.ApplicationLearning}
-								/>
-							</Sequence>
-							<Sequence
-								from={
-									firstWebsiteSceneDuration +
-									firstTextSceneDuration +
-									secondWebsiteSceneDuration +
-									applicationListDuration +
-									fourthWebsiteSceneDuration -
-									offsetFrame(2)
-								}
+								messageKey="blocked_on_word"
+							/>
+						</Sequence>
+						<Sequence
+							from={
+								firstWebsiteSceneDuration +
+								firstTextSceneDuration -
+								offsetFrame(3)
+							}
+							durationInFrames={secondWebsiteSceneDuration + transitionTime}
+							name="FirstScene"
+						>
+							<WordHighlightScene />
+						</Sequence>
+						<Sequence
+							from={
+								firstWebsiteSceneDuration +
+								firstTextSceneDuration +
+								secondWebsiteSceneDuration -
+								offsetFrame(2)
+							}
+							durationInFrames={applicationListDuration + transitionTime}
+							name="FirstScene"
+						>
+							<WebsiteScene
+								websiteScene={WebsiteSceneEnum.ApplicationWordList}
+							/>
+						</Sequence>
+						<Sequence
+							from={
+								firstWebsiteSceneDuration +
+								firstTextSceneDuration +
+								secondWebsiteSceneDuration +
+								applicationListDuration -
+								offsetFrame(1)
+							}
+							durationInFrames={fourthWebsiteSceneDuration + transitionTime}
+							name="FirstScene"
+						>
+							<WebsiteScene
+								websiteScene={WebsiteSceneEnum.ApplicationLearning}
+							/>
+						</Sequence>
+						<Sequence
+							from={
+								firstWebsiteSceneDuration +
+								firstTextSceneDuration +
+								secondWebsiteSceneDuration +
+								applicationListDuration +
+								fourthWebsiteSceneDuration -
+								offsetFrame(2)
+							}
+							durationInFrames={textSceneDuration + transitionTime}
+							name="FirstScene"
+						>
+							<TextScene
 								durationInFrames={textSceneDuration + transitionTime}
-								name="FirstScene"
-							>
-								<TextScene
-									durationInFrames={textSceneDuration + transitionTime}
-									message={t('add_in_app')}
-								/>
-							</Sequence>
-							<Sequence
-								from={
-									firstWebsiteSceneDuration +
-									firstTextSceneDuration +
-									secondWebsiteSceneDuration +
-									applicationListDuration +
-									fourthWebsiteSceneDuration +
-									textSceneDuration -
-									offsetFrame(3)
-								}
-								durationInFrames={applicationAddingDuration + transitionTime}
-								name="FirstScene"
-							>
-								<WebsiteScene
-									websiteScene={WebsiteSceneEnum.ApplicationAdding}
-								/>
-							</Sequence>
-							<Sequence
-								from={
-									firstWebsiteSceneDuration +
-									firstTextSceneDuration +
-									secondWebsiteSceneDuration +
-									applicationListDuration +
-									fourthWebsiteSceneDuration +
-									textSceneDuration +
-									applicationAddingDuration -
-									offsetFrame(3)
-								}
+								messageKey="add_in_app"
+							/>
+						</Sequence>
+						<Sequence
+							from={
+								firstWebsiteSceneDuration +
+								firstTextSceneDuration +
+								secondWebsiteSceneDuration +
+								applicationListDuration +
+								fourthWebsiteSceneDuration +
+								textSceneDuration -
+								offsetFrame(3)
+							}
+							durationInFrames={applicationAddingDuration + transitionTime}
+							name="FirstScene"
+						>
+							<WebsiteScene websiteScene={WebsiteSceneEnum.ApplicationAdding} />
+						</Sequence>
+						<Sequence
+							from={
+								firstWebsiteSceneDuration +
+								firstTextSceneDuration +
+								secondWebsiteSceneDuration +
+								applicationListDuration +
+								fourthWebsiteSceneDuration +
+								textSceneDuration +
+								applicationAddingDuration -
+								offsetFrame(3)
+							}
+							durationInFrames={textSceneDuration + transitionTime}
+							name="FirstScene"
+						>
+							<TextScene
 								durationInFrames={textSceneDuration + transitionTime}
-								name="FirstScene"
-							>
-								<TextScene
-									durationInFrames={textSceneDuration + transitionTime}
-									message={t('available_mobile')}
-								/>
-							</Sequence>
-							<Sequence
-								from={
-									firstWebsiteSceneDuration +
-									firstTextSceneDuration +
-									secondWebsiteSceneDuration +
-									applicationListDuration +
-									fourthWebsiteSceneDuration +
-									textSceneDuration +
-									applicationAddingDuration +
-									textSceneDuration -
-									offsetFrame(4)
-								}
+								messageKey="available_mobile"
+							/>
+						</Sequence>
+						<Sequence
+							from={
+								firstWebsiteSceneDuration +
+								firstTextSceneDuration +
+								secondWebsiteSceneDuration +
+								applicationListDuration +
+								fourthWebsiteSceneDuration +
+								textSceneDuration +
+								applicationAddingDuration +
+								textSceneDuration -
+								offsetFrame(4)
+							}
+							durationInFrames={phoneSceneDuration + transitionTime}
+							name="FirstScene"
+						>
+							<PhoneScene
 								durationInFrames={phoneSceneDuration + transitionTime}
-								name="FirstScene"
-							>
-								<PhoneScene
-									durationInFrames={phoneSceneDuration + transitionTime}
-								/>
-							</Sequence>
-							<Sequence
-								from={
-									firstWebsiteSceneDuration +
-									firstTextSceneDuration +
-									secondWebsiteSceneDuration +
-									applicationListDuration +
-									fourthWebsiteSceneDuration +
-									textSceneDuration +
-									applicationAddingDuration +
-									textSceneDuration +
-									phoneSceneDuration -
-									offsetFrame(3)
-								}
-								durationInFrames={endSceneDuration + transitionTime}
-								name="FirstScene"
-							>
-								<EndScene />
-							</Sequence>
-							<Audio src={staticFile('song/music.mp3')} volume={0.5} />
-						</AbsoluteFill>
-					) : null}
+							/>
+						</Sequence>
+						<Sequence
+							from={
+								firstWebsiteSceneDuration +
+								firstTextSceneDuration +
+								secondWebsiteSceneDuration +
+								applicationListDuration +
+								fourthWebsiteSceneDuration +
+								textSceneDuration +
+								applicationAddingDuration +
+								textSceneDuration +
+								phoneSceneDuration -
+								offsetFrame(3)
+							}
+							durationInFrames={endSceneDuration + transitionTime}
+							name="FirstScene"
+						>
+							<EndScene />
+						</Sequence>
+						<Audio src={staticFile('song/music.mp3')} volume={0.5} />
+					</AbsoluteFill>
 				</div>
 			</ForeignLangContext.Provider>
 		</NativeLangContext.Provider>
