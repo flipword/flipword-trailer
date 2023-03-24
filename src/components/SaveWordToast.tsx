@@ -1,10 +1,12 @@
-import {staticFile, Audio, Img} from 'remotion';
+import {staticFile, Img} from 'remotion';
 import React from 'react';
 import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
+import useI18n from '../plugins/i18n.plugin';
 
 export const SaveWordToast: React.FC = () => {
 	const currentFrame = useCurrentFrame();
 	const {fps} = useVideoConfig();
+	const {t} = useI18n();
 
 	const opacity = interpolate(
 		currentFrame,
@@ -20,7 +22,7 @@ export const SaveWordToast: React.FC = () => {
 			className="flex flex-row gap-3 px-6 py-3 bg-positive rounded-lg filter drop-shadow-md"
 			style={{opacity}}
 		>
-			<span className="whitespace-nowrap">Mot enregistré</span>
+			<span className="whitespace-nowrap">{t('saved_word')}</span>
 			<Img className="w-5 h-auto" src={staticFile('icons/done.svg')} />
 		</div>
 	);

@@ -5,10 +5,13 @@ import {WebsiteSceneEnum} from '../models/WebsiteSceneEnum';
 import {Easing, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {RANDOM_LEARN_URL} from '../constants/constant';
 import {PopupWindow} from '../components/PopupWindow';
+import useI18n from '../plugins/i18n.plugin';
 
 export const WordHighlightScene: React.FC = () => {
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
+	const {t, currentNativeLang} = useI18n();
+	console.log('current :', currentNativeLang);
 	const startDecreasingFrame = 0.3 * fps;
 
 	const offsetTop = `${interpolate(
@@ -86,8 +89,8 @@ export const WordHighlightScene: React.FC = () => {
 				<PopupWindow
 					startFrame={3.5 * fps}
 					endFrame={11.5 * fps}
-					firstMessage="Avec <strong>FlipWord</strong> traduisez et ajoutez des mots à votre liste"
-					secondMessage="<strong>Révisez</strong> les ensuite au sein de l’application"
+					firstMessage={t('translate_with_flipWord')}
+					secondMessage={t('learn_in_app')}
 				/>
 			</div>
 		</div>

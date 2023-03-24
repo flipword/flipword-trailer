@@ -7,6 +7,7 @@ import {Cursor} from './Cursor';
 import {WebsiteSceneEnum} from '../models/WebsiteSceneEnum';
 import {ClickEffect} from './ClickEffect';
 import {SaveWordToast} from './SaveWordToast';
+import useI18n from '../plugins/i18n.plugin';
 
 export const ApplicationLearningContent: React.FC<{
 	websiteScene: number;
@@ -15,6 +16,8 @@ export const ApplicationLearningContent: React.FC<{
 }> = (props) => {
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
+
+	const {t} = useI18n();
 
 	const timeToReverse = 2 * fps;
 	const timeToChangeWord = 3.5 * fps;
@@ -55,7 +58,7 @@ export const ApplicationLearningContent: React.FC<{
 	const cardDimension = props.isMobile
 		? {width: '300px', height: '420px'}
 		: {width: '340px', height: '520px'};
-	const title = isReverse ? "Est-ce que c'est bon ?" : 'Essaie de deviner:';
+	const title = isReverse ? t('is_correct') : t('try_guess');
 	const bottomButtons = isReverse ? (
 		<div className="flex flex-row gap-12">
 			<DiamondButton borderColor="negative" iconPath="icons/clear.svg" />

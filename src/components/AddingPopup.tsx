@@ -7,6 +7,7 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
+import useI18n from '../plugins/i18n.plugin';
 
 export const AddingPopup: React.FC<{
 	startWritingFrame: number;
@@ -15,6 +16,7 @@ export const AddingPopup: React.FC<{
 }> = (props) => {
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
+	const {t} = useI18n();
 	const isTypingBarVisible =
 		currentFrame % fps >= fps / 2 ? 'visible' : 'hidden';
 	const foreignWord = props.saveWordFrame >= currentFrame ? 'Advice' : '';
@@ -41,7 +43,7 @@ export const AddingPopup: React.FC<{
 						src={staticFile('icons/google-translate.svg')}
 					/>
 					<span className="font-bold">Google</span>
-					<span>Translate</span>
+					<span>{t('translate')}</span>
 				</div>
 				<div className="flex flex-row justify-center bg-primary rounded-b-2xl gap-2 self-center px-6 py-1 text-lg -mt-1">
 					<span>English</span>
@@ -91,7 +93,7 @@ export const AddingPopup: React.FC<{
 				className="flex flex-row items-center gap-1 py-2 px-4 bg-primary rounded-md font-bold text-md filter drop-shadow-md gap-2"
 			>
 				<Img className="w-5 h-auto" src={staticFile('icons/save.svg')} />
-				<span>Save</span>
+				<span>{t('save')}</span>
 			</button>
 		</div>
 	);

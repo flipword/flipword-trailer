@@ -9,10 +9,10 @@ import {
 	useVideoConfig,
 } from 'remotion';
 import {PlatformCard} from '../components/PlatformCard';
+import useI18n from '../plugins/i18n.plugin';
 
 export const EndScene: React.FC = () => {
-	const availableOn = 'Disponible sur:';
-	const visitSite = 'Visitez notre site:';
+	const {t} = useI18n();
 	const siteUrl = 'flipword.io';
 
 	const {fps} = useVideoConfig();
@@ -59,7 +59,7 @@ export const EndScene: React.FC = () => {
 							</div>
 							<div className="w-full flex justify-center">
 								<span className="text-3xl text-center">
-									Outils d'apprentissage de vocabulaire
+									{t('learning_tool')}
 								</span>
 							</div>
 						</div>
@@ -73,7 +73,7 @@ export const EndScene: React.FC = () => {
 					className="flex-1 flex flex-col justify-center items-center gap-12"
 					style={{opacity}}
 				>
-					<span className="text-6xl text-black font-bold">{availableOn}</span>
+					<span className="text-6xl text-black font-bold">Disponible sur:</span>
 					<div className="flex flex-col gap-5">
 						<PlatformCard
 							name="App Store"
@@ -92,7 +92,9 @@ export const EndScene: React.FC = () => {
 						/>
 					</div>
 					<div className="flex flex-col justify-center gap-2">
-						<span className="text-black text-5xl underline">{visitSite}</span>
+						<span className="text-black text-5xl underline">
+							{t('visit_website')}
+						</span>
 						<span className="text-black text-5xl font-bold self-center">
 							{siteUrl}
 						</span>

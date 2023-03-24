@@ -1,6 +1,8 @@
 import React from 'react';
+import useI18n from '../plugins/i18n.plugin';
 
 export const ExtensionAddingPopup: React.FC = () => {
+	const {t} = useI18n();
 	const foreignLanguageLabel = 'English:';
 	const nativeLanguageLabel = 'French:';
 	const foreignWord = 'Wonderful';
@@ -25,8 +27,8 @@ export const ExtensionAddingPopup: React.FC = () => {
 					</div>
 				</div>
 
-				<div className="w-1/3 py-1 bg-primary filter drop-shadow-sm flex flex-row justify-center items-center rounded-lg">
-					<span className="text-black font-bold">Submit</span>
+				<div className="px-3 py-1 bg-primary filter drop-shadow-sm flex flex-row justify-center items-center rounded-lg">
+					<span className="text-black font-bold">{t('save')}</span>
 				</div>
 			</div>
 		</div>

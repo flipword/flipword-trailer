@@ -1,7 +1,9 @@
 import React from 'react';
 import {Img, staticFile} from 'remotion';
+import useI18n from '../plugins/i18n.plugin';
 
 export const ExtensionPopup: React.FC = () => {
+	const {t} = useI18n();
 	return (
 		<div className="flex flex-col h-full w-full bg-base border border-darkGrey rounded-lg">
 			<div className="flex flex-row w-full justify-between items-center px-2 py-1">
@@ -10,7 +12,7 @@ export const ExtensionPopup: React.FC = () => {
 					<h1 className="font-bold">FlipWord</h1>
 				</div>
 				<div className="flex flex-row gap-1 rounded-md bg-primary text-sm font-bold py-1 px-2 filter drop-shadow-md">
-					<span>Train</span>
+					<span>{t('train')}</span>
 					<Img className="w-4 h-auto" src={staticFile('icons/train.svg')} />
 				</div>
 			</div>
@@ -31,7 +33,7 @@ export const ExtensionPopup: React.FC = () => {
 							className="w-4 h-auto"
 							src={staticFile('icons/translate.svg')}
 						/>
-						Translate
+						{t('translate')}
 					</button>
 					<div className="flex flex-col w-full">
 						<div className="self-start bg-white px-1 pb-1 ml-2 -mb-1 rounded-sm font-bold text-xs z-10">
@@ -44,7 +46,7 @@ export const ExtensionPopup: React.FC = () => {
 						className="flex flex-row items-center gap-1 py-1 px-3 bg-primary rounded-md font-bold text-sm filter drop-shadow-md"
 					>
 						<Img className="w-4 h-auto" src={staticFile('icons/save.svg')} />
-						Save
+						{t('save')}
 					</button>
 				</div>
 				<div className="flex flex-col gap-2 justify-center self-auto pr-1 pb-4">
