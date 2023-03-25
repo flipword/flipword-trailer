@@ -3,7 +3,7 @@ import {Img, staticFile} from 'remotion';
 import useI18n from '../plugins/i18n.plugin';
 
 export const ExtensionPopup: React.FC = () => {
-	const {t} = useI18n();
+	const {t, getNativeLanguageLabel, getForeignLanguageLabel} = useI18n();
 	return (
 		<div className="flex flex-col h-full w-full bg-base border border-darkGrey rounded-lg">
 			<div className="flex flex-row w-full justify-between items-center px-2 py-1">
@@ -21,7 +21,7 @@ export const ExtensionPopup: React.FC = () => {
 				<div className="flex flex-col flex-auto py-2 px-4 items-center gap-2">
 					<div className="flex flex-col w-full">
 						<div className="self-start bg-white px-1 pb-1 ml-2 -mb-1 rounded-sm font-bold text-xs">
-							French:
+							{`${getNativeLanguageLabel()}:`}
 						</div>
 						<div className="bg-white h-7 w-full rounded-sm" />
 					</div>
@@ -37,7 +37,7 @@ export const ExtensionPopup: React.FC = () => {
 					</button>
 					<div className="flex flex-col w-full">
 						<div className="self-start bg-white px-1 pb-1 ml-2 -mb-1 rounded-sm font-bold text-xs z-10">
-							English:
+							{`${getForeignLanguageLabel()}:`}
 						</div>
 						<div className="bg-white h-7 w-full rounded-sm" />
 					</div>

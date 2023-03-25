@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React from 'react';
 import {
 	Easing,
 	interpolate,
@@ -10,32 +10,35 @@ import {WordCard} from './WordCard';
 import {Word} from '../models/Word';
 import {Cursor} from './Cursor';
 import {ClickEffect} from './ClickEffect';
+import useI18n from '../plugins/i18n.plugin';
+import {wordList as words} from '../data/words';
 
 export const ApplicationListContent: React.FC = () => {
+	const {currentNativeLang, currentForeignLang} = useI18n();
 	const wordList: Word[] = [
 		{
-			nativeWord: 'Lourd',
-			foreignWord: 'Cumbersome',
+			nativeWord: words[currentNativeLang][2],
+			foreignWord: words[currentForeignLang][2],
 		},
 		{
-			nativeWord: 'Recherche',
-			foreignWord: 'Seeking',
+			nativeWord: words[currentNativeLang][3],
+			foreignWord: words[currentForeignLang][3],
 		},
 		{
-			nativeWord: 'Dépense',
-			foreignWord: 'Expenses',
+			nativeWord: words[currentNativeLang][4],
+			foreignWord: words[currentForeignLang][4],
 		},
 		{
-			nativeWord: 'Racheter',
-			foreignWord: 'Redeem',
+			nativeWord: words[currentNativeLang][5],
+			foreignWord: words[currentForeignLang][5],
 		},
 		{
-			nativeWord: 'Maladroit',
-			foreignWord: 'Clunky',
+			nativeWord: words[currentNativeLang][6],
+			foreignWord: words[currentForeignLang][6],
 		},
 		{
-			nativeWord: 'Merveilleux',
-			foreignWord: 'Wonderful',
+			nativeWord: words[currentNativeLang][0],
+			foreignWord: words[currentForeignLang][0],
 		},
 	];
 

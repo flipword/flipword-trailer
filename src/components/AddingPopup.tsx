@@ -16,7 +16,7 @@ export const AddingPopup: React.FC<{
 }> = (props) => {
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
-	const {t} = useI18n();
+	const {t, getForeignLanguageLabel, getNativeLanguageLabel} = useI18n();
 	const isTypingBarVisible =
 		currentFrame % fps >= fps / 2 ? 'visible' : 'hidden';
 	const foreignWord = props.saveWordFrame >= currentFrame ? 'Advice' : '';
@@ -43,17 +43,17 @@ export const AddingPopup: React.FC<{
 						src={staticFile('icons/google-translate.svg')}
 					/>
 					<span className="font-bold">Google</span>
-					<span>{t('translate')}</span>
+					<span>Translate</span>
 				</div>
 				<div className="flex flex-row justify-center bg-primary rounded-b-2xl gap-2 self-center px-6 py-1 text-lg -mt-1">
-					<span>English</span>
+					<span>{getForeignLanguageLabel()}</span>
 					<Img className="w-4 h-auto" src={staticFile('icons/swap.svg')} />
-					<span>French</span>
+					<span>{getNativeLanguageLabel()}</span>
 				</div>
 			</div>
 			<div className="flex flex-col w-full">
 				<div className="self-start bg-white px-2 pb-1 ml-2 -mb-1 rounded-md font-bold text-md z-10">
-					English:
+					{`${getForeignLanguageLabel()}:`}
 				</div>
 				<div className="flex flex-row items-center justify-center bg-white h-16 w-full rounded-md text-lg gap-0.5">
 					{props.startWritingFrame <= currentFrame &&
@@ -78,7 +78,7 @@ export const AddingPopup: React.FC<{
 			</div>
 			<div className="flex flex-col w-full -mt-12">
 				<div className="self-start bg-white px-2 pb-1 ml-2 -mb-1 rounded-md font-bold text-md z-10">
-					French:
+					{`${getNativeLanguageLabel()}:`}
 				</div>
 				<div className="flex flex-row items-center justify-center bg-white h-16 w-full rounded-md text-lg">
 					{props.foreignWordFrame <= currentFrame ? (

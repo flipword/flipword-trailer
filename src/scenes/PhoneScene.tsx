@@ -13,12 +13,15 @@ import {ApplicationLearningContent} from '../components/ApplicationLearningConte
 import {ApplicationLayout} from '../components/ApplicationLayout';
 import {WebsiteSceneEnum} from '../models/WebsiteSceneEnum';
 import {ClickEffect} from '../components/ClickEffect';
+import {wordList} from '../data/words';
+import useI18n from '../plugins/i18n.plugin';
 
 export const PhoneScene: React.FC<{durationInFrames: number}> = ({
 	durationInFrames,
 }) => {
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
+	const {currentNativeLang, currentForeignLang} = useI18n();
 
 	const offsetTop =
 		currentFrame >= durationInFrames
@@ -50,16 +53,16 @@ export const PhoneScene: React.FC<{durationInFrames: number}> = ({
 							isMobile
 							words={[
 								{
-									nativeWord: 'Alarmiste',
-									foreignWord: 'Fearmongering',
+									nativeWord: wordList[currentNativeLang][2],
+									foreignWord: wordList[currentForeignLang][2],
 								},
 								{
-									nativeWord: 'Conseil',
-									foreignWord: 'Advice',
+									nativeWord: wordList[currentNativeLang][1],
+									foreignWord: wordList[currentForeignLang][1],
 								},
 								{
-									nativeWord: 'Sagesse',
-									foreignWord: 'Wisdom',
+									nativeWord: wordList[currentNativeLang][3],
+									foreignWord: wordList[currentForeignLang][3],
 								},
 							]}
 							websiteScene={WebsiteSceneEnum.ApplicationLearning}

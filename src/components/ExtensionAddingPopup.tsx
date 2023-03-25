@@ -1,12 +1,19 @@
 import React from 'react';
 import useI18n from '../plugins/i18n.plugin';
+import {wordList as words} from '../data/words';
 
 export const ExtensionAddingPopup: React.FC = () => {
-	const {t} = useI18n();
-	const foreignLanguageLabel = 'English:';
-	const nativeLanguageLabel = 'French:';
-	const foreignWord = 'Wonderful';
-	const nativeWord = 'Merveilleux';
+	const {
+		t,
+		currentNativeLang,
+		currentForeignLang,
+		getNativeLanguageLabel,
+		getForeignLanguageLabel,
+	} = useI18n();
+	const foreignLanguageLabel = `${getNativeLanguageLabel()}:`;
+	const nativeLanguageLabel = `${getForeignLanguageLabel()}:`;
+	const foreignWord = words[currentForeignLang][0];
+	const nativeWord = words[currentNativeLang][0];
 	return (
 		<div className="h-full w-full bg-base rounded-md text-sm py-2 font-sans">
 			<div className="w-full h-full flex flex-col items-center justify-center gap-3">
