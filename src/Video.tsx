@@ -35,7 +35,7 @@ export const RemotionVideo: React.FC = () => {
 				height={1080}
 				defaultProps={{
 					nativeLang: 'de',
-					foreignLang: 'en',
+					foreignLang: 'fr',
 				}}
 			/>
 		</>

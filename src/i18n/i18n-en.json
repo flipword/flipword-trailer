@@ -11,5 +11,17 @@
   "translate": "Translate",
   "try_guess": "Try to guess:",
   "is_correct": "Is it good ?",
-  "visit_website": "Visit our website"
+  "visit_website": "Visit our website",
+  "wonderful": "wonderful",
+  "website_title": "How to help our brain learn new languages ?",
+  "website_subtitle1": "Spell it out",
+  "website_subtitle2": "Temporal and frontal lobe",
+  "website_subtitle3": "Visualize",
+  "website_text1_full": "Taking a pen to paper is a bit outdated, however it has wonderful\naffects on learning new languages. It helps with written word learning,\nby connecting orthography spelling and phonology at the whole word\nlevel.",
+  "website_text1_part1": "Taking a pen to paper is a bit outdated, however it has",
+  "website_text1_part2": "affects on learning new languages.",
+  "website_text1_part3": "It helps with written word learning, by connecting orthography",
+  "website_text1_part4": "spelling and phonology at the whole word level.",
+  "website_text2": "According to a study done in 2017, it was shown that the temporal lobe and parts of the frontal lobe are activated when we are learning a new language.",
+  "website_text3": "Once written, the brain is now able to visualize the word which will now be associated with the meaning of the word. \"It has been found that meaning is first attached to the visual form followed by sound in second language written word learning\"."
 }

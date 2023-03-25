@@ -45,6 +45,13 @@ const useI18n = () => {
 		return langIndex === -1 ? null : langOptions[langIndex].json[key];
 	};
 
+	const foreignTranslate = (key: string) => {
+		const langIndex = langOptions.findIndex(
+			(x: any) => x.id === currentForeignLang
+		);
+		return langIndex === -1 ? null : langOptions[langIndex].json[key];
+	};
+
 	const getNativeLanguageLabel = () => {
 		const lang = langOptions.find((x: any) => x.id === currentNativeLang);
 		if (lang) {
@@ -67,6 +74,7 @@ const useI18n = () => {
 		setCurrentForeignLang,
 		getNativeLanguageLabel,
 		getForeignLanguageLabel,
+		foreignTranslate,
 		t,
 	};
 };

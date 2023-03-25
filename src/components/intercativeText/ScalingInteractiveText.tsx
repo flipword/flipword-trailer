@@ -1,11 +1,13 @@
 import React from 'react';
 import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
+import useI18n from '../../plugins/i18n.plugin';
 
 export const ScalingInteractiveText: React.FC<{
 	startAfter: number;
 }> = (props) => {
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
+	const {foreignTranslate: t} = useI18n();
 
 	const scale = interpolate(
 		currentFrame,
@@ -29,7 +31,7 @@ export const ScalingInteractiveText: React.FC<{
 
 	return (
 		<div className="text-xl z-30 flex flex-col flex-1 px-5 justify-center ">
-			<p className="whitespace-nowrap">Taking a pen to paper is a bit outdated, however it has</p>
+			<p className="whitespace-nowrap">{t('website_text1_part1')}</p>
 			<div className="flex flex-row items-center gap-1">
 				<div
 					className="relative"
@@ -37,7 +39,7 @@ export const ScalingInteractiveText: React.FC<{
 						transform: `scale(${scale})`,
 					}}
 				>
-					<span className="z-30">wonderful</span>
+					<span className="z-30">{t('wonderful')}</span>
 					<div
 						className="bg-white w-12 h-5 absolute z-10 filter blur-xs rounded-xl"
 						style={{
@@ -60,12 +62,10 @@ export const ScalingInteractiveText: React.FC<{
 						<span className="transform rotate-25">?</span>
 					</div>
 				</div>
-				<p>affects on learning new languages.</p>
+				<p>{t('website_text1_part2')}</p>
 			</div>
-			<p>
-				It helps with written word learning, by connecting orthography spelling
-				and phonology at the whole word level.
-			</p>
+			<p className="whitespace-nowrap">{t('website_text1_part3')}</p>
+			<p>{t('website_text1_part4')}</p>
 		</div>
 	);
 };

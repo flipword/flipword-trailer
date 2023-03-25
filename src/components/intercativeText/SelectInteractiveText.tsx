@@ -10,10 +10,13 @@ import {
 } from 'remotion';
 import {ExtensionAddingPopup} from '../ExtensionAddingPopup';
 import {SaveWordToast} from '../SaveWordToast';
+import useI18n from '../../plugins/i18n.plugin';
 
 export const SelectInteractiveText: React.FC = () => {
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
+	const {foreignTranslate: t} = useI18n();
+
 	const selectedDivWidth = `${
 		currentFrame >= fps
 			? interpolate(currentFrame, [fps, 2 * fps], [0, 87], {
@@ -26,14 +29,14 @@ export const SelectInteractiveText: React.FC = () => {
 
 	return (
 		<div className="text-xl z-30 flex flex-col flex-1 px-5 justify-center">
-			<p className="whitespace-nowrap">Taking a pen to paper is a bit outdated, however it has</p>
+			<p className="whitespace-nowrap">{t('website_text1_part1')}</p>
 			<div className="flex flex-row items-center gap-1">
 				<div className="relative">
 					<div
 						className="absolute h-6 bg-blue"
 						style={{top: '3px', zIndex: -1, width: selectedDivWidth}}
 					/>
-					<span>wonderful</span>
+					<span>{t('wonderful')}</span>
 					<Sequence from={2.3 * fps} durationInFrames={1.7 * fps}>
 						<Img
 							className="z-40 absolute w-8 h-auto"
@@ -58,10 +61,10 @@ export const SelectInteractiveText: React.FC = () => {
 						</div>
 					</Sequence>
 				</div>
-				<p>affects on learning new languages.</p>
+				<p>{t('website_text1_part2')}</p>
 			</div>
-			<p className="whitespace-nowrap">It helps with written word learning, by connecting orthography</p>
-			<p>spelling and phonology at the whole word level.</p>
+			<p className="whitespace-nowrap">{t('website_text1_part3')}</p>
+			<p>{t('website_text1_part4')}</p>
 		</div>
 	);
 };

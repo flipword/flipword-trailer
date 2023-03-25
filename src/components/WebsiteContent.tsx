@@ -14,22 +14,16 @@ import {ScalingInteractiveText} from './intercativeText/ScalingInteractiveText';
 import {SelectInteractiveText} from './intercativeText/SelectInteractiveText';
 import {ClassicText} from './intercativeText/ClassicText';
 import {ClickEffect} from './ClickEffect';
+import useI18n from '../plugins/i18n.plugin';
 
 export const WebsiteContent: React.FC<{
 	websiteScene: number;
 }> = (props) => {
 	const {fps} = useVideoConfig();
 	const currentFrame = useCurrentFrame();
-	const title = 'How to help our brain learn new languages ?';
-	const titlePart1 = 'Temporal and frontal lobe';
-	const textPart1 =
-		'According to a study done in 2017, it was shown that the temporal lobe and parts of the frontal lobe are activated when we are learning a new language.';
+	const {foreignTranslate: t} = useI18n();
 	const imgPart1 = staticFile('img/brain.png');
-	const titlePart2 = 'Spell it out';
 	const imgPart2 = staticFile('img/spell.png');
-	const titlePart3 = 'Visualize';
-	const textPart3 =
-		'Once written, the brain is now able to visualize the word which will now be associated with the meaning of the word. "It has been found that meaning is first attached to the visual form followed by sound in second language written word learning".';
 	const imgPart3 = staticFile('img/eyes.png');
 
 	const FirstParagraphDisplay = () => {
@@ -190,10 +184,10 @@ export const WebsiteContent: React.FC<{
 			<div className="w-full overflow-auto text-browser-family">
 				<div className="bg-darkGrey flex flex-row justify-center relative">
 					<div className="bg-white py-6 px-12" style={{width: '65%'}}>
-						<h1 className="text-4xl">{title}</h1>
+						<h1 className="text-4xl">{t('website_title')}</h1>
 						{/* Part 1 */}
 						<div className="px-5 mt-10 flex flex-row justify-start">
-							<h2 className="text-3xl">{titlePart2}</h2>
+							<h2 className="text-3xl">{t('website_subtitle1')}</h2>
 						</div>
 						<div className="mt-6 w-full flex flex-row">
 							{FirstParagraphDisplay()}
@@ -203,23 +197,23 @@ export const WebsiteContent: React.FC<{
 						</div>
 						{/* Part 2 */}
 						<div className="px-5 mt-6 flex flex-row justify-end">
-							<h2 className="text-3xl">{titlePart1}</h2>
+							<h2 className="text-3xl">{t('website_subtitle2')}</h2>
 						</div>
 						<div className="mt-6 w-full flex flex-row">
 							<div className="flex-1">
 								<Img className="w-11/12 h-auto" src={imgPart1} />
 							</div>
 							<div className="text-xl flex flex-col flex-1 px-5 justify-center">
-								<span>{textPart1}</span>
+								<span>{t('website_text2')}</span>
 							</div>
 						</div>
 						{/* Part 3 */}
 						<div className="px-5 mt-6 flex flex-row justify-start">
-							<h2 className="text-3xl">{titlePart3}</h2>
+							<h2 className="text-3xl">{t('website_subtitle3')}</h2>
 						</div>
 						<div className="mt-6 w-full flex flex-row">
 							<div className="text-xl flex flex-col flex-1 px-5 justify-center">
-								<span>{textPart3}</span>
+								<span>{t('website_text3')}</span>
 							</div>
 							<div className="flex-1">
 								<Img className="w-11/12 h-auto" src={imgPart3} />
